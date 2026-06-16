@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 import { StickyMobileCTA } from "@/components/StickyMobileCTA";
 import { JsonLd } from "@/components/JsonLd";
 import { getLocalBusinessSchema } from "@/lib/schema";
-import { siteConfig } from "@/lib/site-config";
+import { brandAssets, siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
 const inter = Inter({
@@ -33,6 +33,10 @@ export const metadata: Metadata = {
     "BJJ near Texas A&M",
   ],
   robots: { index: true, follow: true },
+  icons: {
+    icon: brandAssets.favicon,
+    apple: brandAssets.favicon,
+  },
 };
 
 export default function RootLayout({

@@ -95,8 +95,8 @@ export default function NoGiPage() {
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-brand-light">
               <Image
-                src="/images/no-gi.svg"
-                alt="No-Gi grappling training at Kinetic Grappling in College Station, TX"
+                src="/images/no-gi-grappling.jpg"
+                alt="No-Gi grappling class at Kinetic Grappling in College Station, TX"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"

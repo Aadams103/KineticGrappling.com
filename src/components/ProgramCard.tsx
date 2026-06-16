@@ -8,6 +8,7 @@ interface ProgramCardProps {
   cta: string;
   href: string;
   image: string;
+  imageAlt: string;
 }
 
 export function ProgramCard({
@@ -17,13 +18,14 @@ export function ProgramCard({
   cta,
   href,
   image,
+  imageAlt,
 }: ProgramCardProps) {
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-shadow hover:shadow-lg">
       <div className="relative aspect-[16/10] overflow-hidden bg-brand-light">
         <Image
           src={image}
-          alt={`${title} program at Kinetic Grappling in College Station, TX`}
+          alt={imageAlt}
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

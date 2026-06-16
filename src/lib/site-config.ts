@@ -39,6 +39,20 @@ export const siteConfig = {
   ctaNav: { label: "Book Free Trial", href: "/free-trial" },
 } as const;
 
+export const brandAssets = {
+  logoHeader: "/images/kinetic-grappling-logo.png",
+  logoFooter: "/images/kinetic-grappling-logo-light.jpg",
+  logoAlt:
+    "Kinetic Grappling Brazilian Jiu-Jitsu academy logo in College Station, TX",
+  favicon: "/images/favicon.png",
+  heroImage: "/images/hero-bjj-training.jpg",
+  heroAlt:
+    "Kinetic Grappling Brazilian Jiu-Jitsu academy in College Station TX — welcoming BJJ training on the mats",
+  firstClassImage: "/images/first-class.jpg",
+  firstClassAlt:
+    "Coach instructing a kids Brazilian Jiu-Jitsu class at Kinetic Grappling in College Station, TX",
+} as const;
+
 export type ProgramSlug =
   | "little-grapplers"
   | "kids-bjj"
@@ -57,6 +71,7 @@ export interface Program {
   cta: string;
   href: string;
   image: string;
+  imageAlt: string;
 }
 
 export const programs: Program[] = [
@@ -76,7 +91,9 @@ export const programs: Program[] = [
       "Preschoolers who need a fun, structured activity that builds coordination and confidence.",
     cta: "Book a Kids Free Trial",
     href: "/free-trial?program=little-grapplers",
-    image: "/images/little-grapplers.svg",
+    image: "/images/little-grapplers.jpg",
+    imageAlt:
+      "Little Grapplers preschool martial arts class at Kinetic Grappling in College Station, TX",
   },
   {
     slug: "kids-bjj",
@@ -94,7 +111,9 @@ export const programs: Program[] = [
       "School-age children who want martial arts training in a safe, structured, family-friendly environment.",
     cta: "Schedule Your Child's Free Trial",
     href: "/free-trial?program=kids-bjj",
-    image: "/images/kids-bjj.svg",
+    image: "/images/kids-bjj-class.jpg",
+    imageAlt:
+      "Kids Brazilian Jiu-Jitsu class at Kinetic Grappling in College Station, TX",
   },
   {
     slug: "adult-fundamentals",
@@ -112,7 +131,8 @@ export const programs: Program[] = [
       "Adults of any fitness level who want to learn Brazilian Jiu-Jitsu from the ground up.",
     cta: "Try an Adult Beginner Class",
     href: "/free-trial?program=adult-fundamentals",
-    image: "/images/adult-bjj.svg",
+    image: "/images/adult-bjj-class.jpg",
+    imageAlt: "Adult BJJ training in College Station Texas at Kinetic Grappling",
   },
   {
     slug: "no-gi",
@@ -130,7 +150,8 @@ export const programs: Program[] = [
       "Students who want dynamic grappling training with rash guard and shorts instead of a gi.",
     cta: "Try a No-Gi Class",
     href: "/free-trial?program=no-gi",
-    image: "/images/no-gi.svg",
+    image: "/images/no-gi-grappling.jpg",
+    imageAlt: "No-Gi grappling class at Kinetic Grappling in College Station, TX",
   },
   {
     slug: "competition",
@@ -148,7 +169,9 @@ export const programs: Program[] = [
       "Dedicated students with fundamentals who want to compete at local and regional events.",
     cta: "Ask About Competition Training",
     href: "/free-trial?program=competition",
-    image: "/images/competition.svg",
+    image: "/images/competition-training.jpg",
+    imageAlt:
+      "Competition Brazilian Jiu-Jitsu training at Kinetic Grappling in College Station, TX",
   },
   {
     slug: "private-lessons",
@@ -166,7 +189,9 @@ export const programs: Program[] = [
       "Anyone who wants individualized attention or needs extra support beyond group classes.",
     cta: "Ask About Private Lessons",
     href: "/free-trial?program=private-lessons",
-    image: "/images/private-lessons.svg",
+    image: "/images/private-lessons.jpg",
+    imageAlt:
+      "One-on-one Brazilian Jiu-Jitsu instruction at Kinetic Grappling in College Station, TX",
   },
 ];
 
@@ -176,7 +201,9 @@ export interface Coach {
   bio: string;
   focus: string[];
   credentials: string[];
-  image: string;
+  image: string | null;
+  imageAlt: string;
+  needsPhoto?: boolean;
 }
 
 export const coaches: Coach[] = [
@@ -190,7 +217,9 @@ export const coaches: Coach[] = [
       "10+ years teaching experience",
       "Competition background",
     ],
-    image: "/images/coaches/ambrose-adams.svg",
+    image: "/images/coaches/coach-ambrose-adams.jpg",
+    imageAlt:
+      "Coach Ambrose Adams, black belt head instructor at Kinetic Grappling in College Station, TX",
   },
   {
     name: "Bobby Power",
@@ -202,7 +231,10 @@ export const coaches: Coach[] = [
       "Adult program lead",
       "Fundamentals specialist",
     ],
-    image: "/images/coaches/bobby-power.svg",
+    image: null,
+    imageAlt:
+      "Coach Bobby Power, black belt instructor at Kinetic Grappling in College Station, TX",
+    needsPhoto: true,
   },
   {
     name: "Jay Kelly",
@@ -214,7 +246,10 @@ export const coaches: Coach[] = [
       "No-Gi specialist",
       "Youth development focus",
     ],
-    image: "/images/coaches/jay-kelly.svg",
+    image: null,
+    imageAlt:
+      "Coach Jay Kelly, brown belt instructor at Kinetic Grappling in College Station, TX",
+    needsPhoto: true,
   },
   {
     name: "Aidan Forgay",
@@ -230,7 +265,10 @@ export const coaches: Coach[] = [
       "Competition experience",
       "First-class specialist",
     ],
-    image: "/images/coaches/aidan-forgay.svg",
+    image: null,
+    imageAlt:
+      "Coach Aidan Forgay, purple belt instructor at Kinetic Grappling in College Station, TX",
+    needsPhoto: true,
   },
 ];
 

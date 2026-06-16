@@ -87,8 +87,8 @@ export default function AdultBJJPage() {
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-brand-light order-2 lg:order-1">
               <Image
-                src="/images/adult-bjj.svg"
-                alt="Adult beginner BJJ class at Kinetic Grappling in College Station, TX"
+                src="/images/adult-bjj-class.jpg"
+                alt="Adult BJJ training in College Station Texas at Kinetic Grappling"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"

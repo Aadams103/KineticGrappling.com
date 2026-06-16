@@ -6,6 +6,7 @@ import { useState } from "react";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { CTAButton } from "./CTAButton";
+import { Logo } from "./Logo";
 
 export function Header() {
   const pathname = usePathname();
@@ -14,14 +15,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
-        <Link href="/" className="flex flex-col leading-tight" onClick={() => setMobileOpen(false)}>
-          <span className="text-xl font-bold tracking-tight text-brand-charcoal">
-            {siteConfig.name}
-          </span>
-          <span className="text-xs font-medium uppercase tracking-widest text-brand-red">
-            {siteConfig.tagline}
-          </span>
-        </Link>
+        <Logo onClick={() => setMobileOpen(false)} className="shrink-0" />
 
         <nav className="hidden xl:flex items-center gap-6" aria-label="Main navigation">
           {siteConfig.nav.map((item) => (

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { CTAButton } from "./CTAButton";
+import { brandAssets } from "@/lib/site-config";
 
 interface HeroProps {
   headline: string;
@@ -17,8 +18,8 @@ export function Hero({
   trustLine,
   primaryCta = { label: "Book a Free Trial Class", href: "/free-trial" },
   secondaryCta = { label: "View Class Schedule", href: "/schedule" },
-  imageSrc = "/images/hero-training.svg",
-  imageAlt = "Brazilian Jiu-Jitsu training at Kinetic Grappling in College Station, TX",
+  imageSrc = brandAssets.heroImage,
+  imageAlt = brandAssets.heroAlt,
 }: HeroProps) {
   return (
     <section className="relative overflow-hidden bg-brand-charcoal">

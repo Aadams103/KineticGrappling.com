@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { siteConfig } from "./site-config";
+import { brandAssets, siteConfig } from "./site-config";
 
 interface PageMetadataOptions {
   title: string;
@@ -35,10 +35,10 @@ export function createPageMetadata({
       type: "website",
       images: [
         {
-          url: "/images/hero-training.svg",
+          url: brandAssets.heroImage,
           width: 1200,
           height: 630,
-          alt: "Brazilian Jiu-Jitsu training at Kinetic Grappling in College Station, TX",
+          alt: "Kinetic Grappling Brazilian Jiu-Jitsu academy in College Station TX",
         },
       ],
     },

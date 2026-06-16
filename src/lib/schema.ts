@@ -1,4 +1,4 @@
-import { siteConfig, type FAQ } from "./site-config";
+import { brandAssets, siteConfig, type FAQ } from "./site-config";
 
 export function getLocalBusinessSchema() {
   return {
@@ -10,7 +10,7 @@ export function getLocalBusinessSchema() {
     url: siteConfig.url,
     telephone: siteConfig.phone,
     email: siteConfig.email,
-    image: `${siteConfig.url}/images/hero-training.svg`,
+    image: `${siteConfig.url}${brandAssets.heroImage}`,
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",

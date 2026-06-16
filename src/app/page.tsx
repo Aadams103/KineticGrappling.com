@@ -19,6 +19,7 @@ import {
   startSteps,
   weeklySchedule,
   siteConfig,
+  brandAssets,
 } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
@@ -184,8 +185,8 @@ export default function HomePage() {
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-brand-light">
               <Image
-                src="/images/first-class.svg"
-                alt="Welcoming first BJJ class environment at Kinetic Grappling in College Station"
+                src={brandAssets.firstClassImage}
+                alt={brandAssets.firstClassAlt}
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"

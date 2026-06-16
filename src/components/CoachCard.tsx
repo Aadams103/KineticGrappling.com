@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ImagePlaceholder } from "./ImagePlaceholder";
 
 interface CoachCardProps {
   name: string;
@@ -6,7 +7,9 @@ interface CoachCardProps {
   bio: string;
   focus: string[];
   credentials: string[];
-  image: string;
+  image: string | null;
+  imageAlt: string;
+  needsPhoto?: boolean;
 }
 
 export function CoachCard({
@@ -16,20 +19,32 @@ export function CoachCard({
   focus,
   credentials,
   image,
+  imageAlt,
+  needsPhoto,
 }: CoachCardProps) {
   return (
     <article className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
       <div className="relative aspect-[4/5] bg-brand-light">
-        <Image
-          src={image}
-          alt={`${name}, ${rank} — coach at Kinetic Grappling in College Station, TX`}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-        />
+        {image ? (
+          <Image
+            src={image}
+            alt={imageAlt}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+          />
+        ) : (
+          <ImagePlaceholder
+            label={name}
+            sublabel="Professional headshot needed — replace this placeholder"
+          />
+        )}
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-charcoal/90 to-transparent p-6 pt-16">
           <h3 className="text-xl font-bold text-white">{name}</h3>
           <p className="text-sm font-medium text-brand-red">{rank}</p>
+          {needsPhoto && (
+            <p className="mt-1 text-xs text-white/60">Photo coming soon</p>
+          )}
         </div>
       </div>
       <div className="p-6">

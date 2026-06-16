@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 import { CTAButton } from "./CTAButton";
+import { Logo } from "./Logo";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,8 +11,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
-            <p className="text-2xl font-bold">{siteConfig.name}</p>
-            <p className="mt-2 text-sm text-white/70">{siteConfig.tagline}</p>
+            <Logo variant="footer" />
             <p className="mt-4 text-sm leading-relaxed text-white/80">
               Brazilian Jiu-Jitsu for kids, adults, and beginners in College Station, TX.
               Beginner-friendly classes near Texas A&amp;M and the Bryan/College Station area.

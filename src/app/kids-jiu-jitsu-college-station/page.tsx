@@ -97,7 +97,7 @@ export default function KidsJiuJitsuPage() {
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-brand-light">
               <Image
-                src="/images/kids-bjj.svg"
+                src="/images/kids-bjj-class.jpg"
                 alt="Kids Brazilian Jiu-Jitsu class at Kinetic Grappling in College Station, TX"
                 fill
                 className="object-cover"
