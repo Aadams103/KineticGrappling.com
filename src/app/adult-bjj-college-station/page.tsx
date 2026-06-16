@@ -7,10 +7,11 @@ import { CTAButton } from "@/components/CTAButton";
 import { JsonLd } from "@/components/JsonLd";
 import { createPageMetadata } from "@/lib/metadata";
 import { getFAQSchema } from "@/lib/schema";
+import { siteConfig } from "@/lib/site-config";
 import type { FAQ } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
-  title: "Adult BJJ College Station, TX | Beginner Brazilian Jiu-Jitsu",
+  title: "Adult Brazilian Jiu-Jitsu College Station, TX | Beginner BJJ",
   description:
     "Beginner-friendly adult BJJ in College Station, TX. No experience required. Get in shape, learn self-defense, and train in a supportive environment at Kinetic Grappling.",
   path: "/adult-bjj-college-station",
@@ -74,7 +75,7 @@ export default function AdultBJJPage() {
       <JsonLd data={getFAQSchema(adultFaqs)} />
 
       <PageHero
-        title="Adult BJJ in College Station, TX"
+        title="Adult Brazilian Jiu-Jitsu in College Station, TX"
         subtitle="Beginner-friendly Brazilian Jiu-Jitsu for adults who want fitness, self-defense, confidence, and a supportive training community. No experience required."
         breadcrumb={[
           { label: "Home", href: "/" },
@@ -100,8 +101,8 @@ export default function AdultBJJPage() {
                 subtitle="Whether you are a Texas A&M student, a Bryan/College Station professional, or a parent looking for your own fitness outlet — our adult BJJ program meets you where you are."
                 align="left"
               />
-              <CTAButton href="/free-trial?program=adult-fundamentals">
-                Try an Adult Beginner Class
+              <CTAButton href="/contact?program=adult-fundamentals">
+                {siteConfig.primaryCta}
               </CTAButton>
             </div>
           </div>
@@ -143,8 +144,7 @@ export default function AdultBJJPage() {
 
       <FinalCTA
         headline="Start Your BJJ Journey Today"
-        description="Try a free adult beginner class at Kinetic Grappling in College Station, TX."
-        ctaLabel="Try an Adult Beginner Class"
+        description="Book your free class at Kinetic Grappling in College Station, TX. Bring workout clothes and a water bottle — we'll help with the rest."
       />
     </>
   );

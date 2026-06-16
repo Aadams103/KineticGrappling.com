@@ -23,8 +23,8 @@ export function Header() {
               key={item.href}
               href={item.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-brand-red",
-                pathname === item.href ? "text-brand-red" : "text-brand-gray"
+                "text-sm font-medium transition-colors hover:text-brand-gold",
+                pathname === item.href ? "text-brand-gold" : "text-brand-gray"
               )}
             >
               {item.label}
@@ -67,7 +67,7 @@ export function Header() {
                   className={cn(
                     "block rounded-lg px-4 py-3 text-base font-medium transition-colors",
                     pathname === item.href
-                      ? "bg-brand-red/10 text-brand-red"
+                      ? "bg-brand-gold/10 text-brand-gold"
                       : "text-brand-charcoal hover:bg-brand-light"
                   )}
                   onClick={() => setMobileOpen(false)}

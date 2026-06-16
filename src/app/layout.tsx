@@ -17,7 +17,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Brazilian Jiu-Jitsu College Station, TX | Kids & Adult BJJ | Kinetic Grappling",
+    default: "Brazilian Jiu-Jitsu Classes in College Station, TX | Kinetic Grappling",
     template: "%s | Kinetic Grappling",
   },
   description: siteConfig.description,

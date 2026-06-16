@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-type CTAButtonVariant = "primary" | "secondary" | "outline" | "white";
+type CTAButtonVariant = "primary" | "secondary" | "outline" | "white" | "ghost";
 
 interface CTAButtonProps {
   href: string;
@@ -13,13 +13,12 @@ interface CTAButtonProps {
 
 const variantStyles: Record<CTAButtonVariant, string> = {
   primary:
-    "bg-brand-red text-white hover:bg-brand-red-dark shadow-lg shadow-brand-red/20",
-  secondary:
-    "bg-brand-charcoal text-white hover:bg-brand-gray",
+    "bg-brand-gold text-brand-black hover:bg-brand-gold-dark shadow-lg shadow-brand-gold/25 font-bold",
+  secondary: "bg-brand-charcoal text-white hover:bg-brand-black",
   outline:
-    "border-2 border-brand-charcoal text-brand-charcoal hover:bg-brand-charcoal hover:text-white",
-  white:
-    "bg-white text-brand-charcoal hover:bg-brand-light border border-white/20",
+    "border-2 border-brand-gold text-brand-charcoal hover:bg-brand-gold hover:text-brand-black",
+  white: "bg-white text-brand-charcoal hover:bg-brand-light border border-white/20 font-bold",
+  ghost: "text-brand-gold hover:text-brand-gold-dark underline-offset-4 hover:underline",
 };
 
 export function CTAButton({
@@ -30,7 +29,7 @@ export function CTAButton({
   external,
 }: CTAButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center rounded-lg px-6 py-3.5 text-base font-semibold transition-all duration-200 min-h-[48px]",
+    "inline-flex items-center justify-center rounded-xl px-7 py-4 text-base transition-all duration-200 min-h-[52px]",
     variantStyles[variant],
     className
   );

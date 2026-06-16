@@ -7,6 +7,7 @@ import { CTAButton } from "@/components/CTAButton";
 import { JsonLd } from "@/components/JsonLd";
 import { createPageMetadata } from "@/lib/metadata";
 import { getFAQSchema } from "@/lib/schema";
+import { siteConfig } from "@/lib/site-config";
 import type { FAQ } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
@@ -91,7 +92,7 @@ export default function NoGiPage() {
                 subtitle="Our No-Gi classes in College Station combine Jiu-Jitsu technique with wrestling-style movement for a faster, more athletic training experience."
                 align="left"
               />
-              <CTAButton href="/free-trial?program=no-gi">Try a No-Gi Class</CTAButton>
+              <CTAButton href="/contact?program=no-gi">{siteConfig.primaryCta}</CTAButton>
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-brand-light">
               <Image
@@ -129,8 +130,7 @@ export default function NoGiPage() {
 
       <FinalCTA
         headline="Experience No-Gi Grappling"
-        description="Try a No-Gi class at Kinetic Grappling and see why submission grappling is one of the fastest-growing martial arts in College Station."
-        ctaLabel="Try a No-Gi Class"
+        description="Book a No-Gi class at Kinetic Grappling and see why submission grappling is one of the fastest-growing martial arts in College Station."
       />
     </>
   );

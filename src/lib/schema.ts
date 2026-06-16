@@ -1,4 +1,4 @@
-import { brandAssets, siteConfig, type FAQ } from "./site-config";
+import { siteConfig, type FAQ } from "./site-config";
 
 export function getLocalBusinessSchema() {
   return {
@@ -10,7 +10,7 @@ export function getLocalBusinessSchema() {
     url: siteConfig.url,
     telephone: siteConfig.phone,
     email: siteConfig.email,
-    image: `${siteConfig.url}${brandAssets.heroImage}`,
+    image: `${siteConfig.url}/images/hero-bjj-training.jpg`,
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
@@ -28,6 +28,7 @@ export function getLocalBusinessSchema() {
     areaServed: [
       { "@type": "City", name: "College Station" },
       { "@type": "City", name: "Bryan" },
+      { "@type": "AdministrativeArea", name: "Brazos Valley" },
     ],
     openingHoursSpecification: [
       {
@@ -43,38 +44,34 @@ export function getLocalBusinessSchema() {
         closes: "12:00",
       },
     ],
-    sameAs: [siteConfig.social.googleMaps],
+    sameAs: [
+      siteConfig.social.googleMaps,
+      siteConfig.social.facebook,
+      siteConfig.social.instagram,
+    ].filter(Boolean),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Brazilian Jiu-Jitsu Programs",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Kids Brazilian Jiu-Jitsu",
-            description: "Kids Jiu-Jitsu classes in College Station, TX",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Adult BJJ Fundamentals",
-            description: "Beginner Brazilian Jiu-Jitsu for adults in College Station, TX",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "No-Gi Grappling",
-            description: "No-Gi submission grappling classes in College Station, TX",
-          },
-        },
-      ],
+      itemListElement: programsCatalog(),
     },
   };
+}
+
+function programsCatalog() {
+  return [
+    "Kids Brazilian Jiu-Jitsu",
+    "Adult Brazilian Jiu-Jitsu",
+    "No-Gi Grappling",
+    "Competition Training",
+    "Private Lessons",
+  ].map((name) => ({
+    "@type": "Offer",
+    itemOffered: {
+      "@type": "Service",
+      name,
+      description: `${name} at Kinetic Grappling in College Station, TX`,
+    },
+  }));
 }
 
 export function getFAQSchema(faqs: FAQ[]) {

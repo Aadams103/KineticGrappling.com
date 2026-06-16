@@ -11,7 +11,7 @@ import type { FAQ } from "@/lib/site-config";
 export const metadata = createPageMetadata({
   title: "Membership & Getting Started | Kinetic Grappling",
   description:
-    "Start training at Kinetic Grappling in College Station, TX with a free trial class. Learn about membership options, family plans, and what's included.",
+    "Start training at Kinetic Grappling in College Station, TX with a free class. Learn about membership options, family plans, and what's included.",
   path: "/membership",
   keywords: ["BJJ membership College Station", "Martial arts membership College Station"],
 });
@@ -19,11 +19,11 @@ export const metadata = createPageMetadata({
 const membershipFaqs: FAQ[] = [
   {
     question: "How do I get started?",
-    answer: "Book a free trial class. After your first visit, our team will help you choose the membership option that fits your goals, schedule, and family.",
+    answer: "Book a free class. After your first visit, our team will help you choose the membership option that fits your goals, schedule, and family.",
   },
   {
     question: "Do you offer family memberships?",
-    answer: "Yes. We offer family membership options for households with multiple students. Ask our team about family pricing after your free trial.",
+    answer: "Yes. We offer family membership options for households with multiple students. Ask our team about family pricing after your first class.",
   },
   {
     question: "What's included in membership?",
@@ -31,7 +31,7 @@ const membershipFaqs: FAQ[] = [
   },
   {
     question: "Is there a long-term contract?",
-    answer: "Our team will walk you through membership options during your trial period. We focus on finding the right fit rather than pushing long commitments upfront.",
+    answer: "Our team will walk you through membership options after your first class. We focus on finding the right fit rather than pushing long commitments upfront.",
   },
   {
     question: "Can I switch programs?",
@@ -47,7 +47,7 @@ const includedItems = [
   "Supportive team culture",
   "Progression through structured curriculum",
   "Competition pathway for dedicated students",
-  "Flexible membership guidance after your trial",
+  "Flexible membership guidance after your first class",
 ];
 
 export default function MembershipPage() {
@@ -57,7 +57,7 @@ export default function MembershipPage() {
 
       <PageHero
         title="Start Training at Kinetic Grappling"
-        subtitle="The best way to begin is with a free trial class. After your first class, our team will help you choose the membership option that fits your goals, schedule, and family."
+        subtitle="The best way to begin is with a free class. After your first visit, our team will help you choose the membership option that fits your goals, schedule, and family."
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Membership" },
@@ -68,17 +68,17 @@ export default function MembershipPage() {
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="grid gap-8 md:grid-cols-3">
             <article className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-red text-lg font-bold text-white">1</span>
-              <h2 className="mt-4 text-xl font-bold text-brand-charcoal">Start with a Free Trial</h2>
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-gold text-lg font-bold text-brand-black">1</span>
+              <h2 className="mt-4 text-xl font-bold text-brand-charcoal">Start with a Free Class</h2>
               <p className="mt-3 text-brand-gray leading-relaxed">
                 Experience our academy, meet our coaches, and try a class before making any commitment. No pressure — just a welcoming first visit.
               </p>
               <div className="mt-6">
-                <CTAButton href="/free-trial">Book a Free Trial Class</CTAButton>
+                <CTAButton href="/contact">Book a Free Class</CTAButton>
               </div>
             </article>
             <article className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-red text-lg font-bold text-white">2</span>
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-gold text-lg font-bold text-brand-black">2</span>
               <h2 className="mt-4 text-xl font-bold text-brand-charcoal">Choose the Right Program</h2>
               <p className="mt-3 text-brand-gray leading-relaxed">
                 Whether you need kids Jiu-Jitsu, adult fundamentals, No-Gi, or private lessons — our team helps you find the best fit for your goals.
@@ -88,10 +88,10 @@ export default function MembershipPage() {
               </div>
             </article>
             <article className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-red text-lg font-bold text-white">3</span>
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-gold text-lg font-bold text-brand-black">3</span>
               <h2 className="mt-4 text-xl font-bold text-brand-charcoal">Select Your Membership</h2>
               <p className="mt-3 text-brand-gray leading-relaxed">
-                After your trial, we will walk you through membership options including individual and family plans tailored to your schedule.
+                After your first class, we will walk you through membership options including individual and family plans tailored to your schedule.
               </p>
             </article>
           </div>
@@ -102,14 +102,14 @@ export default function MembershipPage() {
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <SectionHeading title="Membership Options" />
           <p className="mx-auto max-w-3xl text-center text-lg text-brand-gray leading-relaxed">
-            We offer flexible membership options for individuals and families. Pricing is discussed in person after your free trial so we can recommend the plan that actually fits your training goals — not a one-size-fits-all package.
+            We offer flexible membership options for individuals and families. Pricing is discussed in person after your free class so we can recommend the plan that actually fits your training goals — not a one-size-fits-all package.
           </p>
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {["Individual Membership", "Family Membership", "Private Lessons"].map((option) => (
               <div key={option} className="rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-sm">
                 <h3 className="text-lg font-bold text-brand-charcoal">{option}</h3>
                 <p className="mt-2 text-sm text-brand-gray">
-                  Details provided after your free trial class
+                  Details provided after your free class
                 </p>
               </div>
             ))}
@@ -123,7 +123,7 @@ export default function MembershipPage() {
           <ul className="mx-auto grid max-w-4xl gap-4 md:grid-cols-2">
             {includedItems.map((item) => (
               <li key={item} className="flex items-start gap-3 text-brand-gray">
-                <svg className="mt-1 h-5 w-5 shrink-0 text-brand-red" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <svg className="mt-1 h-5 w-5 shrink-0 text-brand-gold" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
                 {item}
@@ -140,7 +140,7 @@ export default function MembershipPage() {
         </div>
       </section>
 
-      <FinalCTA ctaLabel="Book a Free Trial Class" />
+      <FinalCTA ctaLabel="Book a Free Class" />
     </>
   );
 }

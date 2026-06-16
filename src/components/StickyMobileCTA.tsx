@@ -5,12 +5,12 @@ export function StickyMobileCTA() {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200 bg-white/95 p-3 backdrop-blur-md md:hidden">
       <div className="flex gap-2">
-        <CTAButton href="/free-trial" className="flex-1 !py-3 !text-sm">
+        <CTAButton href={siteConfig.contactPath} className="flex-1 !py-3 !text-sm">
           {siteConfig.primaryCta}
         </CTAButton>
         <a
           href={siteConfig.phoneHref}
-          className="inline-flex items-center justify-center rounded-lg border-2 border-brand-charcoal px-4 py-3 text-sm font-semibold text-brand-charcoal transition-colors hover:bg-brand-charcoal hover:text-white min-h-[48px]"
+          className="inline-flex items-center justify-center rounded-xl border-2 border-brand-charcoal px-4 py-3 text-sm font-semibold text-brand-charcoal min-h-[48px]"
           aria-label={`Call ${siteConfig.phone}`}
         >
           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

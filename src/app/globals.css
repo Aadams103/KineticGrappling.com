@@ -1,11 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-red: #c41e3a;
-  --color-brand-red-dark: #9e1830;
-  --color-brand-charcoal: #1a1a1a;
-  --color-brand-gray: #4a4a4a;
-  --color-brand-light: #f5f5f5;
+  --color-brand-gold: #e9b145;
+  --color-brand-gold-dark: #c9922a;
+  --color-brand-gold-light: #f5d078;
+  --color-brand-red: #e9b145;
+  --color-brand-red-dark: #c9922a;
+  --color-brand-charcoal: #141414;
+  --color-brand-black: #0a0a0a;
+  --color-brand-gray: #6b7280;
+  --color-brand-light: #f4f4f5;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -18,5 +22,5 @@ body {
 }
 
 :focus-visible {
-  @apply outline-2 outline-offset-2 outline-brand-red;
+  @apply outline-2 outline-offset-2 outline-brand-gold;
 }

@@ -33,7 +33,7 @@ export default function ProgramsPage() {
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <SectionHeading
             title="Programs for Every Age and Goal"
-            subtitle="Each program is designed with clear structure, experienced coaching, and a supportive team culture. Start with a free trial class."
+            subtitle="Each program is designed with clear structure, experienced coaching, and a supportive team culture. Start with a free class."
           />
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {programs.map((program) => (
@@ -49,7 +49,7 @@ export default function ProgramsPage() {
             Not Sure Which Program Is Right?
           </h2>
           <p className="mt-4 text-lg text-brand-gray leading-relaxed">
-            Book a free trial and our coaches will help you choose the best starting point based on age, experience, and goals. Whether you are looking for kids martial arts in College Station or adult beginner BJJ, we will guide you.
+            Book a free class and our coaches will help you choose the best starting point based on age, experience, and goals. Whether you are looking for kids martial arts in College Station or adult beginner BJJ, we will guide you.
           </p>
         </div>
       </section>

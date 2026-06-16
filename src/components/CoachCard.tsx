@@ -3,6 +3,7 @@ import { ImagePlaceholder } from "./ImagePlaceholder";
 
 interface CoachCardProps {
   name: string;
+  title: string;
   rank: string;
   bio: string;
   focus: string[];
@@ -14,6 +15,7 @@ interface CoachCardProps {
 
 export function CoachCard({
   name,
+  title,
   rank,
   bio,
   focus,
@@ -41,7 +43,8 @@ export function CoachCard({
         )}
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-charcoal/90 to-transparent p-6 pt-16">
           <h3 className="text-xl font-bold text-white">{name}</h3>
-          <p className="text-sm font-medium text-brand-red">{rank}</p>
+          <p className="text-sm font-medium text-brand-gold">{title}</p>
+          <p className="text-xs text-white/70">{rank}</p>
           {needsPhoto && (
             <p className="mt-1 text-xs text-white/60">Photo coming soon</p>
           )}
@@ -71,7 +74,7 @@ export function CoachCard({
           <ul className="mt-2 space-y-1">
             {credentials.map((item) => (
               <li key={item} className="flex items-start gap-2 text-sm text-brand-gray">
-                <svg className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <svg className="mt-0.5 h-4 w-4 shrink-0 text-brand-gold" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
                 {item}

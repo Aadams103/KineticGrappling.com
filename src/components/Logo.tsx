@@ -28,7 +28,7 @@ export function Logo({ variant = "header", className = "", onClick }: LogoProps)
           Kinetic Grappling
         </span>
         <span
-          className={`text-[10px] font-medium uppercase tracking-widest md:text-xs ${isFooter ? "text-brand-red" : "text-brand-red"}`}
+          className={`text-[10px] font-medium uppercase tracking-widest md:text-xs text-brand-gold`}
         >
           Brazilian Jiu-Jitsu
         </span>

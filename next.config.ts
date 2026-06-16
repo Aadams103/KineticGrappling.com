@@ -7,6 +7,11 @@ const nextConfig: NextConfig = {
     contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  async redirects() {
+    return [
+      { source: "/free-trial", destination: "/contact", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

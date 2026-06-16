@@ -5,19 +5,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
     "/programs",
+    "/schedule",
+    "/membership",
+    "/coaches",
+    "/about",
+    "/contact",
+    "/faq",
+    "/blog",
     "/kids-jiu-jitsu-college-station",
     "/adult-bjj-college-station",
     "/no-gi-grappling-college-station",
-    "/schedule",
-    "/coaches",
-    "/membership",
-    "/free-trial",
+    "/bjj-competition-training-college-station",
+    "/private-jiu-jitsu-lessons-college-station",
   ];
 
   return routes.map((route) => ({
     url: `${siteConfig.url}${route}`,
     lastModified: new Date(),
-    changeFrequency: route === "" ? "weekly" : "monthly",
-    priority: route === "" || route === "/free-trial" ? 1 : 0.8,
+    changeFrequency: route === "" || route === "/contact" ? "weekly" : "monthly",
+    priority: route === "" || route === "/contact" ? 1 : 0.8,
   }));
 }

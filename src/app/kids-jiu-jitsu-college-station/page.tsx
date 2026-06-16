@@ -7,12 +7,13 @@ import { CTAButton } from "@/components/CTAButton";
 import { JsonLd } from "@/components/JsonLd";
 import { createPageMetadata } from "@/lib/metadata";
 import { getFAQSchema } from "@/lib/schema";
+import { siteConfig } from "@/lib/site-config";
 import type { FAQ } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
-  title: "Kids Jiu-Jitsu College Station, TX | Kids BJJ & Martial Arts",
+  title: "Kids Brazilian Jiu-Jitsu College Station, TX | Kids Martial Arts",
   description:
-    "Kids Jiu-Jitsu and martial arts classes in College Station, TX. Build confidence, discipline, focus, and anti-bullying skills at Kinetic Grappling. Free trial available.",
+    "Kids Brazilian Jiu-Jitsu and martial arts classes in College Station, TX. Build confidence, discipline, focus, and anti-bullying skills at Kinetic Grappling. Book a free class today.",
   path: "/kids-jiu-jitsu-college-station",
   keywords: [
     "Kids Jiu-Jitsu College Station",
@@ -74,7 +75,7 @@ export default function KidsJiuJitsuPage() {
       <JsonLd data={getFAQSchema(kidsFaqs)} />
 
       <PageHero
-        title="Kids Jiu-Jitsu in College Station, TX"
+        title="Kids Brazilian Jiu-Jitsu in College Station, TX"
         subtitle="Help your child build confidence, discipline, focus, and respect through structured Brazilian Jiu-Jitsu training in a safe, positive environment."
         breadcrumb={[
           { label: "Home", href: "/" },
@@ -91,8 +92,8 @@ export default function KidsJiuJitsuPage() {
                 subtitle="Kinetic Grappling offers kids martial arts in College Station designed for real development — not just activity. Our coaches are positive role models who teach practical skills in a family-friendly academy."
                 align="left"
               />
-              <CTAButton href="/free-trial?program=kids-bjj">
-                Schedule Your Child&apos;s Free Trial
+              <CTAButton href="/contact?program=kids-bjj">
+                {siteConfig.primaryCta}
               </CTAButton>
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-brand-light">
@@ -127,23 +128,23 @@ export default function KidsJiuJitsuPage() {
           <SectionHeading title="Our Kids Programs" />
           <div className="grid gap-8 md:grid-cols-2">
             <article className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
-              <span className="rounded-full bg-brand-red px-3 py-1 text-xs font-semibold text-white">Ages 3–5</span>
+              <span className="rounded-full bg-brand-gold px-3 py-1 text-xs font-bold text-brand-black">Ages 3–5</span>
               <h3 className="mt-4 text-2xl font-bold text-brand-charcoal">Little Grapplers</h3>
               <p className="mt-3 text-brand-gray leading-relaxed">
                 Fun movement-based classes that build coordination, listening skills, confidence, and basic grappling awareness through games and structured activities.
               </p>
               <div className="mt-6">
-                <CTAButton href="/free-trial?program=little-grapplers">Book a Kids Free Trial</CTAButton>
+                <CTAButton href="/contact?program=little-grapplers">{siteConfig.primaryCta}</CTAButton>
               </div>
             </article>
             <article className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
-              <span className="rounded-full bg-brand-red px-3 py-1 text-xs font-semibold text-white">Ages 6–12</span>
+              <span className="rounded-full bg-brand-gold px-3 py-1 text-xs font-bold text-brand-black">Ages 6–12</span>
               <h3 className="mt-4 text-2xl font-bold text-brand-charcoal">Kids Brazilian Jiu-Jitsu</h3>
               <p className="mt-3 text-brand-gray leading-relaxed">
                 Structured BJJ training that builds discipline, focus, confidence, respect, and practical self-defense skills in a positive team environment.
               </p>
               <div className="mt-6">
-                <CTAButton href="/free-trial?program=kids-bjj">Schedule Your Child&apos;s Free Trial</CTAButton>
+                <CTAButton href="/contact?program=kids-bjj">{siteConfig.primaryCta}</CTAButton>
               </div>
             </article>
           </div>
@@ -159,8 +160,7 @@ export default function KidsJiuJitsuPage() {
 
       <FinalCTA
         headline="Give Your Child a Confident Start"
-        description="Schedule a free trial class and see why College Station families choose Kinetic Grappling for kids Jiu-Jitsu."
-        ctaLabel="Schedule Your Child's Free Trial"
+        description="Book a free class and see why College Station families choose Kinetic Grappling for kids Jiu-Jitsu."
       />
     </>
   );
