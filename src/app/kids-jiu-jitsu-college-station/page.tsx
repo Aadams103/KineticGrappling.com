@@ -103,7 +103,7 @@ export default function KidsJiuJitsuPage() {
                 subtitle="Kinetic Grappling offers kids martial arts in College Station designed for real development — not just activity. Our coaches are positive role models who teach practical skills in a family-friendly academy."
                 align="left"
               />
-              <CTAButton href="/contact?program=kids-bjj">{siteConfig.primaryCta}</CTAButton>
+              <CTAButton href="/free-trial?program=kids-bjj">{siteConfig.primaryCta}</CTAButton>
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-brand-light">
               <Image
@@ -150,7 +150,7 @@ export default function KidsJiuJitsuPage() {
                 confidence, listening skills, and their first grappling awareness.
               </p>
               <div className="mt-6">
-                <CTAButton href="/contact?program=little-grapplers">{siteConfig.primaryCta}</CTAButton>
+                <CTAButton href="/free-trial?program=little-grapplers">{siteConfig.primaryCta}</CTAButton>
               </div>
             </article>
             <article className="border border-black/5 bg-white p-8">
@@ -165,7 +165,7 @@ export default function KidsJiuJitsuPage() {
                 practical self-defense skills in a positive team environment.
               </p>
               <div className="mt-6">
-                <CTAButton href="/contact?program=kids-bjj">{siteConfig.primaryCta}</CTAButton>
+                <CTAButton href="/free-trial?program=kids-bjj">{siteConfig.primaryCta}</CTAButton>
               </div>
             </article>
           </div>

@@ -12,7 +12,7 @@ export default function NotFound() {
       </p>
       <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
         <CTAButton href="/">Back Home</CTAButton>
-        <CTAButton href="/contact" variant="outline">
+        <CTAButton href="/free-trial" variant="outline">
           Book a Free Class
         </CTAButton>
       </div>

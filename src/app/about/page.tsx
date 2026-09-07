@@ -7,7 +7,7 @@ import { createPageMetadata } from "@/lib/metadata";
 import { academyCopy, siteConfig } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
-  title: "About Kinetic Grappling | BJJ Academy in College Station, TX",
+  title: "About Our BJJ Academy in College Station, TX",
   description:
     "Learn about Kinetic Grappling — a family-friendly Brazilian Jiu-Jitsu, wrestling, and MMA academy in College Station, TX serving Bryan and the Brazos Valley.",
   path: "/about",

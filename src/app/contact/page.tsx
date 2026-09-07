@@ -6,7 +6,7 @@ import { createPageMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
-  title: "Contact & Book a Free Class",
+  title: "Contact & Location in College Station",
   description:
     "Book your free Brazilian Jiu-Jitsu class at Kinetic Grappling in College Station, TX. Contact us by form, phone, or email.",
   path: "/contact",
@@ -18,8 +18,8 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        title="Book a Free Class"
-        subtitle="Ready to try Brazilian Jiu-Jitsu? Fill out the form, call us, or email us and we'll help you choose the right first class. Wear comfortable workout clothes, bring water, and arrive a few minutes early. No experience is required — we'll lend you a gi when you're ready."
+        title="Contact Kinetic Grappling"
+        subtitle="Call, email, get directions, or send a first-class request. Kinetic Grappling serves College Station, Bryan, and the Brazos Valley."
         breadcrumb={[{ label: "Home", href: "/" }, { label: "Contact" }]}
       />
 

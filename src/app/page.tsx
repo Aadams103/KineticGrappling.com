@@ -24,9 +24,9 @@ import {
 } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
-  title: "Brazilian Jiu-Jitsu Classes in College Station, TX | Kinetic Grappling",
+  title: "Brazilian Jiu-Jitsu & MMA in College Station, TX",
   description:
-    "Train Brazilian Jiu-Jitsu, no-gi grappling, kids martial arts, wrestling, and MMA at Kinetic Grappling in College Station, TX. Book your free class today.",
+    "Brazilian Jiu-Jitsu, MMA, no-gi, wrestling, and kids classes in College Station, TX. See current class times, pricing, and start a free trial.",
   path: "/",
 });
 
@@ -36,11 +36,11 @@ export default function HomePage() {
       <JsonLd data={getFAQSchema(homepageFaqs)} />
 
       <Hero
-        headline="Brazilian Jiu-Jitsu in College Station"
-        subheadline="Beginner-friendly training for kids, teens, and adults. Build confidence, fitness, discipline, and real self-defense skills in a clean, family-focused academy."
+        headline="Brazilian Jiu-Jitsu & MMA in College Station"
+        subheadline="BJJ, no-gi, wrestling, and MMA for adults and kids across College Station and Bryan—with dedicated fundamentals classes for new students."
       />
 
-      <section className="border-b border-black/5 bg-brand-paper py-16 md:py-20">
+      <section className="border-b border-black/5 bg-brand-paper py-14 md:py-20">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-gold-dark">
@@ -66,6 +66,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <ScheduleTeaser />
 
       <BenefitsGrid />
 
@@ -140,7 +142,6 @@ export default function HomePage() {
       </section>
 
       <AudienceGrid />
-      <ScheduleTeaser />
       <PricingTeaser />
       <FirstClassSection />
 

@@ -6,7 +6,7 @@ import { createPageMetadata } from "@/lib/metadata";
 import { blogPosts } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
-  title: "BJJ Resources & Blog | Kinetic Grappling",
+  title: "BJJ Resources & Guides",
   description:
     "Brazilian Jiu-Jitsu tips, beginner guides, and resources from Kinetic Grappling in College Station, TX.",
   path: "/blog",

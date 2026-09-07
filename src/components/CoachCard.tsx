@@ -28,7 +28,7 @@ export function CoachCard({
   imageAlt,
 }: CoachCardProps) {
   return (
-    <article className="overflow-hidden rounded-sm border border-black/5 bg-white shadow-[0_18px_50px_-28px_rgba(0,0,0,0.4)]">
+    <article id={name.toLowerCase().replace(/[^a-z0-9]+/g, "-")} className="scroll-mt-24 overflow-hidden rounded-sm border border-black/5 bg-white shadow-[0_18px_50px_-28px_rgba(0,0,0,0.4)]">
       <div className="relative aspect-[4/5] bg-brand-charcoal">
         {image ? (
           <Image

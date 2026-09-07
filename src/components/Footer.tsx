@@ -73,6 +73,8 @@ export function Footer() {
                   No-Gi Grappling
                 </Link>
               </li>
+              <li><Link href="/mma-college-station" className="hover:text-white">MMA</Link></li>
+              <li><Link href="/wrestling-college-station" className="hover:text-white">Wrestling</Link></li>
               <li>
                 <Link href="/bjj-competition-training-college-station" className="hover:text-white">
                   Competition
@@ -104,6 +106,7 @@ export function Footer() {
               </p>
               <p>Office hours: {siteConfig.officeHours}</p>
             </address>
+            <a href={siteConfig.social.googleMaps} target="_blank" rel="noreferrer" className="mt-4 inline-flex min-h-11 items-center font-bold uppercase tracking-wider text-brand-gold underline underline-offset-4">Get directions</a>
             <div className="mt-6">
               <CTAButton href={siteConfig.contactPath}>{siteConfig.primaryCta}</CTAButton>
             </div>

@@ -6,9 +6,9 @@ import { createPageMetadata } from "@/lib/metadata";
 import { academyCopy, coaches } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
-  title: "Meet Our BJJ Coaches | Kinetic Grappling College Station",
+  title: "BJJ & MMA Coaches in College Station",
   description:
-    "Meet the experienced, approachable coaches at Kinetic Grappling in College Station, TX. Learn about our instructors and their teaching focus.",
+    "Meet the BJJ, MMA, and kids-program coaches currently listed by Kinetic Grappling in College Station, TX.",
   path: "/coaches",
   keywords: ["BJJ coaches College Station", "Brazilian Jiu-Jitsu instructors College Station"],
 });
@@ -18,7 +18,7 @@ export default function CoachesPage() {
     <>
       <PageHero
         title="Meet the Coaches"
-        subtitle="Experienced, approachable instructors who make Brazilian Jiu-Jitsu accessible for beginners, kids, and competitors."
+        subtitle="The instructors currently listed for Kinetic Grappling's Brazilian Jiu-Jitsu, MMA, and kids programs."
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Coaches" },
@@ -29,7 +29,7 @@ export default function CoachesPage() {
       <section className="bg-brand-paper py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            title="Coaches Who Care About Your Progress"
+            title="The Kinetic Coaching Team"
             subtitle={academyCopy.coachesIntro}
           />
           <div className="grid gap-8 sm:grid-cols-2">

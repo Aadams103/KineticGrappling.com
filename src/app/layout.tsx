@@ -10,14 +10,14 @@ import "./globals.css";
 
 const display = Exo_2({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-kinetic-display",
   display: "swap",
   weight: ["600", "700", "800"],
 });
 
 const body = Source_Sans_3({
   subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-kinetic-body",
   display: "swap",
   weight: ["400", "500", "600", "700"],
 });
@@ -25,7 +25,7 @@ const body = Source_Sans_3({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Brazilian Jiu-Jitsu Classes in College Station, TX | Kinetic Grappling",
+    default: "Brazilian Jiu-Jitsu & MMA in College Station, TX | Kinetic Grappling",
     template: "%s | Kinetic Grappling",
   },
   description: siteConfig.description,
@@ -41,6 +41,7 @@ export const metadata: Metadata = {
     "BJJ near Texas A&M",
   ],
   robots: { index: true, follow: true },
+  category: "sports",
   icons: {
     icon: brandAssets.favicon,
     apple: brandAssets.favicon,
@@ -58,8 +59,9 @@ export default function RootLayout({
         <JsonLd data={getLocalBusinessSchema()} />
       </head>
       <body className={`${display.variable} ${body.variable} font-sans pb-20 md:pb-0`}>
+        <a className="skip-link" href="#main-content">Skip to main content</a>
         <Header />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
         <StickyMobileCTA />
       </body>

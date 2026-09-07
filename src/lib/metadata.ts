@@ -36,8 +36,9 @@ export function createPageMetadata({
       images: [
         {
           url: brandAssets.heroImage,
-          width: 1200,
-          height: 630,
+          width: 2400,
+          height: 2400,
+          type: "image/jpeg",
           alt: "Kinetic Grappling Brazilian Jiu-Jitsu academy in College Station TX",
         },
       ],
@@ -46,6 +47,7 @@ export function createPageMetadata({
       card: "summary_large_image",
       title,
       description,
+      images: [brandAssets.heroImage],
     },
   };
 }

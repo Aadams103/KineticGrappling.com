@@ -97,7 +97,7 @@ export default function NoGiPage() {
                 subtitle="Our No-Gi classes in College Station combine Jiu-Jitsu technique with wrestling-style movement for a faster, more athletic training experience."
                 align="left"
               />
-              <CTAButton href="/contact?program=no-gi">{siteConfig.primaryCta}</CTAButton>
+              <CTAButton href="/free-trial?program=no-gi">{siteConfig.primaryCta}</CTAButton>
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-brand-light">
               <Image

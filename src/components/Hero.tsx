@@ -39,10 +39,10 @@ export function Hero({
 
       <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 md:py-32 lg:px-8 lg:py-40">
         <div className="max-w-3xl">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.32em] text-brand-gold">
+          <p className="mb-4 border-l-4 border-brand-red pl-3 text-xs font-semibold uppercase tracking-[0.32em] text-brand-gold">
             College Station · Bryan · Brazos Valley
           </p>
-          <h1 className="font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-white md:text-6xl lg:text-7xl">
+          <h1 className="font-display max-w-4xl text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-white md:text-6xl lg:text-7xl">
             {headline}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85 md:text-xl">

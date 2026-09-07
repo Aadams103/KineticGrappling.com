@@ -112,7 +112,7 @@ export default function AdultBJJPage() {
                 subtitle="Whether you are a Texas A&M student, a Bryan/College Station professional, or a parent looking for your own fitness outlet — our adult BJJ program meets you where you are."
                 align="left"
               />
-              <CTAButton href="/contact?program=adult-fundamentals">
+              <CTAButton href="/free-trial?program=adult-fundamentals">
                 {siteConfig.primaryCta}
               </CTAButton>
             </div>
