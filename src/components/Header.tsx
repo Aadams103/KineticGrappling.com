@@ -13,31 +13,31 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-brand-black/90 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Logo onClick={() => setMobileOpen(false)} className="shrink-0" />
 
-        <nav className="hidden xl:flex items-center gap-6" aria-label="Main navigation">
+        <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
           {siteConfig.nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-brand-gold",
-                pathname === item.href ? "text-brand-gold" : "text-brand-gray"
+                "text-xs font-semibold uppercase tracking-[0.18em] transition-colors hover:text-brand-gold",
+                pathname === item.href ? "text-brand-gold" : "text-white/70"
               )}
             >
               {item.label}
             </Link>
           ))}
-          <CTAButton href={siteConfig.ctaNav.href} className="!px-5 !py-2.5 !text-sm">
+          <CTAButton href={siteConfig.ctaNav.href} className="!px-5 !py-2.5 !text-xs">
             {siteConfig.ctaNav.label}
           </CTAButton>
         </nav>
 
         <button
           type="button"
-          className="xl:hidden inline-flex items-center justify-center rounded-lg p-2 text-brand-charcoal hover:bg-brand-light"
+          className="inline-flex items-center justify-center rounded-sm p-2 text-white hover:bg-white/10 lg:hidden"
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -56,7 +56,7 @@ export function Header() {
       {mobileOpen && (
         <nav
           id="mobile-menu"
-          className="xl:hidden border-t border-gray-100 bg-white px-4 py-4"
+          className="border-t border-white/10 bg-brand-black px-4 py-4 lg:hidden"
           aria-label="Mobile navigation"
         >
           <ul className="space-y-1">
@@ -65,10 +65,10 @@ export function Header() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "block rounded-lg px-4 py-3 text-base font-medium transition-colors",
+                    "block rounded-sm px-4 py-3 text-sm font-semibold uppercase tracking-wider transition-colors",
                     pathname === item.href
                       ? "bg-brand-gold/10 text-brand-gold"
-                      : "text-brand-charcoal hover:bg-brand-light"
+                      : "text-white hover:bg-white/5"
                   )}
                   onClick={() => setMobileOpen(false)}
                 >

@@ -13,12 +13,12 @@ interface CTAButtonProps {
 
 const variantStyles: Record<CTAButtonVariant, string> = {
   primary:
-    "bg-brand-gold text-brand-black hover:bg-brand-gold-dark shadow-lg shadow-brand-gold/25 font-bold",
+    "bg-brand-gold text-brand-black hover:bg-brand-gold-dark shadow-[0_10px_30px_-12px_rgba(233,178,90,0.8)] font-bold",
   secondary: "bg-brand-charcoal text-white hover:bg-brand-black",
   outline:
     "border-2 border-brand-gold text-brand-charcoal hover:bg-brand-gold hover:text-brand-black",
   white: "bg-white text-brand-charcoal hover:bg-brand-light border border-white/20 font-bold",
-  ghost: "text-brand-gold hover:text-brand-gold-dark underline-offset-4 hover:underline",
+  ghost: "text-brand-gold hover:text-brand-gold-light underline-offset-4 hover:underline",
 };
 
 export function CTAButton({
@@ -29,7 +29,7 @@ export function CTAButton({
   external,
 }: CTAButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center rounded-xl px-7 py-4 text-base transition-all duration-200 min-h-[52px]",
+    "inline-flex items-center justify-center rounded-sm px-7 py-4 text-sm uppercase tracking-[0.14em] transition-all duration-200 min-h-[52px]",
     variantStyles[variant],
     className
   );

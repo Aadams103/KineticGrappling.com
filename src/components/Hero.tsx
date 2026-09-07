@@ -30,27 +30,32 @@ export function Hero({
           alt={imageAlt}
           fill
           priority
-          className="object-cover opacity-35"
+          className="object-cover object-center opacity-45"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/95 to-brand-black/75" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/85 to-brand-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-brand-black/40" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 py-20 md:py-28 lg:px-8 lg:py-36">
+      <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 md:py-32 lg:px-8 lg:py-40">
         <div className="max-w-3xl">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-brand-gold">
-            College Station, TX · Bryan · Brazos Valley
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.32em] text-brand-gold">
+            College Station · Bryan · Brazos Valley
           </p>
-          <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-white md:text-5xl lg:text-6xl">
+          <h1 className="font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-white md:text-6xl lg:text-7xl">
             {headline}
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-white/85 md:text-xl">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85 md:text-xl">
             {subheadline}
           </p>
 
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-9 flex flex-col gap-4 sm:flex-row">
             <CTAButton href={primaryCta.href}>{primaryCta.label}</CTAButton>
-            <CTAButton href={secondaryCta.href} variant="outline" className="!border-white/40 !text-white hover:!bg-white hover:!text-brand-black">
+            <CTAButton
+              href={secondaryCta.href}
+              variant="outline"
+              className="!border-white/35 !text-white hover:!bg-white hover:!text-brand-black"
+            >
               {secondaryCta.label}
             </CTAButton>
           </div>

@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Kinetic Grappling",
-  tagline: "Brazilian Jiu-Jitsu Academy",
+  tagline: "Empower your best self",
   description:
-    "Train Brazilian Jiu-Jitsu, no-gi grappling, kids martial arts, and self-defense at Kinetic Grappling in College Station, TX. Book your free class today.",
+    "Train Brazilian Jiu-Jitsu, no-gi grappling, kids martial arts, wrestling, and MMA at Kinetic Grappling in College Station, TX. Book your free class today.",
   url: "https://www.kineticgrappling.com",
   domain: "KineticGrappling.com",
   phone: "(979) 217-1817",
@@ -20,6 +20,7 @@ export const siteConfig = {
     latitude: 30.6276,
     longitude: -96.2828,
   },
+  officeHours: "Weekdays 10:00 AM – 4:00 PM while school is in session",
   social: {
     googleMaps:
       "https://www.google.com/maps/search/?api=1&query=12700+SH+30+%23201+College+Station+TX+77845",
@@ -27,33 +28,34 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/kineticgrappling",
   },
   localSeoText:
-    "Brazilian Jiu-Jitsu academy serving College Station, Bryan, and the Brazos Valley.",
+    "Brazilian Jiu-Jitsu academy serving College Station, Bryan, Texas A&M, and the Brazos Valley.",
   primaryCta: "Book a Free Class",
   secondaryCta: "View Schedule",
   contactPath: "/contact",
   nav: [
-    { label: "Home", href: "/" },
     { label: "Programs", href: "/programs" },
     { label: "Schedule", href: "/schedule" },
-    { label: "Pricing", href: "/membership" },
     { label: "Coaches", href: "/coaches" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
-    { label: "Blog", href: "/blog" },
+  ],
+  footerExtra: [
+    { label: "Membership", href: "/membership" },
     { label: "FAQ", href: "/faq" },
+    { label: "Blog", href: "/blog" },
   ],
   ctaNav: { label: "Book a Free Class", href: "/contact" },
 } as const;
 
 export const brandAssets = {
   logoHeader: "/images/kinetic-grappling-logo.png",
-  logoFooter: "/images/kinetic-grappling-logo-light.jpg",
+  logoFooter: "/images/kinetic-grappling-logo.png",
   logoAlt:
     "Kinetic Grappling Brazilian Jiu-Jitsu Academy logo in College Station, TX",
   favicon: "/images/favicon.png",
   heroImage: "/images/hero-bjj-training.jpg",
   heroAlt:
-    "Kinetic Grappling Brazilian Jiu-Jitsu academy in College Station TX — welcoming BJJ training on the mats",
+    "Students smiling during Brazilian Jiu-Jitsu training at Kinetic Grappling in College Station, TX",
   firstClassImage: "/images/first-class.jpg",
   firstClassAlt:
     "Coach instructing a kids Brazilian Jiu-Jitsu class at Kinetic Grappling in College Station, TX",
@@ -66,23 +68,42 @@ export const trustBadges = [
   "College Station, TX",
 ] as const;
 
+export const academyCopy = {
+  welcome: "Welcome to Kinetic Grappling",
+  tagline: "Empower your best self",
+  intro:
+    "Kinetic Grappling develops adults and children in the art of Brazilian Jiu-Jitsu. With a proven system, we give students the skills to excel in sport and in life.",
+  findYourFit:
+    "Our primary goal is the highest level of self-defense instruction in a clean, fun, family- and team-oriented atmosphere. We also promote fitness and health — building confidence, respect, and integrity — and stay responsible to the needs of our members.",
+  gymForAll:
+    "Your journey starts with the membership that fits your life. Expect high-level grappling, daily motivation, and a community that supports you. Kickstart your goals with a free trial.",
+  aboutIntro:
+    "We provide world-class martial arts to the College Station and Bryan area. We offer Brazilian Jiu-Jitsu, wrestling, and MMA classes for all ages and levels. Our instructors teach the skills you need in the sport and help you grow as a person — whether you want to get in shape, make new friends, or learn self-defense.",
+  mission:
+    "Our primary goal at Kinetic Grappling is to provide the highest level of self-defense instruction in a clean, fun, family and team-oriented atmosphere. Kinetic Grappling also promotes a high level of fitness and health, with the hope to improve confidence, respectfulness, and integrity. We are dedicated to creating a family-oriented environment that is responsible and responsive to the needs of our members.",
+  vision:
+    "We are dedicated to providing the highest quality martial arts instruction and creating an environment that is safe and fun for every member of our community. Our vision for children is to teach discipline and perseverance — skills they need in school and sport. Grappling improves cognitive skills, hand-eye coordination, memory, and rational thinking, and gives kids a foundation to become successful teenagers and adults.",
+  coachesIntro:
+    "Our coaches have dedicated their lives to sharing knowledge and experience. They teach you how to protect yourself, stay mentally sharp, and gain confidence — not only how to fight.",
+} as const;
+
 export const benefits = [
   {
     title: "Fitness",
     description:
-      "Full-body workouts that build strength, cardio, mobility, and functional athleticism — no boring treadmill sessions.",
+      "Full-body training that builds strength, cardio, mobility, and functional athleticism — no empty gym sessions.",
     icon: "fitness",
   },
   {
     title: "Confidence",
     description:
-      "Learn real skills in a supportive environment. Students of all ages build self-assurance on and off the mat.",
+      "Real skills in a supportive room. Students of every age leave more sure of themselves on and off the mat.",
     icon: "confidence",
   },
   {
     title: "Self-Defense",
     description:
-      "Brazilian Jiu-Jitsu teaches practical control, escapes, and submissions that work for real-world situations.",
+      "Brazilian Jiu-Jitsu teaches practical control, escapes, and submissions that work when size and strength are not on your side.",
     icon: "shield",
   },
   {
@@ -94,13 +115,13 @@ export const benefits = [
   {
     title: "Community",
     description:
-      "Train with teammates who push you forward. Kinetic Grappling is built around family-friendly culture and mutual respect.",
+      "Train with teammates who push you forward. Kinetic Grappling is built around family culture and mutual respect.",
     icon: "community",
   },
   {
-    title: "Competition Training",
+    title: "Competition",
     description:
-      "Serious students can pursue tournament preparation with coached drilling, sparring, and competition strategy.",
+      "Serious students can pursue tournament preparation with coached drilling, sparring, and strategy.",
     icon: "trophy",
   },
 ] as const;
@@ -133,51 +154,74 @@ export const programs: Program[] = [
     title: "Little Grapplers",
     ages: "Ages 3–5",
     description:
-      "Fun, movement-based classes that build coordination, listening skills, confidence, and basic grappling awareness.",
-    benefits: ["Coordination & motor skills", "Listening & focus", "Confidence building", "Safe introduction to BJJ"],
-    whoFor: "Preschoolers ready for structured, age-appropriate martial arts activity.",
+      "A 30-minute class built around games and fun scenarios. Kids develop fitness, confidence, listening skills, and their first grappling awareness.",
+    benefits: [
+      "Games-based learning",
+      "Coordination & motor skills",
+      "Listening & focus",
+      "Safe first steps in BJJ",
+    ],
+    whoFor: "Preschoolers ready for structured, age-appropriate martial arts.",
     cta: "Book a Free Class",
     href: "/contact?program=little-grapplers",
     learnMoreHref: "/programs#little-grapplers",
     image: "/images/little-grapplers.jpg",
-    imageAlt: "Little Grapplers kids martial arts class at Kinetic Grappling in College Station, TX",
+    imageAlt:
+      "Little Grapplers kids martial arts class at Kinetic Grappling in College Station, TX",
   },
   {
     slug: "kids-bjj",
     title: "Kids Brazilian Jiu-Jitsu",
     ages: "Ages 6–12",
     description:
-      "Structured BJJ training that builds discipline, focus, confidence, respect, and practical self-defense in a positive team environment.",
-    benefits: ["Discipline & respect", "Anti-bullying confidence", "Focus & fitness", "Positive role models"],
-    whoFor: "School-age children who want safe, structured martial arts training.",
+      "More Jiu-Jitsu, fewer games. Kids learn fundamentals, follow instruction, and build respect, fitness, and practical self-defense in a positive team room.",
+    benefits: [
+      "Discipline & respect",
+      "Anti-bullying confidence",
+      "Focus & fitness",
+      "Positive role models",
+    ],
+    whoFor: "School-age children who want safe, structured martial arts.",
     cta: "Book a Free Class",
     href: "/contact?program=kids-bjj",
     learnMoreHref: "/kids-jiu-jitsu-college-station",
     image: "/images/kids-bjj-class.jpg",
-    imageAlt: "Kids Brazilian Jiu-Jitsu class at Kinetic Grappling in College Station, TX",
+    imageAlt:
+      "Kids Brazilian Jiu-Jitsu class at Kinetic Grappling in College Station, TX",
   },
   {
     slug: "adult-fundamentals",
     title: "Teen / Adult BJJ Fundamentals",
     ages: "Teens & Adults",
     description:
-      "Beginner-friendly classes for teens and adults who want fitness, self-defense, confidence, and real grappling skills.",
-    benefits: ["No experience required", "Full-body fitness", "Practical self-defense", "Supportive training partners"],
+      "A strong Brazilian Jiu-Jitsu base through proven techniques, drilling, and sparring. Learn to overcome disadvantages of age, size, or strength.",
+    benefits: [
+      "No experience required",
+      "Full-body fitness",
+      "Practical self-defense",
+      "Supportive training partners",
+    ],
     whoFor: "Teens and adults of any fitness level starting Brazilian Jiu-Jitsu.",
     cta: "Book a Free Class",
     href: "/contact?program=adult-fundamentals",
     learnMoreHref: "/adult-bjj-college-station",
     image: "/images/adult-bjj-class.jpg",
-    imageAlt: "Adult Brazilian Jiu-Jitsu training in College Station Texas at Kinetic Grappling",
+    imageAlt:
+      "Adult Brazilian Jiu-Jitsu training in College Station Texas at Kinetic Grappling",
   },
   {
     slug: "no-gi",
     title: "No-Gi Grappling",
     ages: "Teens & Adults",
     description:
-      "Fast-paced grappling focused on control, takedowns, escapes, submissions, and wrestling-style transitions without the gi.",
-    benefits: ["Dynamic training pace", "Wrestling transitions", "Control & submissions", "Great for cross-training"],
-    whoFor: "Students who want athletic grappling training in rash guard and shorts.",
+      "Faster grappling without the gi — control, takedowns, escapes, submissions, and wrestling-style transitions in rash guard and shorts.",
+    benefits: [
+      "Dynamic training pace",
+      "Wrestling transitions",
+      "Control & submissions",
+      "Great for cross-training",
+    ],
+    whoFor: "Students who want athletic grappling without the traditional gi.",
     cta: "Book a Free Class",
     href: "/contact?program=no-gi",
     learnMoreHref: "/no-gi-grappling-college-station",
@@ -189,22 +233,34 @@ export const programs: Program[] = [
     title: "Competition Training",
     ages: "By invitation",
     description:
-      "Advanced training for students preparing for tournaments — drilling, coached sparring, and competition strategy.",
-    benefits: ["Tournament prep", "Advanced techniques", "Competition mindset", "Coached sparring"],
-    whoFor: "Dedicated students with fundamentals who want to compete locally and regionally.",
+      "Advanced Brazilian Jiu-Jitsu, wrestling, and judo concepts that fine-tune the techniques you already know — for personal progress and the tournament mat.",
+    benefits: [
+      "Tournament prep",
+      "Advanced details",
+      "Competition mindset",
+      "Coached sparring",
+    ],
+    whoFor:
+      "Dedicated students with fundamentals who want to compete or sharpen their game.",
     cta: "Book a Free Class",
     href: "/contact?program=competition",
     learnMoreHref: "/bjj-competition-training-college-station",
     image: "/images/competition-training.jpg",
-    imageAlt: "BJJ competition training at Kinetic Grappling in College Station, TX",
+    imageAlt:
+      "BJJ competition training at Kinetic Grappling in College Station, TX",
   },
   {
     slug: "private-lessons",
     title: "Private Lessons",
     ages: "All ages",
     description:
-      "One-on-one coaching for faster progress, extra support, competition prep, or personalized training goals.",
-    benefits: ["Personalized instruction", "Flexible scheduling", "Accelerated progress", "Goal-specific focus"],
+      "A customizable one-on-one session to improve faster, shore up weaknesses, and work toward competition or personal goals on your schedule.",
+    benefits: [
+      "Personalized instruction",
+      "Flexible scheduling",
+      "Accelerated progress",
+      "Goal-specific focus",
+    ],
     whoFor: "Anyone who wants individualized attention beyond group classes.",
     cta: "Book a Free Class",
     href: "/contact?program=private-lessons",
@@ -217,13 +273,11 @@ export const programs: Program[] = [
 export interface Coach {
   name: string;
   title: string;
-  rank: string;
+  rank?: string;
   bio: string;
   focus: string[];
-  credentials: string[];
   image: string | null;
   imageAlt: string;
-  needsPhoto?: boolean;
 }
 
 export const coaches: Coach[] = [
@@ -231,44 +285,36 @@ export const coaches: Coach[] = [
     name: "Ambrose Adams",
     title: "Head Coach / BJJ Professor",
     rank: "Black Belt",
-    bio: "Ambrose founded Kinetic Grappling to bring high-quality, beginner-friendly Brazilian Jiu-Jitsu to College Station. He leads with clear instruction, a welcoming academy culture, and a focus on helping every student grow with confidence.",
+    bio: "Ambrose founded Kinetic Grappling to bring high-quality, beginner-friendly Brazilian Jiu-Jitsu to College Station and Bryan. He leads with clear instruction, a welcoming academy culture, and a focus on helping every student grow.",
     focus: ["Academy leadership", "Beginner instruction", "Kids & adult programs"],
-    credentials: ["BJJ black belt", "Head instructor", "Competition & teaching background"],
     image: "/images/coaches/coach-ambrose-adams.jpg",
-    imageAlt: "Coach Ambrose Adams, Head Coach and BJJ Professor at Kinetic Grappling in College Station, TX",
+    imageAlt:
+      "Coach Ambrose Adams, Head Coach and BJJ Professor at Kinetic Grappling in College Station, TX",
   },
   {
     name: "Bobby Power",
     title: "MMA Coach",
-    rank: "Black Belt",
-    bio: "Bobby brings competitive experience and a patient teaching style that helps students feel comfortable from day one. He specializes in helping adults build real grappling and MMA fundamentals.",
+    bio: "Bobby brings a patient teaching style that helps students feel comfortable from day one. He specializes in helping adults build real grappling and MMA fundamentals.",
     focus: ["Adult fundamentals", "MMA integration", "Competition prep"],
-    credentials: ["MMA coach", "Competition veteran", "Adult program lead"],
     image: null,
     imageAlt: "Coach Bobby Power, MMA Coach at Kinetic Grappling in College Station, TX",
-    needsPhoto: true,
   },
   {
     name: "Jay Kelly",
     title: "Assistant BJJ Coach",
-    rank: "Brown Belt",
-    bio: "Jay breaks down complex techniques into simple, actionable steps. He works closely with kids and teens to build discipline, respect, and confidence through structured training.",
-    focus: ["Kids & teens", "No-Gi grappling", "Technique breakdown"],
-    credentials: ["Brown belt instructor", "Youth development", "No-Gi specialist"],
+    bio: "Jay breaks techniques into simple, actionable steps. He works closely with kids and teens to build discipline, respect, and confidence through structured training.",
+    focus: ["Kids & teens", "Technique breakdown", "Fundamentals"],
     image: null,
-    imageAlt: "Coach Jay Kelly, Assistant BJJ Coach at Kinetic Grappling in College Station, TX",
-    needsPhoto: true,
+    imageAlt:
+      "Coach Jay Kelly, Assistant BJJ Coach at Kinetic Grappling in College Station, TX",
   },
   {
     name: "Aidan Forgay",
     title: "Kids BJJ Coach",
-    rank: "Purple Belt",
-    bio: "Aidan connects with newer students through approachable coaching and a supportive attitude. He helps kids feel at home on the mat while building strong fundamentals.",
+    bio: "Aidan connects with newer students through approachable coaching. He helps kids feel at home on the mat while building strong fundamentals.",
     focus: ["Kids BJJ", "New student onboarding", "First-class experience"],
-    credentials: ["Kids program coach", "Fundamentals instructor", "Competition experience"],
     image: null,
     imageAlt: "Coach Aidan Forgay, Kids BJJ Coach at Kinetic Grappling in College Station, TX",
-    needsPhoto: true,
   },
 ];
 
@@ -286,12 +332,12 @@ export const homepageFaqs: FAQ[] = [
   {
     question: "What should I wear to my first class?",
     answer:
-      "Wear comfortable workout clothes — a t-shirt and athletic shorts or leggings. Bring water and arrive a few minutes early.",
+      "Wear comfortable workout clothes — a t-shirt and athletic shorts or leggings. Bring water and arrive a few minutes early. We'll lend you a gi when you're ready to train in one regularly.",
   },
   {
     question: "Do I need a gi for my first class?",
     answer:
-      "No. A gi is not required for your first visit. We'll lend you a gi when you're ready to train in one regularly.",
+      "No. A gi is not required for your first visit. All you need are workout clothes and a water bottle.",
   },
   {
     question: "Is BJJ safe for kids?",
@@ -315,36 +361,28 @@ export const homepageFaqs: FAQ[] = [
   },
 ];
 
-export const testimonials = [
+export const audiences = [
   {
-    name: "Sarah M.",
-    role: "Parent — Kids BJJ",
-    quote:
-      "My son was nervous before his first class, but the coaches made him feel welcome right away. His confidence has grown on the mat and at school.",
-    rating: 5,
+    title: "Kids & Families",
+    description:
+      "Age-appropriate classes for Little Grapplers and school-age kids, with a culture parents can trust.",
   },
   {
-    name: "Marcus T.",
-    role: "Adult beginner",
-    quote:
-      "I started at 34 with zero experience. The fundamentals classes are structured, supportive, and actually fun. Best fitness decision I've made.",
-    rating: 5,
+    title: "Adult Beginners",
+    description:
+      "Start from zero. Fundamentals classes meet you where you are — no elite fitness required.",
   },
   {
-    name: "Daniel R.",
-    role: "Competitor",
-    quote:
-      "The competition training pushed me to the next level. Coaches care about technique and mindset — not just showing up to roll.",
-    rating: 5,
+    title: "Texas A&M & Bryan",
+    description:
+      "A local academy for Aggies, professionals, and families across College Station and Bryan.",
   },
   {
-    name: "The Nguyen Family",
-    role: "Family training",
-    quote:
-      "Our whole family trains here. It's clean, professional, and everyone from the kids to the adults feels supported. We couldn't ask for a better academy.",
-    rating: 5,
+    title: "Competitors",
+    description:
+      "A pathway from fundamentals to tournament prep when you are ready to test your skills.",
   },
-];
+] as const;
 
 export interface ScheduleEntry {
   day: string;
@@ -367,6 +405,9 @@ export const weeklySchedule: ScheduleEntry[] = [
   { day: "Friday", time: "5:30 PM", program: "Kids BJJ", level: "Ages 6–12" },
   { day: "Saturday", time: "10:00 AM", program: "Open Mat / All Levels", level: "All levels" },
 ];
+
+export const scheduleNote =
+  "Times can change with the season. Confirm the current class when you book your free visit.";
 
 export const scheduleCategories = [
   { name: "Little Grapplers", times: "Mon & Fri · 4:30 PM", ages: "Ages 3–5" },
@@ -395,23 +436,55 @@ export const firstClassExpectations = [
   "A coach will guide you through your first class step by step.",
 ];
 
-export const blogPosts = [
+export interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  paragraphs: string[];
+}
+
+export const blogPosts: BlogPost[] = [
   {
     slug: "what-to-expect-first-bjj-class",
     title: "What to Expect at Your First BJJ Class",
-    excerpt: "Nervous about your first visit? Here's exactly what happens from the moment you walk in.",
+    excerpt:
+      "Nervous about your first visit? Here's exactly what happens from the moment you walk in.",
     date: "2026-01-15",
+    paragraphs: [
+      "Walking into a Brazilian Jiu-Jitsu academy for the first time can feel intimidating. At Kinetic Grappling in College Station, we designed the first visit to be simple: show up, meet a coach, and try a class.",
+      "Wear a t-shirt and athletic shorts or leggings, and bring a water bottle. You do not need a gi. If the class is a gi session and you decide to continue, we will lend you one when you are ready.",
+      "Arrive 10–15 minutes early. A coach will greet you, show you the room, and explain how class is structured. You will warm up, learn a few techniques, and drill with a partner who knows you are new.",
+      "Sparring is not required on day one. If the class includes live rounds, you can watch or participate at a pace that feels right. The goal is that you leave knowing what training feels like — not exhausted or embarrassed.",
+      "After class, we can help you choose the right program: Little Grapplers, Kids BJJ, Adult Fundamentals, No-Gi, or a private lesson. Book online, call (979) 217-1817, or email AmbroseAdams@KineticGrappling.com.",
+    ],
   },
   {
     slug: "bjj-for-kids-college-station",
     title: "Why Kids Benefit from Brazilian Jiu-Jitsu",
-    excerpt: "Confidence, discipline, focus, and fitness — how BJJ helps children in College Station grow.",
+    excerpt:
+      "Confidence, discipline, focus, and fitness — how BJJ helps children in College Station grow.",
     date: "2026-01-08",
+    paragraphs: [
+      "Parents in College Station and Bryan look for activities that do more than burn energy. Brazilian Jiu-Jitsu gives kids a structured place to learn respect, listening, and confidence while they move.",
+      "Little Grapplers (ages 3–5) is a 30-minute class built around games and fun scenarios. The goal is coordination, confidence, and a first taste of grappling — not a miniature adult class.",
+      "Kids BJJ (ages 6–12) introduces more Jiu-Jitsu-specific instruction. Students learn to follow directions, treat partners with respect, and build fitness through techniques they can actually use.",
+      "Classes are supervised closely. We emphasize control, safety, and a family-friendly room. Competition is optional. Most kids train for confidence, focus, and fun.",
+      "If you are choosing between programs, start with age: 3–5 in Little Grapplers, 6–12 in Kids BJJ. Book a free class and we will help you decide on the mat.",
+    ],
   },
   {
     slug: "adult-beginners-guide-bjj",
     title: "A Beginner's Guide to Adult BJJ",
-    excerpt: "Starting BJJ as an adult? You're not too old or out of shape. Here's how to begin the right way.",
+    excerpt:
+      "Starting BJJ as an adult? You're not too old or out of shape. Here's how to begin the right way.",
     date: "2025-12-20",
+    paragraphs: [
+      "Most adults who walk into Kinetic Grappling have never trained martial arts. That is normal. Teen / Adult BJJ Fundamentals is built for people starting from zero.",
+      "You do not need to get in shape first. Brazilian Jiu-Jitsu is how you get in shape — strength, cardio, and mobility come from learning to move with a partner.",
+      "Age and size are not barriers. Jiu-Jitsu is designed so leverage and technique matter more than raw strength. Our fundamentals classes teach you to work from disadvantageous positions, not just dominate them.",
+      "Expect a warm-up, technique, and drilling. Live sparring is introduced when you are ready. Wear workout clothes to your first class; a gi is not required to start.",
+      "If you also want faster, wrestling-style training, No-Gi classes are a strong next step. If you want extra attention, private lessons can accelerate the basics. Start with a free class and we will point you to the right hour.",
+    ],
   },
 ];

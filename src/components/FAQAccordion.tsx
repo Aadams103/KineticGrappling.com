@@ -11,7 +11,7 @@ export function FAQAccordion({ faqs }: FAQAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="divide-y divide-gray-100 rounded-2xl border border-gray-100 bg-white">
+    <div className="divide-y divide-black/5 border border-black/5 bg-white">
       {faqs.map((faq, index) => {
         const isOpen = openIndex === index;
         const buttonId = `faq-button-${index}`;
@@ -23,12 +23,12 @@ export function FAQAccordion({ faqs }: FAQAccordionProps) {
               <button
                 id={buttonId}
                 type="button"
-                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-brand-light/50"
+                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-brand-light/60"
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => setOpenIndex(isOpen ? null : index)}
               >
-                <span className="text-base font-semibold text-brand-charcoal md:text-lg">
+                <span className="font-display text-base font-bold uppercase tracking-tight text-brand-charcoal md:text-lg">
                   {faq.question}
                 </span>
                 <svg
@@ -49,7 +49,7 @@ export function FAQAccordion({ faqs }: FAQAccordionProps) {
               hidden={!isOpen}
               className="px-6 pb-5"
             >
-              <p className="text-brand-gray leading-relaxed">{faq.answer}</p>
+              <p className="leading-relaxed text-brand-gray">{faq.answer}</p>
             </div>
           </div>
         );

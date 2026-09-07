@@ -1,16 +1,21 @@
 import Image from "next/image";
-import { ImagePlaceholder } from "./ImagePlaceholder";
 
 interface CoachCardProps {
   name: string;
   title: string;
-  rank: string;
+  rank?: string;
   bio: string;
   focus: string[];
-  credentials: string[];
   image: string | null;
   imageAlt: string;
-  needsPhoto?: boolean;
+}
+
+function initials(name: string) {
+  return name
+    .split(" ")
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2);
 }
 
 export function CoachCard({
@@ -19,14 +24,12 @@ export function CoachCard({
   rank,
   bio,
   focus,
-  credentials,
   image,
   imageAlt,
-  needsPhoto,
 }: CoachCardProps) {
   return (
-    <article className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
-      <div className="relative aspect-[4/5] bg-brand-light">
+    <article className="overflow-hidden rounded-sm border border-black/5 bg-white shadow-[0_18px_50px_-28px_rgba(0,0,0,0.4)]">
+      <div className="relative aspect-[4/5] bg-brand-charcoal">
         {image ? (
           <Image
             src={image}
@@ -36,47 +39,29 @@ export function CoachCard({
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
           />
         ) : (
-          <ImagePlaceholder
-            label={name}
-            sublabel="Professional headshot needed — replace this placeholder"
-          />
+          <div className="flex h-full flex-col items-center justify-center bg-gradient-to-br from-brand-charcoal to-brand-black text-brand-gold">
+            <span className="font-display text-5xl font-extrabold">{initials(name)}</span>
+            <span className="mt-2 text-xs uppercase tracking-[0.2em] text-white/50">Coach</span>
+          </div>
         )}
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-charcoal/90 to-transparent p-6 pt-16">
-          <h3 className="text-xl font-bold text-white">{name}</h3>
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-black via-brand-black/80 to-transparent p-6 pt-16">
+          <h3 className="font-display text-xl font-extrabold uppercase text-white">{name}</h3>
           <p className="text-sm font-medium text-brand-gold">{title}</p>
-          <p className="text-xs text-white/70">{rank}</p>
-          {needsPhoto && (
-            <p className="mt-1 text-xs text-white/60">Photo coming soon</p>
-          )}
+          {rank && <p className="text-xs uppercase tracking-wider text-white/70">{rank}</p>}
         </div>
       </div>
       <div className="p-6">
-        <p className="text-brand-gray leading-relaxed">{bio}</p>
+        <p className="leading-relaxed text-brand-gray">{bio}</p>
         <div className="mt-4">
-          <h4 className="text-sm font-semibold uppercase tracking-wider text-brand-charcoal">
+          <h4 className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-charcoal">
             Teaching Focus
           </h4>
           <ul className="mt-2 flex flex-wrap gap-2">
             {focus.map((item) => (
               <li
                 key={item}
-                className="rounded-full bg-brand-light px-3 py-1 text-xs font-medium text-brand-gray"
+                className="rounded-sm bg-brand-light px-3 py-1 text-xs font-medium text-brand-gray"
               >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="mt-4">
-          <h4 className="text-sm font-semibold uppercase tracking-wider text-brand-charcoal">
-            Credentials
-          </h4>
-          <ul className="mt-2 space-y-1">
-            {credentials.map((item) => (
-              <li key={item} className="flex items-start gap-2 text-sm text-brand-gray">
-                <svg className="mt-0.5 h-4 w-4 shrink-0 text-brand-gold" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
                 {item}
               </li>
             ))}
