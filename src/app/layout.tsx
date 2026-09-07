@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Exo_2, Source_Sans_3 } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StickyMobileCTA } from "@/components/StickyMobileCTA";
@@ -8,10 +8,18 @@ import { getLocalBusinessSchema } from "@/lib/schema";
 import { brandAssets, siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
-const inter = Inter({
+const display = Exo_2({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-display",
   display: "swap",
+  weight: ["600", "700", "800"],
+});
+
+const body = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -49,7 +57,7 @@ export default function RootLayout({
       <head>
         <JsonLd data={getLocalBusinessSchema()} />
       </head>
-      <body className={`${inter.variable} font-sans pb-20 md:pb-0`}>
+      <body className={`${display.variable} ${body.variable} font-sans pb-20 md:pb-0`}>
         <Header />
         <main>{children}</main>
         <Footer />

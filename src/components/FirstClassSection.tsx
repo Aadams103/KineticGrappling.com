@@ -5,11 +5,12 @@ import { SectionHeading } from "./SectionHeading";
 
 export function FirstClassSection() {
   return (
-    <section className="py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+    <section className="bg-brand-paper py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
             <SectionHeading
+              eyebrow="First visit"
               title="What to Expect in Your First Class"
               subtitle="Your first visit should feel simple, welcoming, and low-pressure."
               align="left"
@@ -17,8 +18,17 @@ export function FirstClassSection() {
             <ul className="space-y-3">
               {firstClassExpectations.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-brand-gray">
-                  <svg className="mt-1 h-5 w-5 shrink-0 text-brand-gold" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  <svg
+                    className="mt-1 h-5 w-5 shrink-0 text-brand-gold"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
                   </svg>
                   {item}
                 </li>
@@ -28,7 +38,7 @@ export function FirstClassSection() {
               <CTAButton href={siteConfig.contactPath}>{siteConfig.primaryCta}</CTAButton>
             </div>
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-brand-light">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-brand-light">
             <Image
               src={brandAssets.firstClassImage}
               alt={brandAssets.firstClassAlt}

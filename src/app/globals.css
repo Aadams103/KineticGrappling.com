@@ -1,16 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-gold: #e9b145;
-  --color-brand-gold-dark: #c9922a;
-  --color-brand-gold-light: #f5d078;
-  --color-brand-red: #e9b145;
-  --color-brand-red-dark: #c9922a;
-  --color-brand-charcoal: #141414;
-  --color-brand-black: #0a0a0a;
-  --color-brand-gray: #6b7280;
-  --color-brand-light: #f4f4f5;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --color-brand-gold: #e9b25a;
+  --color-brand-gold-dark: #c48f2e;
+  --color-brand-gold-light: #f3d08a;
+  --color-brand-red: #e9b25a;
+  --color-brand-red-dark: #c48f2e;
+  --color-brand-charcoal: #121212;
+  --color-brand-black: #070707;
+  --color-brand-gray: #6f6a62;
+  --color-brand-light: #f4efe4;
+  --color-brand-paper: #fbf7ef;
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
@@ -18,9 +20,20 @@ html {
 }
 
 body {
-  @apply bg-white text-brand-charcoal antialiased;
+  @apply bg-brand-paper text-brand-charcoal antialiased;
 }
 
 :focus-visible {
   @apply outline-2 outline-offset-2 outline-brand-gold;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.gold-rule {
+  height: 2px;
+  width: 3.5rem;
+  background: linear-gradient(90deg, var(--color-brand-gold), transparent);
 }

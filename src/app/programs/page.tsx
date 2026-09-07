@@ -27,10 +27,11 @@ export default function ProgramsPage() {
           { label: "Home", href: "/" },
           { label: "Programs" },
         ]}
+        imageSrc="/images/kids-bjj-class.jpg"
       />
 
-      <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+      <section className="bg-brand-paper py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             title="Programs for Every Age and Goal"
             subtitle="Each program is designed with clear structure, experienced coaching, and a supportive team culture. Start with a free class."
@@ -44,12 +45,14 @@ export default function ProgramsPage() {
       </section>
 
       <section className="bg-brand-light py-16 md:py-24">
-        <div className="mx-auto max-w-3xl px-4 text-center lg:px-8">
-          <h2 className="text-2xl font-bold text-brand-charcoal md:text-3xl">
+        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="font-display text-2xl font-extrabold uppercase text-brand-charcoal md:text-3xl">
             Not Sure Which Program Is Right?
           </h2>
-          <p className="mt-4 text-lg text-brand-gray leading-relaxed">
-            Book a free class and our coaches will help you choose the best starting point based on age, experience, and goals. Whether you are looking for kids martial arts in College Station or adult beginner BJJ, we will guide you.
+          <p className="mt-4 text-lg leading-relaxed text-brand-gray">
+            Book a free class and our coaches will help you choose the best starting point based on
+            age, experience, and goals. Whether you are looking for kids martial arts in College
+            Station or adult beginner BJJ, we will guide you.
           </p>
         </div>
       </section>

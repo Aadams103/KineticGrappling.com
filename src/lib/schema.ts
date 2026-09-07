@@ -64,6 +64,8 @@ function programsCatalog() {
     "No-Gi Grappling",
     "Competition Training",
     "Private Lessons",
+    "Wrestling",
+    "MMA",
   ].map((name) => ({
     "@type": "Offer",
     itemOffered: {

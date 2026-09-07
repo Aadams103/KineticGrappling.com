@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site-config";
+import { blogPosts, siteConfig } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/no-gi-grappling-college-station",
     "/bjj-competition-training-college-station",
     "/private-jiu-jitsu-lessons-college-station",
+    ...blogPosts.map((post) => `/blog/${post.slug}`),
   ];
 
   return routes.map((route) => ({

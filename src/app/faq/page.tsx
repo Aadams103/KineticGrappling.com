@@ -22,8 +22,8 @@ export default function FAQPage() {
         subtitle="Everything you need to know before your first class at Kinetic Grappling."
         breadcrumb={[{ label: "Home", href: "/" }, { label: "FAQ" }]}
       />
-      <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-3xl px-4 lg:px-8">
+      <section className="bg-brand-paper py-16 md:py-24">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <FAQAccordion faqs={homepageFaqs} />
         </div>
       </section>
