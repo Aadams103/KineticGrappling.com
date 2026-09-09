@@ -30,14 +30,14 @@ export function Hero({
           alt={imageAlt}
           fill
           priority
-          className="object-cover object-center opacity-45"
+          className="object-cover object-center opacity-75"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/85 to-brand-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-brand-black/40" />
+        <div className="absolute inset-0 bg-brand-black/55 lg:bg-gradient-to-r lg:from-brand-black/90 lg:via-brand-black/60 lg:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-transparent" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 md:py-32 lg:px-8 lg:py-40">
+      <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 md:py-20 lg:px-8 lg:py-28">
         <div className="max-w-3xl">
           <p className="mb-4 border-l-4 border-brand-red pl-3 text-xs font-semibold uppercase tracking-[0.32em] text-brand-gold">
             College Station · Bryan · Brazos Valley

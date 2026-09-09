@@ -25,8 +25,5 @@ export function inferAnalyticsEvent(href: string): AnalyticsEvent | undefined {
   if (href.startsWith("tel:")) return "phone_click";
   if (href.includes("google.com/maps")) return "directions_click";
   if (href.startsWith("/free-trial")) return "free_trial_cta_click";
-  if (href.startsWith("/schedule")) return "schedule_view";
-  if (href.startsWith("/membership")) return "pricing_view";
   if (/instagram|facebook|youtube/.test(href)) return "social_outbound_click";
-  if (/bjj|grappling|mma|wrestling|programs/.test(href)) return "program_view";
 }

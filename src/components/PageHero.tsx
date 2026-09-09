@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { brandAssets } from "@/lib/site-config";
+import { siteConfig } from "@/lib/site-config";
+import { getBreadcrumbSchema } from "@/lib/schema";
+import { JsonLd } from "./JsonLd";
 
 interface PageHeroProps {
   title: string;
@@ -19,6 +22,7 @@ export function PageHero({
 }: PageHeroProps) {
   return (
     <section className="relative overflow-hidden bg-brand-charcoal">
+      {breadcrumb && <JsonLd data={getBreadcrumbSchema(breadcrumb.map(item => ({ name: item.label, ...(item.href ? { url: `${siteConfig.url}${item.href}` } : {}) })))} />}
       <div className="absolute inset-0">
         <Image
           src={imageSrc}

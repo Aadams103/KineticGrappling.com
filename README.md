@@ -12,7 +12,7 @@ Modern, conversion-focused website for [Kinetic Grappling](https://www.kineticgr
 ## Getting Started
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
@@ -25,21 +25,33 @@ npm run build
 npm start
 ```
 
-## Deploy to Vercel
+## Verification
 
-1. Push this repo to GitHub
-2. Import the project at [vercel.com/new](https://vercel.com/new)
-3. Vercel auto-detects Next.js — no custom build settings needed
-4. Add your custom domain `KineticGrappling.com` in Project Settings → Domains
+```bash
+npm run typecheck
+npm run lint
+npm test
+npm run build
+npm run check:site
+```
+
+`check:site` checks every built public HTML route, internal links and fragments, local image references, titles/descriptions, canonical/OG fields, JSON-LD parsing, sitemap parity and legacy redirects. It does not replace browser/accessibility/performance testing.
+
+## Branch previews only
+
+Continue on `work/kinetic-site-redevelopment-v1`. The existing Vercel project deploys branch previews. Do not create another hosting project, change DNS, move the production domain or merge into `main` without the owner's explicit production approval. Read `REDEVELOPMENT.md` for source evidence, QA status and unresolved launch gates.
 
 ## Contact Form
 
-The free-class form validates on the server and opens a prefilled email to `AmbroseAdams@KineticGrappling.com`. When you connect a mail provider later, add:
+Without delivery credentials, the form prepares an email and clearly tells the visitor to open their email app and send it. Glofox is the existing booking system and remains directly linked. Optional server delivery requires both a key and verified sender:
 
 | Variable | Purpose |
 |----------|---------|
 | `RESEND_API_KEY` | Email delivery for the free trial form |
-| `NEXT_PUBLIC_GA_ID` | Google Analytics (optional) |
+| `TRIAL_FORM_FROM_EMAIL` | Verified sender address |
+| `TRIAL_FORM_TO_EMAIL` | Optional academy destination override |
+
+No analytics container is installed by this redevelopment. `Analytics.tsx` pushes documented events to `window.dataLayer`; confirm the existing business analytics setup before adding its bootstrap.
 
 ## Project Structure
 

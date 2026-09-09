@@ -14,7 +14,7 @@ const programs = [
 
 const fieldClass = "mt-1.5 min-h-12 w-full rounded-sm border border-black/20 bg-white px-4 py-3 text-base focus:border-brand-red focus:ring-2 focus:ring-brand-red/20";
 
-export function ContactForm() {
+export function ContactForm({ deliveryEnabled = false }: { deliveryEnabled?: boolean }) {
   const searchParams = useSearchParams();
   const requested = searchParams.get("program") ?? "";
   const initialProgram = useMemo(() => programs.some(([value]) => value === requested) ? requested : "", [requested]);
@@ -65,6 +65,7 @@ export function ContactForm() {
   }
 
   return <form onSubmit={submit} onFocus={onStart} className="space-y-5" aria-describedby={error ? "form-error" : undefined}>
+    {!deliveryEnabled && <p className="border-l-4 border-brand-red bg-brand-paper p-4 text-sm">This form prepares an email request. You’ll send it from your email app on the next step. You can also book directly through Glofox below.</p>}
     <div className="hidden" aria-hidden="true"><label htmlFor="website">Website</label><input id="website" name="website" tabIndex={-1} autoComplete="off" /></div>
     <div className="grid gap-5 sm:grid-cols-2">
       <Field label="Name" name="name" autoComplete="name" required />
@@ -82,7 +83,7 @@ export function ContactForm() {
     <div><label htmlFor="preferredDay" className="block font-semibold">Preferred class or day</label><input id="preferredDay" name="preferredDay" className={fieldClass} placeholder="Example: Monday evening" /></div>
     <div><label htmlFor="message" className="block font-semibold">Anything the coach should know? <span className="font-normal text-brand-gray">(optional)</span></label><textarea id="message" name="message" rows={3} className={fieldClass} placeholder="Goals, experience, child's age, or a question" /></div>
     {error && <p id="form-error" role="alert" className="border-l-4 border-brand-red bg-red-50 p-3 text-red-900">{error}</p>}
-    <button type="submit" disabled={state === "pending"} className="min-h-[54px] w-full bg-brand-gold px-6 py-4 font-bold uppercase tracking-[0.14em] text-brand-black hover:bg-brand-gold-light disabled:opacity-60">{state === "pending" ? "Sending…" : "Request My Free Trial"}</button>
+    <button type="submit" disabled={state === "pending"} className="min-h-[54px] w-full bg-brand-red px-6 py-4 font-bold uppercase tracking-[0.14em] text-white hover:bg-brand-red-dark disabled:opacity-60">{state === "pending" ? "Preparing…" : deliveryEnabled ? "Request My Free Trial" : "Prepare Trial Email"}</button>
     <p className="text-sm text-brand-gray">Prefer to book directly? Use the current <a className="font-semibold text-brand-charcoal underline" href={siteConfig.booking.glofox} target="_blank" rel="noreferrer">Glofox class portal</a> or call <a className="font-semibold text-brand-charcoal underline" href={siteConfig.phoneHref}>{siteConfig.phone}</a>.</p>
   </form>;
 }

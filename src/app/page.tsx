@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Hero } from "@/components/Hero";
+import { LocationSection } from "@/components/LocationSection";
 import { BenefitsGrid } from "@/components/BenefitsGrid";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ProgramCard } from "@/components/ProgramCard";
@@ -10,10 +11,8 @@ import { PricingTeaser } from "@/components/PricingTeaser";
 import { FirstClassSection } from "@/components/FirstClassSection";
 import { FinalCTA } from "@/components/FinalCTA";
 import { CTAButton } from "@/components/CTAButton";
-import { JsonLd } from "@/components/JsonLd";
 import { AudienceGrid } from "@/components/AudienceGrid";
 import { createPageMetadata } from "@/lib/metadata";
-import { getFAQSchema } from "@/lib/schema";
 import {
   academyCopy,
   programs,
@@ -33,7 +32,6 @@ export const metadata = createPageMetadata({
 export default function HomePage() {
   return (
     <>
-      <JsonLd data={getFAQSchema(homepageFaqs)} />
 
       <Hero
         headline="Brazilian Jiu-Jitsu & MMA in College Station"
@@ -157,6 +155,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      <LocationSection />
       <FinalCTA />
     </>
   );

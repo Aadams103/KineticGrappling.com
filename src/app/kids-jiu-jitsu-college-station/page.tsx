@@ -4,9 +4,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { FinalCTA } from "@/components/FinalCTA";
 import { CTAButton } from "@/components/CTAButton";
-import { JsonLd } from "@/components/JsonLd";
 import { createPageMetadata } from "@/lib/metadata";
-import { getFAQSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site-config";
 import type { FAQ } from "@/lib/site-config";
 
@@ -65,7 +63,7 @@ const kidsFaqs: FAQ[] = [
   {
     question: "Is Jiu-Jitsu safe for children?",
     answer:
-      "Yes. Our kids classes use age-appropriate techniques, close supervision, and a focus on control and respect. Safety is always our top priority.",
+      "Grappling involves physical contact. Ask the coach how partner matching, supervision and live practice work for your child's age and experience before the first class.",
   },
   {
     question: "What should my child wear?",
@@ -75,14 +73,13 @@ const kidsFaqs: FAQ[] = [
   {
     question: "Will my child need to compete?",
     answer:
-      "No. Competition is optional. Most kids train for confidence, fitness, and fun. Competition pathways are available for students who want them.",
+      "Ask the coaching team about competition expectations for your child's program. Kinetic lists both fundamentals and competition training, but the current participation policy needs confirmation.",
   },
 ];
 
 export default function KidsJiuJitsuPage() {
   return (
     <>
-      <JsonLd data={getFAQSchema(kidsFaqs)} />
 
       <PageHero
         title="Kids Brazilian Jiu-Jitsu in College Station, TX"

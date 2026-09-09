@@ -14,7 +14,7 @@ Turn local search, social, and referral traffic into an informed first visit: un
 
 ## Source-control status
 
-`main` was inspected at `d2e66bd5c34c272fca73c7bd2bd2d1a6b1d00aba`; the Cursor branch at `60f101c08bd17190c783ab67dbf61c886e78f638`. The first published Work commit mistakenly used the Cursor commit as its parent. This incorporated the full Cursor changeset, not selective independent implementation as requested. Neither `main` nor the Cursor ref was modified. Correcting the published Work ancestry requires owner approval before rewriting the ref. Keep the PR draft until corrected.
+`main` was inspected at `d2e66bd5c34c272fca73c7bd2bd2d1a6b1d00aba`; the Cursor branch at `60f101c08bd17190c783ab67dbf61c886e78f638`. The first published Work commit mistakenly inherited Cursor history. With the owner's explicit approval, the Work ref was corrected on 2026-09-09: commit `db917cc58358fa72f42ea8902da5961aeaa62d14` has latest main as its sole parent. Its tree `1fe338985b98de2ee68a10797ac321be9d51d254` exactly matches the pre-repair files. Recovery ref: `work/kinetic-site-redevelopment-v1-before-history-repair` at `052eadfe0e23e5c5c8189a9cf963d04b6bb695b9`. Neither main nor Cursor was modified. Subsequent work continues normally on the corrected Work branch.
 
 ## Baseline and reuse decisions
 
@@ -45,7 +45,7 @@ Turn local search, social, and referral traffic into an informed first visit: un
 
 ## Design system
 
-Graphite and black create the training-floor foundation; warm paper improves long-form readability; logo gold carries the primary brand; red is a controlled conversion and orientation accent. Exo 2 is the display face and Source Sans 3 is the reading face. Interactive targets are at least 44px tall, focus is visible, motion honors reduced-motion preferences, and mobile has persistent Call / Schedule / Free Trial actions.
+Graphite and black create the training-floor foundation; warm paper improves long-form readability; logo gold preserves the existing identity; red identifies primary conversion controls. Exo 2 is the display face and Source Sans 3 is the reading face. Primary controls target at least 44px height, focus is visible, motion honors reduced-motion preferences, and mobile has persistent Call / Schedule / Free Trial actions. Text links still require a full touch-target/spacing review.
 
 ## Verified content sources
 
@@ -63,9 +63,13 @@ Graphite and black create the training-floor foundation; warm paper improves lon
 
 Existing `/membership`, `/programs`, and `/contact` paths remain live routes and need no redirect.
 
+Live sitemap inventory fetched 2026-09-09: `/sitemap.xml` references `/pages-sitemap.xml` and `/member-profile_p_first-chunk-sitemap.xml`. The pages sitemap contains exactly seven entries: homepage, `/calendar`, `/programs`, `/about-us-1`, `/membership`, `/contact`, `/about-8`. All are covered above or retained. Member-profile sitemap is empty. Live robots allows the public site and references that sitemap. Search Console may reveal additional historical URLs not in the live sitemap; that historical coverage remains a launch check.
+
 ## Analytics events
 
 `free_trial_cta_click`, `trial_form_start`, `trial_form_submit`, `phone_click`, `directions_click`, `schedule_view`, `program_view`, `pricing_view`, `social_outbound_click`.
+
+`Analytics.tsx` records route views after navigation and delegates anchor click events, covering footer and inline links as well as CTAs. Form events contain program/path only, never name, phone, email or message. No analytics destination/container has been configured or verified.
 
 ## Environment variables
 
@@ -97,7 +101,15 @@ Hardening pass, 2026-09-09: corrected unsent-form messaging and success focus, a
 
 Hardening checks executed: `npm ci`, `npm run typecheck`, `npm run lint`, `npm test` (14/14 passing), `npm run build` (27 generated entries), and `git diff --check`. Browser checks above belong to the earlier pass; the hardening UI changes have not yet been browser-tested.
 
-Still outstanding: actual 375/430/768/1024/1440px browser checks, comprehensive keyboard/contrast/accessibility review, field or lab CWV measurement, real form delivery, actual analytics receipt and a complete internal-link/legacy-URL crawl. Do not mark this release fully QA-passed or production-ready until these gates are recorded with results.
+History-repair follow-up, final checks: `npm run lint`, `npm test` (14/14), `npm run build`, `npm run typecheck` and `git diff --check` passed. `npm run check:site` passed across 21 built pages, 710 internal links, 91 image references, 44 JSON-LD blocks, 21 sitemap URLs and three permanent redirects. This parses emitted markup and checks references, not Google's rich-result eligibility or visual rendering.
+
+Browser follow-up: rendered the homepage in a 375px iframe (360px content area plus scrollbar); no document overflow, the first three images loaded, menu open and Escape close worked with focus returned, and Wednesday filtering on the schedule displayed the expected stored classes. The multi-width matrix did not complete: after timeouts Chromium displayed “This page has been blocked by Chromium” for embedded navigation. Stopped instead of bypassing that restriction. The latest hero/CTA/content changes were made after that observation and still need visual review.
+
+`scripts/qa-responsive.html` is a local-only harness, not a public route. Copy into `public/` during local QA, run the normal development server, and use its width/page controls. Remove that public copy before building/publishing. It provides 375/430/768/1024/1440 CSS-pixel iframe widths; full mobile-device behavior still needs device testing. `.next-dev` isolates development artifacts from `.next` production output so QA and builds cannot overwrite each other's bundles.
+
+SEO follow-up: breadcrumb markup matches visible navigation; resources include Article markup and visible academy authorship. FAQ answers remain visible but FAQ rich-result markup was removed: [Google Search Central's June 15, 2026 update](https://developers.google.com/search/updates) says the feature is no longer shown. Sitemap no longer invents a fresh content-modification date on every build. The homepage includes a dedicated location block.
+
+Still outstanding: complete 375/430/768/1024/1440px browser matrix, comprehensive keyboard/contrast/accessibility review, field or lab CWV measurement, real form delivery, actual analytics receipt and Search Console historical URL inventory. Do not mark this release fully QA-passed or production-ready until these gates are recorded with results.
 
 ## Launch checklist
 

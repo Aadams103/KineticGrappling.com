@@ -4,14 +4,12 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { FinalCTA } from "@/components/FinalCTA";
 import { CTAButton } from "@/components/CTAButton";
-import { JsonLd } from "@/components/JsonLd";
 import { createPageMetadata } from "@/lib/metadata";
-import { getFAQSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site-config";
 import type { FAQ } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
-  title: "Adult Brazilian Jiu-Jitsu College Station, TX | Beginner BJJ",
+  title: "Adult BJJ & Beginner Classes in College Station",
   description:
     "Beginner-friendly adult BJJ in College Station, TX. No experience required. Get in shape, learn self-defense, and train in a supportive environment at Kinetic Grappling.",
   path: "/adult-bjj-college-station",
@@ -60,12 +58,12 @@ const adultFaqs: FAQ[] = [
   {
     question: "I'm completely out of shape. Can I still start?",
     answer:
-      "Absolutely. Many of our adult students started with little to no fitness background. You train at your own pace and build conditioning over time.",
+      "You do not need to meet a fitness target before asking about fundamentals. Tell the coach about your current activity level and any limitations so you can discuss an appropriate starting point.",
   },
   {
     question: "Am I too old to start BJJ?",
     answer:
-      "No. We have adult students across a wide age range. Fundamentals classes are structured for safe, progressive learning regardless of age.",
+      "Adults can begin learning at different ages. Ask the coaching team which fundamentals session fits your experience and needs; age alone does not determine your starting point.",
   },
   {
     question: "Do I need a gi for my first class?",
@@ -82,7 +80,6 @@ const adultFaqs: FAQ[] = [
 export default function AdultBJJPage() {
   return (
     <>
-      <JsonLd data={getFAQSchema(adultFaqs)} />
 
       <PageHero
         title="Adult Brazilian Jiu-Jitsu in College Station, TX"

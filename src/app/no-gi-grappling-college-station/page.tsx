@@ -4,9 +4,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { FinalCTA } from "@/components/FinalCTA";
 import { CTAButton } from "@/components/CTAButton";
-import { JsonLd } from "@/components/JsonLd";
 import { createPageMetadata } from "@/lib/metadata";
-import { getFAQSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site-config";
 import type { FAQ } from "@/lib/site-config";
 
@@ -76,7 +74,6 @@ const noGiFaqs: FAQ[] = [
 export default function NoGiPage() {
   return (
     <>
-      <JsonLd data={getFAQSchema(noGiFaqs)} />
 
       <PageHero
         title="No-Gi Grappling in College Station, TX"

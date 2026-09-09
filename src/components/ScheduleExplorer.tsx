@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { ScheduleDiscipline, ScheduleEntry } from "@/lib/site-config";
-import { trackEvent } from "@/lib/analytics";
 
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const filters: Array<"All" | ScheduleDiscipline> = ["All", "BJJ", "No-Gi", "Kids", "Conditioning", "Competition", "Open Mat"];
@@ -39,7 +38,7 @@ export function ScheduleExplorer({ entries, compact = false }: { entries: Schedu
         </div>
         {group.entries.length ? <ul>{group.entries.map((entry) => <li key={`${entry.day}-${entry.start}-${entry.program}`} className="border-b border-black/5 p-5 last:border-0">
           <div className="flex flex-col items-start justify-between gap-2 sm:flex-row sm:gap-4"><div className="min-w-0"><p className="font-bold text-brand-charcoal">{entry.program}</p><p className="mt-1 text-sm text-brand-gray">{entry.level} · {entry.discipline}</p></div><span className="shrink-0 font-semibold text-brand-red">{entry.time}</span></div>
-          {entry.trialEligible && <Link href={`/free-trial?program=${entry.discipline === "Kids" ? "kids-bjj" : entry.discipline === "No-Gi" ? "no-gi" : "adult-fundamentals"}`} className="mt-3 inline-flex min-h-11 items-center text-sm font-bold uppercase tracking-wider underline decoration-brand-gold decoration-2 underline-offset-4" onClick={() => trackEvent("free_trial_cta_click", { class_name: entry.program })}>Ask about this class</Link>}
+          {entry.trialEligible && <Link href={`/free-trial?program=${entry.discipline === "Kids" ? "kids-bjj" : entry.discipline === "No-Gi" ? "no-gi" : "adult-fundamentals"}`} className="mt-3 inline-flex min-h-11 items-center text-sm font-bold uppercase tracking-wider underline decoration-brand-gold decoration-2 underline-offset-4">Ask about this class</Link>}
         </li>)}</ul> : <p className="p-5 text-brand-gray">No regularly listed classes for this filter. Check Glofox for date-specific changes.</p>}
       </section>)}
     </div>

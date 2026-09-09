@@ -29,7 +29,7 @@ export default function ContactPage() {
             <div className="lg:col-span-3">
               <SectionHeading title="Request Your Free Class" align="left" />
               <Suspense fallback={<p className="text-brand-gray">Loading form…</p>}>
-                <ContactForm />
+                <ContactForm deliveryEnabled={Boolean(process.env.RESEND_API_KEY && process.env.TRIAL_FORM_FROM_EMAIL)} />
               </Suspense>
             </div>
             <aside className="space-y-6 lg:col-span-2">

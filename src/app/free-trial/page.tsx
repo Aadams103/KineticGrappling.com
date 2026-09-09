@@ -27,7 +27,7 @@ export default function FreeTrialPage() {
         <div className="border border-black/10 bg-white p-6 shadow-[0_24px_80px_-50px_rgba(0,0,0,.7)] md:p-9">
           <h2 className="font-display text-2xl font-extrabold uppercase">Request your first class</h2>
           <p className="mt-2 mb-7 text-brand-gray">Only the information needed to contact you and choose a class.</p>
-          <Suspense fallback={<p>Loading form…</p>}><ContactForm /></Suspense>
+          <Suspense fallback={<p>Loading form…</p>}><ContactForm deliveryEnabled={Boolean(process.env.RESEND_API_KEY && process.env.TRIAL_FORM_FROM_EMAIL)} /></Suspense>
         </div>
       </div>
     </section>

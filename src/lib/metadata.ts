@@ -17,7 +17,7 @@ export function createPageMetadata({
   const url = `${siteConfig.url}${path}`;
 
   return {
-    title,
+    title: path === "/" ? { absolute: `${title} | ${siteConfig.name}` } : title,
     description,
     keywords: [
       "Brazilian Jiu-Jitsu College Station",

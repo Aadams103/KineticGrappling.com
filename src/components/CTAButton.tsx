@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { inferAnalyticsEvent, trackEvent, type AnalyticsEvent } from "@/lib/analytics";
+import { type AnalyticsEvent } from "@/lib/analytics";
 
 type CTAButtonVariant = "primary" | "secondary" | "outline" | "white" | "ghost";
 
@@ -17,7 +17,7 @@ interface CTAButtonProps {
 
 const variantStyles: Record<CTAButtonVariant, string> = {
   primary:
-    "bg-brand-gold text-brand-black hover:bg-brand-gold-light shadow-[0_10px_30px_-12px_rgba(233,178,90,0.8)] font-bold",
+    "bg-brand-red text-white hover:bg-brand-red-dark font-bold",
   secondary: "bg-brand-charcoal text-white hover:bg-brand-black",
   outline:
     "border-2 border-brand-gold text-brand-charcoal hover:bg-brand-gold hover:text-brand-black",
@@ -41,20 +41,14 @@ export function CTAButton({
 
   if (external) {
     return (
-      <a href={href} className={classes} target="_blank" rel="noopener noreferrer" onClick={() => {
-        const event = analyticsEvent ?? inferAnalyticsEvent(href);
-        if (event) trackEvent(event, { href });
-      }}>
+      <a href={href} className={classes} target="_blank" rel="noopener noreferrer" data-analytics-event={analyticsEvent}>
         {children}
       </a>
     );
   }
 
   return (
-    <Link href={href} className={classes} onClick={() => {
-      const event = analyticsEvent ?? inferAnalyticsEvent(href);
-      if (event) trackEvent(event, { href });
-    }}>
+    <Link href={href} className={classes} data-analytics-event={analyticsEvent}>
       {children}
     </Link>
   );

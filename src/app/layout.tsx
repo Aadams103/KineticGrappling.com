@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Exo_2, Source_Sans_3 } from "next/font/google";
 import { Header } from "@/components/Header";
+import { Analytics } from "@/components/Analytics";
 import { Footer } from "@/components/Footer";
 import { StickyMobileCTA } from "@/components/StickyMobileCTA";
 import { JsonLd } from "@/components/JsonLd";
@@ -61,6 +62,7 @@ export default function RootLayout({
       <body className={`${display.variable} ${body.variable} font-sans pb-20 md:pb-0`}>
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <Header />
+        <Analytics />
         <main id="main-content">{children}</main>
         <Footer />
         <StickyMobileCTA />

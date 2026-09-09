@@ -1,4 +1,4 @@
-import { siteConfig, type FAQ } from "./site-config";
+import { siteConfig } from "./site-config";
 
 export function getLocalBusinessSchema() {
   return {
@@ -64,22 +64,7 @@ function programsCatalog() {
   }));
 }
 
-export function getFAQSchema(faqs: FAQ[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-}
-
-export function getBreadcrumbSchema(items: { name: string; url: string }[]) {
+export function getBreadcrumbSchema(items: { name: string; url?: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -87,7 +72,7 @@ export function getBreadcrumbSchema(items: { name: string; url: string }[]) {
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: item.url,
+      ...(item.url ? { item: item.url } : {}),
     })),
   };
 }

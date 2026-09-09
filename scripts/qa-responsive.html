@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Kinetic responsive QA harness — local use only</title>
+<style>
+  body { margin: 0; font: 16px system-ui; background: #ddd; }
+  form { padding: 12px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  select, button { min-height: 44px; font: inherit; }
+  #frame-wrap { margin: 0 auto; }
+  iframe { display: block; border: 0; background: white; transform-origin: top left; }
+</style>
+<form id="controls">
+  <label>Viewport width <select id="width"><option>375</option><option>430</option><option>768</option><option>1024</option><option>1440</option></select></label>
+  <label>Page <select id="page"><option value="/">Home</option><option value="/schedule">Schedule</option><option value="/free-trial">Free trial</option><option value="/membership">Pricing</option><option value="/programs">Programs</option><option value="/contact">Contact</option></select></label>
+  <button type="submit">Load viewport</button>
+  <output id="dimensions"></output>
+</form>
+<div id="frame-wrap"><iframe title="Website under test" id="site" src="/" width="375" height="900"></iframe></div>
+<script>
+  const frame = document.querySelector('#site');
+  function render(event) {
+    if (event) event.preventDefault();
+    const width = Number(document.querySelector('#width').value);
+    const scale = Math.min(1, (window.innerWidth - 32) / width);
+    frame.style.width = width + 'px';
+    frame.style.height = '900px';
+    frame.style.transform = 'scale(' + scale + ')';
+    document.querySelector('#frame-wrap').style.width = width * scale + 'px';
+    document.querySelector('#frame-wrap').style.height = 900 * scale + 'px';
+    frame.src = document.querySelector('#page').value;
+    document.querySelector('#dimensions').textContent = width + ' × 900 CSS pixels';
+  }
+  document.querySelector('#controls').addEventListener('submit', render);
+  render();
+</script>
+</html>

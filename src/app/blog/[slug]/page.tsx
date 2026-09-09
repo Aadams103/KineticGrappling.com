@@ -3,7 +3,8 @@ import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { FinalCTA } from "@/components/FinalCTA";
 import { createPageMetadata } from "@/lib/metadata";
-import { blogPosts } from "@/lib/site-config";
+import { blogPosts, siteConfig, brandAssets } from "@/lib/site-config";
+import { JsonLd } from "@/components/JsonLd";
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -18,11 +19,12 @@ export async function generateMetadata({
   const post = blogPosts.find((item) => item.slug === slug);
   if (!post) return {};
 
-  return createPageMetadata({
+  const metadata = createPageMetadata({
     title: post.title,
     description: post.excerpt,
     path: `/blog/${post.slug}`,
   });
+  return { ...metadata, openGraph: { ...metadata.openGraph, type: "article", publishedTime: post.date } };
 }
 
 export default async function BlogPostPage({
@@ -36,6 +38,7 @@ export default async function BlogPostPage({
 
   return (
     <>
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "Article", headline: post.title, description: post.excerpt, datePublished: post.date, image: `${siteConfig.url}${brandAssets.heroImage}`, mainEntityOfPage: `${siteConfig.url}/blog/${post.slug}`, author: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url } }} />
       <PageHero
         title={post.title}
         subtitle={post.excerpt}
@@ -47,6 +50,7 @@ export default async function BlogPostPage({
       />
       <article className="bg-brand-paper py-16 md:py-24">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-sm text-brand-gray">By {siteConfig.name}</p>
           <time className="text-sm text-brand-gray" dateTime={post.date}>
             {new Date(post.date).toLocaleDateString("en-US", {
               month: "long",
