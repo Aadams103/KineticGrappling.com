@@ -9,7 +9,9 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      { source: "/free-trial", destination: "/contact", permanent: true },
+      { source: "/about-us-1", destination: "/about", permanent: true },
+      { source: "/about-8", destination: "/coaches#ambrose-adams", permanent: true },
+      { source: "/calendar", destination: "/schedule", permanent: true },
     ];
   },
 };

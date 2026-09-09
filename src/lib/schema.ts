@@ -3,57 +3,45 @@ import { siteConfig, type FAQ } from "./site-config";
 export function getLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "SportsActivityLocation",
-    "@id": `${siteConfig.url}/#localbusiness`,
-    name: siteConfig.name,
-    description: siteConfig.description,
-    url: siteConfig.url,
-    telephone: siteConfig.phone,
-    email: siteConfig.email,
-    image: `${siteConfig.url}/images/hero-bjj-training.jpg`,
-    priceRange: "$$",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: siteConfig.address.street,
-      addressLocality: siteConfig.address.city,
-      addressRegion: siteConfig.address.state,
-      postalCode: siteConfig.address.zip,
-      addressCountry: "US",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: siteConfig.geo.latitude,
-      longitude: siteConfig.geo.longitude,
-    },
-    areaServed: [
-      { "@type": "City", name: "College Station" },
-      { "@type": "City", name: "Bryan" },
-      { "@type": "AdministrativeArea", name: "Brazos Valley" },
-    ],
-    openingHoursSpecification: [
+    "@graph": [
       {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "06:00",
-        closes: "21:00",
+        "@type": ["SportsActivityLocation", "LocalBusiness"],
+        "@id": `${siteConfig.url}/#academy`,
+        name: siteConfig.name,
+        description: siteConfig.description,
+        url: siteConfig.url,
+        telephone: siteConfig.phone,
+        email: siteConfig.email,
+        image: `${siteConfig.url}/images/hero-bjj-training.jpg`,
+        priceRange: "$80–$275 per month",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: siteConfig.address.street,
+          addressLocality: siteConfig.address.city,
+          addressRegion: siteConfig.address.state,
+          addressCountry: "US",
+        },
+        areaServed: siteConfig.serviceAreas.map((name) => ({ "@type": "Place", name })),
+        sameAs: [siteConfig.social.facebook, siteConfig.social.instagram],
+        hasOfferCatalog: { "@type": "OfferCatalog", name: "Martial arts programs", itemListElement: programsCatalog() },
       },
       {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Saturday",
-        opens: "09:00",
-        closes: "12:00",
+        "@type": "Organization",
+        "@id": `${siteConfig.url}/#organization`,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        logo: `${siteConfig.url}/images/kinetic-grappling-logo.png`,
+        location: { "@id": `${siteConfig.url}/#academy` },
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteConfig.url}/#website`,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        publisher: { "@id": `${siteConfig.url}/#organization` },
+        inLanguage: "en-US",
       },
     ],
-    sameAs: [
-      siteConfig.social.googleMaps,
-      siteConfig.social.facebook,
-      siteConfig.social.instagram,
-    ].filter(Boolean),
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Brazilian Jiu-Jitsu Programs",
-      itemListElement: programsCatalog(),
-    },
   };
 }
 
@@ -64,6 +52,8 @@ function programsCatalog() {
     "No-Gi Grappling",
     "Competition Training",
     "Private Lessons",
+    "Wrestling",
+    "MMA",
   ].map((name) => ({
     "@type": "Offer",
     itemOffered: {

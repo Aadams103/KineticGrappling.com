@@ -26,46 +26,56 @@ export const metadata = createPageMetadata({
 const parentBenefits = [
   {
     title: "Confidence",
-    description: "Kids learn to believe in themselves through achievable goals, positive coaching, and visible progress on the mat.",
+    description:
+      "Kids learn to believe in themselves through achievable goals, positive coaching, and visible progress on the mat.",
   },
   {
     title: "Discipline & Focus",
-    description: "Structured classes teach listening skills, following directions, and staying engaged — skills that carry over to school and home.",
+    description:
+      "Structured classes teach listening skills, following directions, and staying engaged — skills that carry over to school and home.",
   },
   {
     title: "Respect",
-    description: "Students learn to respect coaches, training partners, and themselves in a positive team environment.",
+    description:
+      "Students learn to respect coaches, training partners, and themselves in a positive team environment.",
   },
   {
     title: "Anti-Bullying Confidence",
-    description: "Practical grappling skills and situational awareness help children feel more confident handling difficult social situations.",
+    description:
+      "Practical grappling skills and situational awareness help children feel more confident handling difficult social situations.",
   },
   {
     title: "Fitness & Coordination",
-    description: "Age-appropriate movement builds strength, coordination, and healthy habits in a fun, active setting.",
+    description:
+      "Age-appropriate movement builds strength, coordination, and healthy habits in a fun, active setting.",
   },
   {
     title: "Safe Structure",
-    description: "Classes are supervised by experienced coaches with clear rules, controlled training, and a family-friendly culture.",
+    description:
+      "Classes are supervised by experienced coaches with clear rules, controlled training, and a family-friendly culture.",
   },
 ];
 
 const kidsFaqs: FAQ[] = [
   {
     question: "What age can my child start?",
-    answer: "We offer Little Grapplers for ages 3–5 and Kids Brazilian Jiu-Jitsu for ages 6–12. Choose based on your child's age and readiness.",
+    answer:
+      "We offer Little Grapplers for ages 3–5 and Kids Brazilian Jiu-Jitsu for ages 6–12. Choose based on your child's age and readiness.",
   },
   {
     question: "Is Jiu-Jitsu safe for children?",
-    answer: "Yes. Our kids classes use age-appropriate techniques, close supervision, and a focus on control and respect. Safety is always our top priority.",
+    answer:
+      "Yes. Our kids classes use age-appropriate techniques, close supervision, and a focus on control and respect. Safety is always our top priority.",
   },
   {
     question: "What should my child wear?",
-    answer: "Comfortable athletic clothes and a water bottle. A gi is not required for the first class — we will guide you on what to bring afterward.",
+    answer:
+      "Comfortable athletic clothes and a water bottle. A gi is not required for the first class — we will guide you on what to bring afterward.",
   },
   {
     question: "Will my child need to compete?",
-    answer: "No. Competition is optional. Most kids train for confidence, fitness, and fun. Competition pathways are available for students who want them.",
+    answer:
+      "No. Competition is optional. Most kids train for confidence, fitness, and fun. Competition pathways are available for students who want them.",
   },
 ];
 
@@ -81,10 +91,11 @@ export default function KidsJiuJitsuPage() {
           { label: "Home", href: "/" },
           { label: "Kids Jiu-Jitsu" },
         ]}
+        imageSrc="/images/kids-bjj-class.jpg"
       />
 
-      <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+      <section className="bg-brand-paper py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <SectionHeading
@@ -92,11 +103,9 @@ export default function KidsJiuJitsuPage() {
                 subtitle="Kinetic Grappling offers kids martial arts in College Station designed for real development — not just activity. Our coaches are positive role models who teach practical skills in a family-friendly academy."
                 align="left"
               />
-              <CTAButton href="/contact?program=kids-bjj">
-                {siteConfig.primaryCta}
-              </CTAButton>
+              <CTAButton href="/free-trial?program=kids-bjj">{siteConfig.primaryCta}</CTAButton>
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-brand-light">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-brand-light">
               <Image
                 src="/images/kids-bjj-class.jpg"
                 alt="Kids Brazilian Jiu-Jitsu class at Kinetic Grappling in College Station, TX"
@@ -110,41 +119,53 @@ export default function KidsJiuJitsuPage() {
       </section>
 
       <section className="bg-brand-light py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading title="What Parents Love About Our Kids Programs" />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {parentBenefits.map((benefit) => (
-              <div key={benefit.title} className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-bold text-brand-charcoal">{benefit.title}</h3>
-                <p className="mt-2 text-brand-gray leading-relaxed">{benefit.description}</p>
+              <div key={benefit.title} className="border border-black/5 bg-white p-6">
+                <h3 className="font-display text-lg font-extrabold uppercase text-brand-charcoal">
+                  {benefit.title}
+                </h3>
+                <p className="mt-2 leading-relaxed text-brand-gray">{benefit.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+      <section className="bg-brand-paper py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading title="Our Kids Programs" />
           <div className="grid gap-8 md:grid-cols-2">
-            <article className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
-              <span className="rounded-full bg-brand-gold px-3 py-1 text-xs font-bold text-brand-black">Ages 3–5</span>
-              <h3 className="mt-4 text-2xl font-bold text-brand-charcoal">Little Grapplers</h3>
-              <p className="mt-3 text-brand-gray leading-relaxed">
-                Fun movement-based classes that build coordination, listening skills, confidence, and basic grappling awareness through games and structured activities.
+            <article className="border border-black/5 bg-white p-8">
+              <span className="rounded-sm bg-brand-gold px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand-black">
+                Ages 3–5
+              </span>
+              <h3 className="font-display mt-4 text-2xl font-extrabold uppercase text-brand-charcoal">
+                Little Grapplers
+              </h3>
+              <p className="mt-3 leading-relaxed text-brand-gray">
+                A 30-minute class built around games and fun scenarios. Kids develop fitness,
+                confidence, listening skills, and their first grappling awareness.
               </p>
               <div className="mt-6">
-                <CTAButton href="/contact?program=little-grapplers">{siteConfig.primaryCta}</CTAButton>
+                <CTAButton href="/free-trial?program=little-grapplers">{siteConfig.primaryCta}</CTAButton>
               </div>
             </article>
-            <article className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
-              <span className="rounded-full bg-brand-gold px-3 py-1 text-xs font-bold text-brand-black">Ages 6–12</span>
-              <h3 className="mt-4 text-2xl font-bold text-brand-charcoal">Kids Brazilian Jiu-Jitsu</h3>
-              <p className="mt-3 text-brand-gray leading-relaxed">
-                Structured BJJ training that builds discipline, focus, confidence, respect, and practical self-defense skills in a positive team environment.
+            <article className="border border-black/5 bg-white p-8">
+              <span className="rounded-sm bg-brand-gold px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand-black">
+                Ages 6–12
+              </span>
+              <h3 className="font-display mt-4 text-2xl font-extrabold uppercase text-brand-charcoal">
+                Kids Brazilian Jiu-Jitsu
+              </h3>
+              <p className="mt-3 leading-relaxed text-brand-gray">
+                Structured BJJ training that builds discipline, focus, confidence, respect, and
+                practical self-defense skills in a positive team environment.
               </p>
               <div className="mt-6">
-                <CTAButton href="/contact?program=kids-bjj">{siteConfig.primaryCta}</CTAButton>
+                <CTAButton href="/free-trial?program=kids-bjj">{siteConfig.primaryCta}</CTAButton>
               </div>
             </article>
           </div>
@@ -152,7 +173,7 @@ export default function KidsJiuJitsuPage() {
       </section>
 
       <section className="bg-brand-light py-16 md:py-24">
-        <div className="mx-auto max-w-3xl px-4 lg:px-8">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <SectionHeading title="Kids Program FAQ" />
           <FAQAccordion faqs={kidsFaqs} />
         </div>

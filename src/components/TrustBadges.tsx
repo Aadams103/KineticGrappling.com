@@ -6,7 +6,7 @@ export function TrustBadges() {
       {trustBadges.map((badge) => (
         <li
           key={badge}
-          className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur-sm"
+          className="rounded-sm border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white"
         >
           {badge}
         </li>

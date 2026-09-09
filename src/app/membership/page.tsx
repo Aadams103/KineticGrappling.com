@@ -1,146 +1,36 @@
 import { PageHero } from "@/components/PageHero";
-import { SectionHeading } from "@/components/SectionHeading";
-import { FAQAccordion } from "@/components/FAQAccordion";
-import { FinalCTA } from "@/components/FinalCTA";
 import { CTAButton } from "@/components/CTAButton";
-import { JsonLd } from "@/components/JsonLd";
 import { createPageMetadata } from "@/lib/metadata";
-import { getFAQSchema } from "@/lib/schema";
-import type { FAQ } from "@/lib/site-config";
+import { dataVerification, memberships, siteConfig } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
-  title: "Membership & Getting Started | Kinetic Grappling",
-  description:
-    "Start training at Kinetic Grappling in College Station, TX with a free class. Learn about membership options, family plans, and what's included.",
+  title: "BJJ Membership Pricing in College Station",
+  description: "See current monthly adult, kids, and family Brazilian Jiu-Jitsu membership pricing at Kinetic Grappling in College Station, TX.",
   path: "/membership",
-  keywords: ["BJJ membership College Station", "Martial arts membership College Station"],
 });
 
-const membershipFaqs: FAQ[] = [
-  {
-    question: "How do I get started?",
-    answer: "Book a free class. After your first visit, our team will help you choose the membership option that fits your goals, schedule, and family.",
-  },
-  {
-    question: "Do you offer family memberships?",
-    answer: "Yes. We offer family membership options for households with multiple students. Ask our team about family pricing after your first class.",
-  },
-  {
-    question: "What's included in membership?",
-    answer: "Membership includes access to your program's scheduled classes, open mat sessions, and the supportive training community at Kinetic Grappling.",
-  },
-  {
-    question: "Is there a long-term contract?",
-    answer: "Our team will walk you through membership options after your first class. We focus on finding the right fit rather than pushing long commitments upfront.",
-  },
-  {
-    question: "Can I switch programs?",
-    answer: "Yes. Many students explore different programs as they progress. Our coaches can help you adjust your training plan.",
-  },
-];
-
-const includedItems = [
-  "Access to scheduled program classes",
-  "Open mat training sessions",
-  "Experienced coaching and supervision",
-  "Clean, family-friendly training environment",
-  "Supportive team culture",
-  "Progression through structured curriculum",
-  "Competition pathway for dedicated students",
-  "Flexible membership guidance after your first class",
-];
-
 export default function MembershipPage() {
-  return (
-    <>
-      <JsonLd data={getFAQSchema(membershipFaqs)} />
-
-      <PageHero
-        title="Start Training at Kinetic Grappling"
-        subtitle="The best way to begin is with a free class. After your first visit, our team will help you choose the membership option that fits your goals, schedule, and family."
-        breadcrumb={[
-          { label: "Home", href: "/" },
-          { label: "Membership" },
-        ]}
-      />
-
-      <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="grid gap-8 md:grid-cols-3">
-            <article className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-gold text-lg font-bold text-brand-black">1</span>
-              <h2 className="mt-4 text-xl font-bold text-brand-charcoal">Start with a Free Class</h2>
-              <p className="mt-3 text-brand-gray leading-relaxed">
-                Experience our academy, meet our coaches, and try a class before making any commitment. No pressure — just a welcoming first visit.
-              </p>
-              <div className="mt-6">
-                <CTAButton href="/contact">Book a Free Class</CTAButton>
-              </div>
-            </article>
-            <article className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-gold text-lg font-bold text-brand-black">2</span>
-              <h2 className="mt-4 text-xl font-bold text-brand-charcoal">Choose the Right Program</h2>
-              <p className="mt-3 text-brand-gray leading-relaxed">
-                Whether you need kids Jiu-Jitsu, adult fundamentals, No-Gi, or private lessons — our team helps you find the best fit for your goals.
-              </p>
-              <div className="mt-6">
-                <CTAButton href="/programs" variant="outline">View Programs</CTAButton>
-              </div>
-            </article>
-            <article className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-gold text-lg font-bold text-brand-black">3</span>
-              <h2 className="mt-4 text-xl font-bold text-brand-charcoal">Select Your Membership</h2>
-              <p className="mt-3 text-brand-gray leading-relaxed">
-                After your first class, we will walk you through membership options including individual and family plans tailored to your schedule.
-              </p>
-            </article>
-          </div>
+  return <>
+    <PageHero title="Membership & Pricing" subtitle="See the current public starting prices before you visit. Try a class first, then choose the plan that fits who is training." breadcrumb={[{ label: "Home", href: "/" }, { label: "Pricing" }]} />
+    <section className="bg-brand-paper py-14 md:py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-6 md:grid-cols-3">
+          {memberships.map((plan) => <article key={plan.name} className="relative overflow-hidden border border-black/10 bg-white p-7">
+            <div className="absolute inset-x-0 top-0 h-1 bg-brand-gold" />
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-red">{plan.name}</p>
+            <p className="mt-5"><span className="font-display text-5xl font-extrabold">{plan.price}</span> <span className="text-brand-gray">{plan.cadence}</span></p>
+            <p className="mt-2 text-sm font-semibold text-brand-gray">{plan.fee}</p>
+            <p className="mt-5 leading-relaxed text-brand-gray">{plan.description}</p>
+          </article>)}
         </div>
-      </section>
-
-      <section className="bg-brand-light py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <SectionHeading title="Membership Options" />
-          <p className="mx-auto max-w-3xl text-center text-lg text-brand-gray leading-relaxed">
-            We offer flexible membership options for individuals and families. Pricing is discussed in person after your free class so we can recommend the plan that actually fits your training goals — not a one-size-fits-all package.
-          </p>
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {["Individual Membership", "Family Membership", "Private Lessons"].map((option) => (
-              <div key={option} className="rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-sm">
-                <h3 className="text-lg font-bold text-brand-charcoal">{option}</h3>
-                <p className="mt-2 text-sm text-brand-gray">
-                  Details provided after your free class
-                </p>
-              </div>
-            ))}
-          </div>
+        <div className="mt-8 flex flex-col items-start justify-between gap-5 border-l-4 border-brand-red bg-brand-light p-6 md:flex-row md:items-center">
+          <div><p className="font-bold">Final billing terms are shown at checkout.</p><p className="mt-1 text-sm text-brand-gray">{dataVerification.pricing}</p></div>
+          <CTAButton href={siteConfig.booking.memberships} external>See all billing options</CTAButton>
         </div>
-      </section>
-
-      <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <SectionHeading title="What's Included" />
-          <ul className="mx-auto grid max-w-4xl gap-4 md:grid-cols-2">
-            {includedItems.map((item) => (
-              <li key={item} className="flex items-start gap-3 text-brand-gray">
-                <svg className="mt-1 h-5 w-5 shrink-0 text-brand-gold" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="bg-brand-light py-16 md:py-24">
-        <div className="mx-auto max-w-3xl px-4 lg:px-8">
-          <SectionHeading title="Membership FAQ" />
-          <FAQAccordion faqs={membershipFaqs} />
-        </div>
-      </section>
-
-      <FinalCTA ctaLabel="Book a Free Class" />
-    </>
-  );
+      </div>
+    </section>
+    <section className="bg-brand-charcoal py-14 text-white md:py-20">
+      <div className="mx-auto grid max-w-5xl items-center gap-8 px-4 sm:px-6 md:grid-cols-2 lg:px-8"><div><p className="text-xs font-bold uppercase tracking-[0.24em] text-brand-gold">Start before you commit</p><h2 className="font-display mt-3 text-3xl font-extrabold uppercase">The trial is currently free.</h2><p className="mt-4 text-white/70">The public Glofox portal lists three free trial credits, valid for one month. Use the trial page if you want Kinetic to recommend your first class.</p></div><div className="flex flex-col gap-3 sm:flex-row md:justify-end"><CTAButton href="/free-trial">Start free trial</CTAButton><CTAButton href="/schedule" variant="white">View schedule</CTAButton></div></div>
+    </section>
+  </>;
 }
