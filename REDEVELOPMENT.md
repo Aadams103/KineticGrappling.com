@@ -87,10 +87,16 @@ Resend is an optional adapter, not a verified existing business integration. Bot
 - Full biographies, ranks, headshots, and credentials for Bobby Power, Jay Kelly, and Aidan Forgay.
 - Public-review excerpts/permissions and the canonical Google Business Profile review URL.
 - Parking and parent-viewing policies.
-- Whether the Wednesday adult gi class is intentionally 60 minutes while other fundamentals sessions are 80 minutes.
-- Wednesday Gi and No-Gi overlap and 7:20 versus previously supplied 7:30 fundamentals end times; resolve with the owner before launch.
+- No-Gi Fundamentals class structure and prerequisites/trial eligibility. Owner confirmed Wednesday evening is adult No-Gi but the current published description duplicates competition copy; do not treat that text as a curriculum source.
+- Other Glofox-derived sessions (Tuesday/Thursday mornings, Friday open mat and advanced evening classes) plus Saturday's noon end time were not reconfirmed by the owner's latest table and remain subject to live-booking verification.
 - Exact map coordinates and ZIP were inherited, not independently verified. Coordinates, postal code and inferred weekday opening hours have been removed from schema. Office availability is not a class schedule.
 - Power Hour's discipline and trial eligibility for individual sessions; current categorization/flags need confirmation.
+
+## Owner-confirmed schedule and structure — 2026-09-09
+
+The owner's corrected table supersedes earlier conflicting evening entries: Power Hour Monday/Wednesday 5:00–6:00 PM (60 minutes); Kids Monday/Wednesday 5:15–6:00 PM (45 minutes); Adult Gi Fundamentals Monday/Tuesday 6:00–7:30 PM (90 minutes); Adult No-Gi Fundamentals Wednesday 6:00–7:30 PM (90 minutes); No-Gi competition Saturday starts at 10:00 AM. All are America/Chicago / Central Time. Wednesday now has one adult fundamentals session, explicitly No-Gi. Saturday's noon end remains sourced from the earlier Glofox calendar, not the owner's confirmation. Other previously observed sessions are retained subject to live-booking verification; omission from the corrected table was not treated as cancellation.
+
+Program descriptions now reflect the owner's supplied structure: Little Grapplers ages 3–5 with 30-minute games; Kids ages 6–12 with structured technique; Adult Fundamentals for adults with instruction, drilling and sparring; competition with advanced BJJ/wrestling/judo; private instruction scheduled directly with instructors. No-Gi prerequisites/trial eligibility and curriculum remain unconfirmed. Removed the unused duplicate `scheduleCategories` data. Durations derive from each entry's start/end, and the shared schedule UI labels Central Time explicitly.
 - Final Resend sender/domain configuration and the existing analytics container ID.
 
 ## Verification record

@@ -36,7 +36,7 @@ export const siteConfig = {
 } as const;
 
 export const dataVerification = {
-  schedule: "Verified against the public Kinetic Grappling Glofox calendar on September 7, 2026.",
+  schedule: "Core evening classes and Saturday No-Gi competition start confirmed by Kinetic Grappling on September 9, 2026. Additional sessions and Saturday's end time are from the September 7 Glofox calendar; check live booking before attending.",
   pricing: "Verified against the public Kinetic Grappling Glofox membership portal on September 7, 2026.",
 } as const;
 
@@ -94,25 +94,25 @@ export const programs: Program[] = [
   },
   {
     slug: "kids-bjj", title: "Kids Brazilian Jiu-Jitsu", ages: "Ages 6–12",
-    description: "Brazilian Jiu-Jitsu fundamentals taught through structured instruction, partner practice, fitness, and respect.",
+    description: "Structured technique instruction with less emphasis on games, developing foundational grappling skills, listening, respect, and fitness.",
     benefits: ["BJJ fundamentals", "Discipline and respect", "Fitness", "Team training"],
     whoFor: "Children ages 6–12 who are ready for more technique-focused instruction.", cta: "Start Free Trial",
     href: "/free-trial?program=kids-bjj", learnMoreHref: "/kids-jiu-jitsu-college-station",
     image: "/images/kids-bjj-class.jpg", imageAlt: "Kids Brazilian Jiu-Jitsu class at Kinetic Grappling", scheduleLabel: "Kids Brazilian Jiu-Jitsu Fundamentals",
   },
   {
-    slug: "adult-fundamentals", title: "Adult BJJ Fundamentals", ages: "Teens + Adults",
-    description: "Build a strong Brazilian Jiu-Jitsu base through technique, drilling, and live application at an appropriate pace.",
-    benefits: ["Beginner fundamentals", "Gi training", "Fitness", "Practical control"],
+    slug: "adult-fundamentals", title: "Adult BJJ Fundamentals", ages: "Adults",
+    description: "Foundational grappling taught through instruction, drilling, and sparring, emphasizing effective technique across differences in size, strength, and age.",
+    benefits: ["Foundational technique", "Instruction and drilling", "Sparring", "Practical control"],
     whoFor: "New and developing adult students, including people without martial-arts experience.", cta: "Start Free Trial",
     href: "/free-trial?program=adult-fundamentals", learnMoreHref: "/adult-bjj-college-station",
-    image: "/images/adult-bjj-class.jpg", imageAlt: "Adult Brazilian Jiu-Jitsu class at Kinetic Grappling", scheduleLabel: "Adult Gi Brazilian Jiu-Jitsu Fundamentals",
+    image: "/images/adult-bjj-class.jpg", imageAlt: "Adult Brazilian Jiu-Jitsu class at Kinetic Grappling", scheduleLabel: "Adult Gi BJJ Fundamentals",
   },
   {
-    slug: "no-gi", title: "No-Gi Grappling", ages: "Teens + Adults",
-    description: "Grappling without the gi, with an emphasis on control, takedowns, escapes, submissions, and wrestling transitions.",
-    benefits: ["No-gi technique", "Wrestling transitions", "Control and submissions", "Competition training"],
-    whoFor: "Students interested in faster grappling in athletic clothing rather than a gi.", cta: "Start Free Trial",
+    slug: "no-gi", title: "No-Gi Fundamentals", ages: "Adults · confirm prerequisites",
+    description: "Kinetic lists No-Gi Fundamentals as a program. Ask the coaching team about the current class format, eligibility, and appropriate starting point.",
+    benefits: ["Grappling without a gi", "Ask about class format", "Confirm eligibility", "Coach-guided placement"],
+    whoFor: "Adults interested in no-gi training. Ask the coaching team about prerequisites, trial eligibility, and the current class structure.", cta: "Ask About No-Gi",
     href: "/free-trial?program=no-gi", learnMoreHref: "/no-gi-grappling-college-station",
     image: "/images/no-gi-grappling.jpg", imageAlt: "No-Gi grappling at Kinetic Grappling", scheduleLabel: "Adult No-Gi BJJ Fundamentals",
   },
@@ -134,7 +134,7 @@ export const programs: Program[] = [
   },
   {
     slug: "competition", title: "Competition Training", ages: "Experienced students",
-    description: "Advanced grappling, wrestling, and judo concepts, technical refinement, coached drilling, and competition preparation.",
+    description: "Advanced BJJ concepts, wrestling, and judo, with detailed refinement for personal development and competition.",
     benefits: ["Tournament preparation", "Advanced detail", "Coached drilling", "No-gi competition session"],
     whoFor: "Developing competitors and experienced students ready for higher-intensity work.", cta: "Ask About Placement",
     href: "/free-trial?program=competition", learnMoreHref: "/bjj-competition-training-college-station",
@@ -142,7 +142,7 @@ export const programs: Program[] = [
   },
   {
     slug: "private-lessons", title: "Private Lessons", ages: "By arrangement",
-    description: "Custom one-on-one instruction for focused improvement, competition preparation, or individual training goals.",
+    description: "Customized one-to-one coaching focused on individual strengths, weaknesses, and personal or competition goals. Schedule directly with an instructor.",
     benefits: ["Individual coaching", "Custom focus", "Flexible arrangement", "Targeted improvement"],
     whoFor: "Students who want focused time with an instructor outside group-class instruction.", cta: "Request a Private Lesson",
     href: "/free-trial?program=private-lessons", learnMoreHref: "/private-jiu-jitsu-lessons-college-station",
@@ -170,32 +170,24 @@ export const homepageFaqs: FAQ[] = [
   { question: "Where is Kinetic Grappling located?", answer: "Kinetic Grappling is at 12700 SH 30 #201, College Station, Texas 77845, serving College Station, Bryan, and the Brazos Valley." },
 ];
 
-export type ScheduleDiscipline = "BJJ" | "No-Gi" | "Kids" | "Conditioning" | "Competition" | "Open Mat";
+export type ScheduleDiscipline = "BJJ" | "No-Gi" | "Kids" | "Power Hour" | "Competition" | "Open Mat";
 export interface ScheduleEntry { day: string; dayIndex: number; start: string; end: string; time: string; program: string; level: string; discipline: ScheduleDiscipline; trialEligible: boolean; }
 export const weeklySchedule: ScheduleEntry[] = [
-  { day: "Monday", dayIndex: 1, start: "17:00", end: "18:00", time: "5:00–6:00 PM", program: "Power Hour", level: "Conditioning", discipline: "Conditioning", trialEligible: false },
+  { day: "Monday", dayIndex: 1, start: "17:00", end: "18:00", time: "5:00–6:00 PM", program: "Power Hour", level: "Ask about class format", discipline: "Power Hour", trialEligible: false },
   { day: "Monday", dayIndex: 1, start: "17:15", end: "18:00", time: "5:15–6:00 PM", program: "Kids Brazilian Jiu-Jitsu Fundamentals", level: "Ages 6–12", discipline: "Kids", trialEligible: true },
-  { day: "Monday", dayIndex: 1, start: "18:00", end: "19:20", time: "6:00–7:20 PM", program: "Adult Gi Brazilian Jiu-Jitsu Fundamentals", level: "Fundamentals", discipline: "BJJ", trialEligible: true },
+  { day: "Monday", dayIndex: 1, start: "18:00", end: "19:30", time: "6:00–7:30 PM", program: "Adult Gi BJJ Fundamentals", level: "Adults · Fundamentals", discipline: "BJJ", trialEligible: true },
   { day: "Monday", dayIndex: 1, start: "19:30", end: "20:30", time: "7:30–8:30 PM", program: "Advanced Grappling and Drilling", level: "Advanced", discipline: "Competition", trialEligible: false },
   { day: "Tuesday", dayIndex: 2, start: "10:00", end: "11:20", time: "10:00–11:20 AM", program: "Adult Gi Brazilian Jiu-Jitsu Fundamentals", level: "Fundamentals", discipline: "BJJ", trialEligible: true },
-  { day: "Tuesday", dayIndex: 2, start: "18:00", end: "19:20", time: "6:00–7:20 PM", program: "Adult Gi Brazilian Jiu-Jitsu Fundamentals", level: "Fundamentals", discipline: "BJJ", trialEligible: true },
+  { day: "Tuesday", dayIndex: 2, start: "18:00", end: "19:30", time: "6:00–7:30 PM", program: "Adult Gi BJJ Fundamentals", level: "Adults · Fundamentals", discipline: "BJJ", trialEligible: true },
   { day: "Tuesday", dayIndex: 2, start: "19:30", end: "20:30", time: "7:30–8:30 PM", program: "Advanced Grappling and Drilling", level: "Advanced", discipline: "Competition", trialEligible: false },
-  { day: "Wednesday", dayIndex: 3, start: "17:00", end: "18:00", time: "5:00–6:00 PM", program: "Power Hour", level: "Conditioning", discipline: "Conditioning", trialEligible: false },
+  { day: "Wednesday", dayIndex: 3, start: "17:00", end: "18:00", time: "5:00–6:00 PM", program: "Power Hour", level: "Ask about class format", discipline: "Power Hour", trialEligible: false },
   { day: "Wednesday", dayIndex: 3, start: "17:15", end: "18:00", time: "5:15–6:00 PM", program: "Kids Brazilian Jiu-Jitsu Fundamentals", level: "Ages 6–12", discipline: "Kids", trialEligible: true },
-  { day: "Wednesday", dayIndex: 3, start: "18:00", end: "19:00", time: "6:00–7:00 PM", program: "Adult Gi Brazilian Jiu-Jitsu Fundamentals", level: "Fundamentals", discipline: "BJJ", trialEligible: true },
-  { day: "Wednesday", dayIndex: 3, start: "18:00", end: "19:20", time: "6:00–7:20 PM", program: "Adult No-Gi BJJ Fundamentals", level: "Fundamentals", discipline: "No-Gi", trialEligible: true },
+  { day: "Wednesday", dayIndex: 3, start: "18:00", end: "19:30", time: "6:00–7:30 PM", program: "Adult No-Gi BJJ Fundamentals", level: "Adults · Fundamentals", discipline: "No-Gi", trialEligible: true },
   { day: "Wednesday", dayIndex: 3, start: "19:30", end: "20:30", time: "7:30–8:30 PM", program: "Advanced Grappling and Drilling", level: "Advanced", discipline: "Competition", trialEligible: false },
   { day: "Thursday", dayIndex: 4, start: "10:00", end: "11:20", time: "10:00–11:20 AM", program: "Adult No-Gi BJJ Fundamentals", level: "Fundamentals", discipline: "No-Gi", trialEligible: true },
   { day: "Friday", dayIndex: 5, start: "18:00", end: "19:30", time: "6:00–7:30 PM", program: "Open Mat", level: "Open mat", discipline: "Open Mat", trialEligible: false },
   { day: "Saturday", dayIndex: 6, start: "10:00", end: "12:00", time: "10:00 AM–12:00 PM", program: "No-Gi Competition Training", level: "Competition", discipline: "Competition", trialEligible: false },
 ];
-
-export const scheduleCategories = [
-  { name: "Adult Gi Fundamentals", times: "Mon 6 PM · Tue 10 AM & 6 PM · Wed 6 PM", ages: "Adult fundamentals" },
-  { name: "Kids BJJ Fundamentals", times: "Mon & Wed · 5:15 PM", ages: "Ages 6–12" },
-  { name: "Adult No-Gi Fundamentals", times: "Wed 6 PM · Thu 10 AM", ages: "Adult fundamentals" },
-  { name: "Advanced Grappling", times: "Mon–Wed · 7:30 PM", ages: "Advanced" },
-] as const;
 
 export const memberships = [
   { name: "Adult Grappler", price: "$120", cadence: "per month", fee: "$50 joining fee", description: "Access to the adult Brazilian Jiu-Jitsu curriculum." },

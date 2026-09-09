@@ -5,7 +5,12 @@ import Link from "next/link";
 import type { ScheduleDiscipline, ScheduleEntry } from "@/lib/site-config";
 
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-const filters: Array<"All" | ScheduleDiscipline> = ["All", "BJJ", "No-Gi", "Kids", "Conditioning", "Competition", "Open Mat"];
+const filters: Array<"All" | ScheduleDiscipline> = ["All", "BJJ", "No-Gi", "Kids", "Power Hour", "Competition", "Open Mat"];
+
+function duration(entry: ScheduleEntry) {
+  const minutes = (value: string) => { const [hour, minute] = value.split(":").map(Number); return hour * 60 + minute; };
+  return minutes(entry.end) - minutes(entry.start);
+}
 
 export function ScheduleExplorer({ entries, compact = false }: { entries: ScheduleEntry[]; compact?: boolean }) {
   const [currentDay, setCurrentDay] = useState<string | null>(null);
@@ -22,6 +27,7 @@ export function ScheduleExplorer({ entries, compact = false }: { entries: Schedu
   const grouped = days.map((name) => ({ name, entries: visible.filter((entry) => entry.day === name) })).filter((group) => group.entries.length || day === group.name);
 
   return <div>
+    <p className="mb-4 text-sm font-semibold text-brand-gray">All times are Central Time (College Station).</p>
     <div className="flex gap-2 overflow-x-auto pb-2" role="group" aria-label="Filter schedule by day">
       {!compact && <Filter active={day === "All"} onClick={() => setDay("All")}>All week</Filter>}
       {days.map((name) => <Filter key={name} active={day === name} onClick={() => setDay(name)}>{name === currentDay ? `Today · ${name.slice(0, 3)}` : name.slice(0, 3)}</Filter>)}
@@ -37,7 +43,7 @@ export function ScheduleExplorer({ entries, compact = false }: { entries: Schedu
           {group.name === currentDay && <span className="rounded-full bg-brand-red px-2 py-1 text-xs font-bold uppercase">Today</span>}
         </div>
         {group.entries.length ? <ul>{group.entries.map((entry) => <li key={`${entry.day}-${entry.start}-${entry.program}`} className="border-b border-black/5 p-5 last:border-0">
-          <div className="flex flex-col items-start justify-between gap-2 sm:flex-row sm:gap-4"><div className="min-w-0"><p className="font-bold text-brand-charcoal">{entry.program}</p><p className="mt-1 text-sm text-brand-gray">{entry.level} · {entry.discipline}</p></div><span className="shrink-0 font-semibold text-brand-red">{entry.time}</span></div>
+          <div className="flex flex-col items-start justify-between gap-2 sm:flex-row sm:gap-4"><div className="min-w-0"><p className="font-bold text-brand-charcoal">{entry.program}</p><p className="mt-1 text-sm text-brand-gray">{entry.level} · {entry.discipline}</p></div><div className="shrink-0 sm:text-right"><p className="font-semibold text-brand-red">{entry.time}</p><p className="mt-1 text-sm text-brand-gray">{duration(entry)} minutes</p></div></div>
           {entry.trialEligible && <Link href={`/free-trial?program=${entry.discipline === "Kids" ? "kids-bjj" : entry.discipline === "No-Gi" ? "no-gi" : "adult-fundamentals"}`} className="mt-3 inline-flex min-h-11 items-center text-sm font-bold uppercase tracking-wider underline decoration-brand-gold decoration-2 underline-offset-4">Ask about this class</Link>}
         </li>)}</ul> : <p className="p-5 text-brand-gray">No regularly listed classes for this filter. Check Glofox for date-specific changes.</p>}
       </section>)}

@@ -5,13 +5,12 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { FinalCTA } from "@/components/FinalCTA";
 import { CTAButton } from "@/components/CTAButton";
 import { createPageMetadata } from "@/lib/metadata";
-import { siteConfig } from "@/lib/site-config";
 import type { FAQ } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
-  title: "No-Gi Grappling College Station, TX | Submission Grappling Classes",
+  title: "No-Gi Fundamentals in College Station",
   description:
-    "No-Gi Jiu-Jitsu and submission grappling classes in College Station, TX. Fast-paced training focused on control, takedowns, escapes, and submissions at Kinetic Grappling.",
+    "Explore No-Gi Fundamentals at Kinetic Grappling in College Station. Contact the coaching team to confirm class format, eligibility, and your starting point.",
   path: "/no-gi-grappling-college-station",
   keywords: [
     "No-Gi Jiu-Jitsu College Station",
@@ -52,12 +51,12 @@ const noGiFaqs: FAQ[] = [
   {
     question: "Do I need gi experience before trying No-Gi?",
     answer:
-      "Fundamentals experience is helpful but not always required. Talk to our coaches about the best starting point for your experience level.",
+      "Kinetic's current No-Gi eligibility requirements need confirmation. Tell the coaches your experience level and ask which class is appropriate before attending.",
   },
   {
     question: "What should I wear to No-Gi class?",
     answer:
-      "Wear a rash guard or fitted athletic shirt and board shorts or spats. Avoid pockets, zippers, and loose clothing.",
+      "No-gi grappling generally uses fitted athletic clothing instead of a gi. Ask the coach to confirm the clothing and equipment required for your first class.",
   },
   {
     question: "Is No-Gi harder than gi training?",
@@ -67,7 +66,7 @@ const noGiFaqs: FAQ[] = [
   {
     question: "Can beginners try No-Gi?",
     answer:
-      "We recommend building a fundamentals base first, but motivated beginners can discuss options with our coaching team during a free trial.",
+      "Ask the coaching team to confirm whether the current No-Gi class accepts beginners and trial students. The listed program does not specify eligibility.",
   },
 ];
 
@@ -77,7 +76,7 @@ export default function NoGiPage() {
 
       <PageHero
         title="No-Gi Grappling in College Station, TX"
-        subtitle="Fast-paced submission grappling focused on control, takedowns, escapes, and submissions — without the traditional gi."
+        subtitle="Kinetic lists No-Gi Fundamentals among its programs. Contact the coaching team to confirm the current class structure and eligibility."
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "No-Gi Grappling" },
@@ -91,10 +90,10 @@ export default function NoGiPage() {
             <div>
               <SectionHeading
                 title="Dynamic Grappling Without the Gi"
-                subtitle="Our No-Gi classes in College Station combine Jiu-Jitsu technique with wrestling-style movement for a faster, more athletic training experience."
+                subtitle="No-gi grappling uses athletic clothing instead of the traditional gi. Ask Kinetic's coaches how the current Fundamentals program is organized and where you should start."
                 align="left"
               />
-              <CTAButton href="/free-trial?program=no-gi">{siteConfig.primaryCta}</CTAButton>
+              <CTAButton href="/free-trial?program=no-gi">Ask About No-Gi</CTAButton>
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-brand-light">
               <Image
@@ -111,7 +110,7 @@ export default function NoGiPage() {
 
       <section className="bg-brand-light py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading title="What You'll Train in No-Gi" />
+          <SectionHeading title="Common No-Gi Concepts" subtitle="These concepts describe the discipline generally. Ask the coach which are covered in the current Fundamentals class." />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {noGiFocus.map((item) => (
               <div key={item.title} className="border border-black/5 bg-white p-6">
@@ -134,7 +133,7 @@ export default function NoGiPage() {
 
       <FinalCTA
         headline="Experience No-Gi Grappling"
-        description="Book a No-Gi class at Kinetic Grappling and see why submission grappling is one of the fastest-growing martial arts in College Station."
+        description="Contact Kinetic Grappling to confirm the No-Gi class format, eligibility, and availability before arranging your visit."
       />
     </>
   );
