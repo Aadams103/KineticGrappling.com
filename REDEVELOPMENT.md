@@ -69,13 +69,15 @@ Live sitemap inventory fetched 2026-09-09: `/sitemap.xml` references `/pages-sit
 
 `free_trial_cta_click`, `trial_form_start`, `trial_form_submit`, `phone_click`, `directions_click`, `schedule_view`, `program_view`, `pricing_view`, `social_outbound_click`.
 
-`Analytics.tsx` records route views after navigation and delegates anchor click events, covering footer and inline links as well as CTAs. Form events contain program/path only, never name, phone, email or message. No analytics destination/container has been configured or verified.
+`Analytics.tsx` records route views after navigation and delegates anchor click events, covering footer and inline links as well as CTAs. Form events contain program/path only, never name, phone, email or message. No analytics destination/container has been configured or verified. `GoogleTagManager.tsx` accepts a validated `NEXT_PUBLIC_GTM_ID` and loads only in Vercel production; preview traffic is excluded. The live Wix homepage scan found no GTM/GA ID, so no destination was guessed.
 
 ## Environment variables
 
 - `RESEND_API_KEY`: enables server-side trial-request delivery.
 - `TRIAL_FORM_TO_EMAIL`: optional destination override; defaults to the academy email.
 - `TRIAL_FORM_FROM_EMAIL`: verified Resend sender.
+- `NEXT_PUBLIC_GTM_ID`: optional existing academy GTM container, loaded only in Vercel production.
+- `GOOGLE_SITE_VERIFICATION` / `BING_SITE_VERIFICATION`: optional ownership tokens for search services.
 - An existing Google Tag Manager or analytics bootstrap may consume the data-layer events; no competing analytics package is installed.
 
 Resend is an optional adapter, not a verified existing business integration. Both key and sender are required; no demo sender is used. Without them, or when the provider fails, the form explicitly says the request has **not** been sent and offers a prepared email plus Glofox/call alternatives. `trial_form_submit` fires only after provider acceptance, not for the fallback. Provider acceptance does not prove inbox delivery. Do not activate delivery without confirming the approved integration and adding deployment-level abuse/rate controls.
@@ -88,7 +90,7 @@ Resend is an optional adapter, not a verified existing business integration. Bot
 - Public-review excerpts/permissions and the canonical Google Business Profile review URL.
 - Parking and parent-viewing policies.
 - No-Gi Fundamentals class structure and prerequisites/trial eligibility. Owner confirmed Wednesday evening is adult No-Gi but the current published description duplicates competition copy; do not treat that text as a curriculum source.
-- Other Glofox-derived sessions (Tuesday/Thursday mornings, Friday open mat and advanced evening classes) plus Saturday's noon end time were not reconfirmed by the owner's latest table and remain subject to live-booking verification.
+- Other Glofox-derived sessions (Tuesday/Thursday mornings and Friday open mat) plus Saturday's noon end time were not reconfirmed by the owner's latest table and remain subject to live-booking verification.
 - Exact map coordinates and ZIP were inherited, not independently verified. Coordinates, postal code and inferred weekday opening hours have been removed from schema. Office availability is not a class schedule.
 - Power Hour's discipline and trial eligibility for individual sessions; current categorization/flags need confirmation.
 
@@ -97,7 +99,7 @@ Resend is an optional adapter, not a verified existing business integration. Bot
 The owner's corrected table supersedes earlier conflicting evening entries: Power Hour Monday/Wednesday 5:00–6:00 PM (60 minutes); Kids Monday/Wednesday 5:15–6:00 PM (45 minutes); Adult Gi Fundamentals Monday/Tuesday 6:00–7:30 PM (90 minutes); Adult No-Gi Fundamentals Wednesday 6:00–7:30 PM (90 minutes); No-Gi competition Saturday starts at 10:00 AM. All are America/Chicago / Central Time. Wednesday now has one adult fundamentals session, explicitly No-Gi. The owner subsequently confirmed there are no classes after 7:30 PM; the Monday–Wednesday 7:30–8:30 PM Advanced Grappling and Drilling entries have been removed from the shared schedule. Saturday's noon end remains sourced from the earlier Glofox calendar, not the owner's confirmation. Other previously observed sessions ending by 7:30 PM are retained subject to live-booking verification; omission from the corrected table was not treated as cancellation.
 
 Program descriptions now reflect the owner's supplied structure: Little Grapplers ages 3–5 with 30-minute games; Kids ages 6–12 with structured technique; Adult Fundamentals for adults with instruction, drilling and sparring; competition with advanced BJJ/wrestling/judo; private instruction scheduled directly with instructors. No-Gi prerequisites/trial eligibility and curriculum remain unconfirmed. Removed the unused duplicate `scheduleCategories` data. Durations derive from each entry's start/end, and the shared schedule UI labels Central Time explicitly.
-- Final Resend sender/domain configuration and the existing analytics container ID.
+
 
 ## Verification record
 
@@ -115,7 +117,48 @@ Browser follow-up: rendered the homepage in a 375px iframe (360px content area p
 
 SEO follow-up: breadcrumb markup matches visible navigation; resources include Article markup and visible academy authorship. FAQ answers remain visible but FAQ rich-result markup was removed: [Google Search Central's June 15, 2026 update](https://developers.google.com/search/updates) says the feature is no longer shown. Sitemap no longer invents a fresh content-modification date on every build. The homepage includes a dedicated location block.
 
-Still outstanding: complete 375/430/768/1024/1440px browser matrix, comprehensive keyboard/contrast/accessibility review, field or lab CWV measurement, real form delivery, actual analytics receipt and Search Console historical URL inventory. Do not mark this release fully QA-passed or production-ready until these gates are recorded with results.
+The earlier incomplete browser matrix is superseded by the completed six-page matrix below. Still outstanding: comprehensive accessibility/device review, field or lab CWV measurement, real form delivery, actual analytics receipt and Search Console historical URL inventory. Do not describe these unperformed checks as passed.
+
+## Autonomous design, conversion and discovery pass
+
+- Replaced the text-over-photo homepage with a split layout that gives genuine training photography its own space. Today's schedule immediately follows the hero; the three main program cards lead to the full program directory.
+- Moved first-visit guidance and pricing earlier, replaced the long homepage coach directory with Ambrose's verified profile, and added referral sharing plus academy social links.
+- Free trial now prominently opens the existing Glofox membership/registration portal. The separate coaching inquiry retains its honest email-preparation fallback. No new booking account, paid service, production secret, or messaging provider was created.
+- `src/lib/schedule.ts` filters the central timetable for program pages and builds class-specific inquiry links. Adult, kids, No-Gi, competition and resource pages render actual class times on the server. The inquiry accepts only a class choice matching the current stored schedule.
+- Program cards link directly to their class times. Program social previews use their own genuine photography. The service catalog derives from the visible centralized program descriptions.
+- Removed the map iframe from every footer; contact still provides an embedded map and all pages retain directions. Enlarged navigation/age labels and footer touch targets, strengthened field boundaries and focus indicators, wrapped schedule filters, and accommodated mobile safe areas.
+- Added `gym_share` (native share/copy completion) and `trial_booking_click` (outbound Glofox click). Neither is a confirmed enrollment. No personal inquiry fields enter analytics.
+- Optional `GOOGLE_SITE_VERIFICATION` and `BING_SITE_VERIFICATION` values render verification metadata. `NEXT_PUBLIC_GTM_ID` is a public container identifier, not a secret. Set only the academy's approved existing container. Vercel preview pages emit noindex; production remains indexable.
+- [Google's generative search guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) informed this pass: useful original business information, crawlable text, internal links and consistent local details. No ranking promises, synthetic reviews, doorway pages or special AI-file claims.
+- Source-token contrast calculations: body text on paper 5.02:1; white text on primary red 5.56:1; red on paper 5.21:1; dark gold on paper 5.78:1. These are specific color checks, not a full WCAG certification.
+
+### Latest verification — 2026-09-09
+
+TypeScript, ESLint, the 14 mocked contact-handler tests and the production build passed. The built-site checker passed for 21 pages, 742 internal links, 85 image references, 44 parseable JSON-LD blocks, 21 sitemap URLs and three permanent redirects. Shared first-load JavaScript is 102 kB; the homepage total is 116 kB. Bundle sizes are not Core Web Vitals measurements.
+
+The local browser completed 30 viewport checks: home, schedule, free trial, membership, programs and contact at each of 375, 430, 768, 1024 and 1440 CSS pixels. Every result had matching document scroll/content widths, no detected main-content overflow, an expected H1 and no broken loaded images. Lazy images not yet requested and physical mobile-device behavior are outside that check. Homepage screenshots were visually inspected at representative mobile, tablet and desktop sizes.
+
+Interaction checks confirmed mobile menu open/Escape close, combined Wednesday + No-Gi filtering, and navigation from that class to a prefilled No-Gi inquiry with the exact Wednesday 6:00–7:30 PM Central class. Empty form submission was blocked by required fields. Glofox's registration link points to the existing academy membership portal; no real registration or outbound message was submitted. The local-only QA harness now includes a repeatable six-page/five-width audit and is excluded from public assets.
+
+## Launch promotion kit — prepared, not posted
+
+Use these only after the approved production migration. Confirm account access, active offerings and asset permissions before posting. Use genuine academy photos already in `public/images` or newly supplied team footage.
+
+**Academy profile description:** Kinetic Grappling is a Brazilian Jiu-Jitsu academy at 12700 SH 30 #201 in College Station, Texas, serving College Station, Bryan and the Brazos Valley. Programs include adult fundamentals, kids Jiu-Jitsu, No-Gi fundamentals, competition training and private instruction by arrangement. MMA and wrestling are among the academy's disciplines; contact the team for current placement and availability. View class times, membership prices and the free-trial registration link on the website.
+
+| Post | Ready-to-use copy | Link after launch |
+| --- | --- | --- |
+| Adult beginner introduction | New to Jiu-Jitsu? Start with the fundamentals. Adult Gi classes at Kinetic Grappling run Monday and Tuesday, 6:00–7:30 p.m. Central. See what to bring, meet the coaching team, and explore the free trial. College Station • Bryan. | `/adult-bjj-college-station?utm_source=facebook&utm_medium=organic_social&utm_campaign=site_launch&utm_content=adult_fundamentals` |
+| Parents and kids | A place to learn technique, listening, respect and fitness. Kids Jiu-Jitsu for ages 6–12 meets Monday and Wednesday, 5:15–6:00 p.m. Central at Kinetic Grappling in College Station. See the class details and ask about a first visit. | `/kids-jiu-jitsu-college-station?utm_source=instagram&utm_medium=organic_social&utm_campaign=site_launch&utm_content=kids_bjj` |
+| Student referral | Know someone who keeps saying they want to try Jiu-Jitsu? Send them Kinetic's website. Programs, class times, pricing and the free-trial starting point are together in one place. Your next training partner might already be a friend. | `/?utm_source=facebook&utm_medium=organic_social&utm_campaign=site_launch&utm_content=bring_a_friend` |
+
+Prefix those paths with `https://www.kineticgrappling.com`. For Instagram, put the tracked destination in the profile link or a Story link sticker rather than treating a caption URL as clickable. Suggested caption tags: #KineticGrappling #CollegeStation #BrazilianJiuJitsu; use #KidsJiuJitsu for the parent post.
+
+Suggested first week: academy introduction at launch; kids post two days later; the beginner guide later that week; student-referral post with an authentic training photo at the weekend. These are prepared campaign assets, not scheduled messages or fabricated community activity.
+
+Local discovery activation: use the same business name, address and phone in Google Business Profile and Bing Places; link website and appointment actions to the canonical website and free-trial route; add genuine current photos; request honest reviews without incentives or filtering. Access and publication remain unperformed. Keep office availability distinct from class times.
+
+Measurement after activation: compare equivalent 28-day Search Console periods by landing page and local non-brand query, tracking impressions, clicks and CTR. Review booking clicks, inquiries, calls and directions in the approved analytics account; reconcile actual trial attendance and memberships in Glofox. Do not count an outbound booking click as a completed signup.
 
 ## Launch checklist
 

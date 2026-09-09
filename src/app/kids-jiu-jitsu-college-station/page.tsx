@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ProgramSchedule } from "@/components/ProgramSchedule";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { FAQAccordion } from "@/components/FAQAccordion";
@@ -9,9 +10,9 @@ import { siteConfig } from "@/lib/site-config";
 import type { FAQ } from "@/lib/site-config";
 
 export const metadata = createPageMetadata({
-  title: "Kids Brazilian Jiu-Jitsu College Station, TX | Kids Martial Arts",
+  title: "Kids Jiu-Jitsu in College Station, TX",
   description:
-    "Kids Brazilian Jiu-Jitsu and martial arts classes in College Station, TX. Build confidence, discipline, focus, and anti-bullying skills at Kinetic Grappling. Book a free class today.",
+    "Kids BJJ for ages 6–12 in College Station. See Monday and Wednesday class times, learn what to bring, and start a free trial at Kinetic Grappling.",
   path: "/kids-jiu-jitsu-college-station",
   keywords: [
     "Kids Jiu-Jitsu College Station",
@@ -91,6 +92,7 @@ export default function KidsJiuJitsuPage() {
         imageSrc="/images/kids-bjj-class.jpg"
       />
 
+      <ProgramSchedule program="kids-bjj" />
       <section className="bg-brand-paper py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2">

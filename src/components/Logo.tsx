@@ -16,13 +16,13 @@ export function Logo({ variant = "header", className = "", onClick }: LogoProps)
     <Link href="/" className={cn("inline-flex items-center gap-3", className)} onClick={onClick}>
       <Image
         src={brandAssets.logoHeader}
-        alt={brandAssets.logoAlt}
+        alt=""
         width={56}
         height={56}
         className="h-11 w-11 shrink-0 rounded-full object-cover md:h-12 md:w-12"
         priority={variant === "header"}
       />
-      <span className="flex flex-col leading-tight">
+      <span className="flex min-w-0 flex-col leading-tight">
         <span
           className={cn(
             "font-display text-lg font-extrabold uppercase tracking-wide md:text-xl",
@@ -31,7 +31,7 @@ export function Logo({ variant = "header", className = "", onClick }: LogoProps)
         >
           Kinetic Grappling
         </span>
-        <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-gold md:text-xs">
+        <span className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-gold">
           Brazilian Jiu-Jitsu
         </span>
       </span>

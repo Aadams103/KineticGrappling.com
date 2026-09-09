@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ProgramSchedule } from "@/components/ProgramSchedule";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { FinalCTA } from "@/components/FinalCTA";
@@ -30,6 +31,7 @@ export default function CompetitionPage() {
         breadcrumb={[{ label: "Home", href: "/" }, { label: "Competition Training" }]}
         imageSrc="/images/competition-training.jpg"
       />
+      <ProgramSchedule program="competition" />
       <section className="bg-brand-paper py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2">

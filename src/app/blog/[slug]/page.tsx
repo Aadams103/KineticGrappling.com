@@ -1,9 +1,10 @@
+import { ProgramSchedule } from "@/components/ProgramSchedule";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { FinalCTA } from "@/components/FinalCTA";
 import { createPageMetadata } from "@/lib/metadata";
-import { blogPosts, siteConfig, brandAssets } from "@/lib/site-config";
+import { blogPosts, siteConfig, brandAssets, type ProgramSlug } from "@/lib/site-config";
 import { JsonLd } from "@/components/JsonLd";
 
 export function generateStaticParams() {
@@ -53,6 +54,7 @@ export default async function BlogPostPage({
           <p className="mb-2 text-sm text-brand-gray">By {siteConfig.name}</p>
           <time className="text-sm text-brand-gray" dateTime={post.date}>
             {new Date(post.date).toLocaleDateString("en-US", {
+              timeZone: "UTC",
               month: "long",
               day: "numeric",
               year: "numeric",
@@ -63,6 +65,7 @@ export default async function BlogPostPage({
               <p key={paragraph.slice(0, 32)}>{paragraph}</p>
             ))}
           </div>
+          <nav aria-label="Plan your first visit" className="mt-8 border-y border-black/10 py-5"><h2 className="font-display text-xl font-extrabold uppercase">Make your first visit practical</h2><div className="mt-3 flex flex-wrap gap-x-6 gap-y-2"><Link href="/schedule" className="inline-flex min-h-11 items-center font-semibold underline">Current class times</Link><Link href="/membership" className="inline-flex min-h-11 items-center font-semibold underline">Membership prices</Link><Link href="/faq" className="inline-flex min-h-11 items-center font-semibold underline">Beginner questions</Link><Link href="/contact" className="inline-flex min-h-11 items-center font-semibold underline">Location and contact</Link></div></nav>
           <p className="mt-10 text-sm text-brand-gray">
             <Link href="/blog" className="font-semibold text-brand-gold-dark hover:underline">
               Back to all articles
@@ -70,6 +73,7 @@ export default async function BlogPostPage({
           </p>
         </div>
       </article>
+      <ProgramSchedule program={(post.slug === "bjj-for-kids-college-station" ? "kids-bjj" : "adult-fundamentals") as ProgramSlug} />
       <FinalCTA />
     </>
   );

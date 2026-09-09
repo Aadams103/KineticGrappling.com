@@ -2,7 +2,7 @@
 
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, weeklySchedule } from "@/lib/site-config";
 import { trackEvent } from "@/lib/analytics";
 
 const programs = [
@@ -12,12 +12,14 @@ const programs = [
   ["not-sure", "Not sure — help me choose"],
 ] as const;
 
-const fieldClass = "mt-1.5 min-h-12 w-full rounded-sm border border-black/20 bg-white px-4 py-3 text-base focus:border-brand-red focus:ring-2 focus:ring-brand-red/20";
+const fieldClass = "mt-1.5 min-h-12 w-full rounded-sm border border-brand-gray bg-white px-4 py-3 text-base focus:border-brand-red focus:ring-2 focus:ring-brand-red/20";
 
 export function ContactForm({ deliveryEnabled = false }: { deliveryEnabled?: boolean }) {
   const searchParams = useSearchParams();
   const requested = searchParams.get("program") ?? "";
   const initialProgram = useMemo(() => programs.some(([value]) => value === requested) ? requested : "", [requested]);
+  const requestedClass = searchParams.get("class") ?? "";
+  const initialClass = weeklySchedule.some(entry => `${entry.day} · ${entry.program} · ${entry.time} Central` === requestedClass) ? requestedClass : "";
   const started = useRef(false);
   const [state, setState] = useState<"idle" | "pending" | "success" | "prepared">("idle");
   const confirmation = useRef<HTMLDivElement>(null);
@@ -80,7 +82,7 @@ export function ContactForm({ deliveryEnabled = false }: { deliveryEnabled?: boo
         <select id="program" name="program" className={fieldClass} defaultValue={initialProgram}><option value="">Select a program</option>{programs.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select>
       </div>
     </div>
-    <div><label htmlFor="preferredDay" className="block font-semibold">Preferred class or day</label><input id="preferredDay" name="preferredDay" className={fieldClass} placeholder="Example: Monday evening" /></div>
+    <div><label htmlFor="preferredDay" className="block font-semibold">Preferred class or day</label><input id="preferredDay" name="preferredDay" defaultValue={initialClass} maxLength={200} className={fieldClass} placeholder="Example: Monday evening" /></div>
     <div><label htmlFor="message" className="block font-semibold">Anything the coach should know? <span className="font-normal text-brand-gray">(optional)</span></label><textarea id="message" name="message" rows={3} className={fieldClass} placeholder="Goals, experience, child's age, or a question" /></div>
     {error && <p id="form-error" role="alert" className="border-l-4 border-brand-red bg-red-50 p-3 text-red-900">{error}</p>}
     <button type="submit" disabled={state === "pending"} className="min-h-[54px] w-full bg-brand-red px-6 py-4 font-bold uppercase tracking-[0.14em] text-white hover:bg-brand-red-dark disabled:opacity-60">{state === "pending" ? "Preparing…" : deliveryEnabled ? "Request My Free Trial" : "Prepare Trial Email"}</button>

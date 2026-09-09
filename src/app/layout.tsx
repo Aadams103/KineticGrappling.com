@@ -1,3 +1,4 @@
+import { GoogleTagManager } from "@/components/GoogleTagManager";
 import type { Metadata } from "next";
 import { Exo_2, Source_Sans_3 } from "next/font/google";
 import { Header } from "@/components/Header";
@@ -41,7 +42,8 @@ export const metadata: Metadata = {
     "Bryan College Station Jiu-Jitsu",
     "BJJ near Texas A&M",
   ],
-  robots: { index: true, follow: true },
+  robots: { index: process.env.VERCEL_ENV !== "preview", follow: true, googleBot: { index: process.env.VERCEL_ENV !== "preview", follow: true, "max-image-preview": "large" } },
+  verification: { google: process.env.GOOGLE_SITE_VERIFICATION, other: process.env.BING_SITE_VERIFICATION ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION } : undefined },
   category: "sports",
   icons: {
     icon: brandAssets.favicon,
@@ -59,9 +61,10 @@ export default function RootLayout({
       <head>
         <JsonLd data={getLocalBusinessSchema()} />
       </head>
-      <body className={`${display.variable} ${body.variable} font-sans pb-20 md:pb-0`}>
+      <body className={`${display.variable} ${body.variable} font-sans pb-[calc(5rem+env(safe-area-inset-bottom))] md:pb-0`}>
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <Header />
+        <GoogleTagManager />
         <Analytics />
         <main id="main-content">{children}</main>
         <Footer />

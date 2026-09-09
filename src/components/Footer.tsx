@@ -5,7 +5,6 @@ import { Logo } from "./Logo";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  const mapsQuery = encodeURIComponent(siteConfig.address.full);
 
   return (
     <footer className="bg-brand-black text-white">
@@ -14,14 +13,14 @@ export function Footer() {
           <div>
             <Logo variant="footer" />
             <p className="mt-4 text-sm leading-relaxed text-white/70">
-              {siteConfig.localSeoText} Kids, teens, adults, and beginners welcome.
+              {siteConfig.localSeoText} Adults, kids, and beginners welcome.
             </p>
             <div className="mt-4 flex gap-4">
               <a
                 href={siteConfig.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-semibold uppercase tracking-wider text-white/55 transition-colors hover:text-brand-gold"
+                className="inline-flex min-h-11 items-center text-sm font-semibold uppercase tracking-wider text-white/70 transition-colors hover:text-brand-gold"
                 aria-label="Kinetic Grappling on Instagram"
               >
                 Instagram
@@ -30,7 +29,7 @@ export function Footer() {
                 href={siteConfig.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-semibold uppercase tracking-wider text-white/55 transition-colors hover:text-brand-gold"
+                className="inline-flex min-h-11 items-center text-sm font-semibold uppercase tracking-wider text-white/70 transition-colors hover:text-brand-gold"
                 aria-label="Kinetic Grappling on Facebook"
               >
                 Facebook
@@ -45,7 +44,7 @@ export function Footer() {
             <ul className="mt-4 space-y-2">
               {[...siteConfig.nav, ...siteConfig.footerExtra].map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-white/70 hover:text-white">
+                  <Link href={item.href} className="inline-flex min-h-11 items-center text-sm text-white/70 hover:text-white">
                     {item.label}
                   </Link>
                 </li>
@@ -59,29 +58,29 @@ export function Footer() {
             </h3>
             <ul className="mt-4 space-y-2 text-sm text-white/70">
               <li>
-                <Link href="/kids-jiu-jitsu-college-station" className="hover:text-white">
+                <Link href="/kids-jiu-jitsu-college-station" className="inline-flex min-h-11 items-center hover:text-white">
                   Kids BJJ
                 </Link>
               </li>
               <li>
-                <Link href="/adult-bjj-college-station" className="hover:text-white">
+                <Link href="/adult-bjj-college-station" className="inline-flex min-h-11 items-center hover:text-white">
                   Adult BJJ
                 </Link>
               </li>
               <li>
-                <Link href="/no-gi-grappling-college-station" className="hover:text-white">
+                <Link href="/no-gi-grappling-college-station" className="inline-flex min-h-11 items-center hover:text-white">
                   No-Gi Grappling
                 </Link>
               </li>
-              <li><Link href="/mma-college-station" className="hover:text-white">MMA</Link></li>
-              <li><Link href="/wrestling-college-station" className="hover:text-white">Wrestling</Link></li>
+              <li><Link href="/mma-college-station" className="inline-flex min-h-11 items-center hover:text-white">MMA</Link></li>
+              <li><Link href="/wrestling-college-station" className="inline-flex min-h-11 items-center hover:text-white">Wrestling</Link></li>
               <li>
-                <Link href="/bjj-competition-training-college-station" className="hover:text-white">
+                <Link href="/bjj-competition-training-college-station" className="inline-flex min-h-11 items-center hover:text-white">
                   Competition
                 </Link>
               </li>
               <li>
-                <Link href="/private-jiu-jitsu-lessons-college-station" className="hover:text-white">
+                <Link href="/private-jiu-jitsu-lessons-college-station" className="inline-flex min-h-11 items-center hover:text-white">
                   Private Lessons
                 </Link>
               </li>
@@ -113,17 +112,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 overflow-hidden rounded-sm border border-white/10">
-          <iframe
-            title="Kinetic Grappling Brazilian Jiu-Jitsu Academy location on Google Maps"
-            src={`https://maps.google.com/maps?q=${mapsQuery}&output=embed`}
-            className="h-64 w-full border-0 grayscale-[25%] contrast-[1.1]"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
-
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-white/45 md:flex-row">
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-white/65 md:flex-row">
           <p>
             &copy; {currentYear} {siteConfig.name}. All rights reserved.
           </p>

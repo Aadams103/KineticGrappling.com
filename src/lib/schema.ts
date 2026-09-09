@@ -1,4 +1,4 @@
-import { siteConfig } from "./site-config";
+import { siteConfig, programs } from "./site-config";
 
 export function getLocalBusinessSchema() {
   return {
@@ -46,20 +46,15 @@ export function getLocalBusinessSchema() {
 }
 
 function programsCatalog() {
-  return [
-    "Kids Brazilian Jiu-Jitsu",
-    "Adult Brazilian Jiu-Jitsu",
-    "No-Gi Grappling",
-    "Competition Training",
-    "Private Lessons",
-    "Wrestling",
-    "MMA",
-  ].map((name) => ({
+  return programs.map(program => ({
     "@type": "Offer",
     itemOffered: {
       "@type": "Service",
-      name,
-      description: `${name} at Kinetic Grappling in College Station, TX`,
+      name: program.title,
+      description: program.description,
+      url: `${siteConfig.url}${program.learnMoreHref}`,
+      provider: { "@id": `${siteConfig.url}/#academy` },
+      areaServed: siteConfig.serviceAreas,
     },
   }));
 }

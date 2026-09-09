@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ProgramSchedule } from "@/components/ProgramSchedule";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { FAQAccordion } from "@/components/FAQAccordion";
@@ -10,7 +11,7 @@ import type { FAQ } from "@/lib/site-config";
 export const metadata = createPageMetadata({
   title: "No-Gi Fundamentals in College Station",
   description:
-    "Explore No-Gi Fundamentals at Kinetic Grappling in College Station. Contact the coaching team to confirm class format, eligibility, and your starting point.",
+    "Train No-Gi Fundamentals in College Station. See Kinetic’s Wednesday evening and morning schedule, then ask a coach about your first class.",
   path: "/no-gi-grappling-college-station",
   keywords: [
     "No-Gi Jiu-Jitsu College Station",
@@ -76,7 +77,7 @@ export default function NoGiPage() {
 
       <PageHero
         title="No-Gi Grappling in College Station, TX"
-        subtitle="Kinetic lists No-Gi Fundamentals among its programs. Contact the coaching team to confirm the current class structure and eligibility."
+        subtitle="Adult No-Gi Fundamentals at Kinetic Grappling in College Station. Grapple without a gi and ask the coach which class fits your experience."
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "No-Gi Grappling" },
@@ -84,6 +85,7 @@ export default function NoGiPage() {
         imageSrc="/images/no-gi-grappling.jpg"
       />
 
+      <ProgramSchedule program="no-gi" />
       <section className="bg-brand-paper py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2">

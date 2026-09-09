@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { trialHref } from "@/lib/schedule";
 import type { ScheduleDiscipline, ScheduleEntry } from "@/lib/site-config";
 
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -28,11 +29,11 @@ export function ScheduleExplorer({ entries, compact = false }: { entries: Schedu
 
   return <div>
     <p className="mb-4 text-sm font-semibold text-brand-gray">All times are Central Time (College Station).</p>
-    <div className="flex gap-2 overflow-x-auto pb-2" role="group" aria-label="Filter schedule by day">
+    <div className="flex flex-wrap gap-2 pb-2" role="group" aria-label="Filter schedule by day">
       {!compact && <Filter active={day === "All"} onClick={() => setDay("All")}>All week</Filter>}
       {days.map((name) => <Filter key={name} active={day === name} onClick={() => setDay(name)}>{name === currentDay ? `Today · ${name.slice(0, 3)}` : name.slice(0, 3)}</Filter>)}
     </div>
-    {!compact && <div className="mt-4 flex gap-2 overflow-x-auto pb-2" role="group" aria-label="Filter schedule by program">
+    {!compact && <div className="mt-4 flex flex-wrap gap-2 pb-2" role="group" aria-label="Filter schedule by program">
       {filters.map((name) => <Filter key={name} active={discipline === name} onClick={() => setDiscipline(name)}>{name}</Filter>)}
     </div>}
     {grouped.length === 0 && <p className="mt-6 text-brand-gray" role="status">No classes match these filters. Choose another day or program.</p>}
@@ -44,7 +45,7 @@ export function ScheduleExplorer({ entries, compact = false }: { entries: Schedu
         </div>
         {group.entries.length ? <ul>{group.entries.map((entry) => <li key={`${entry.day}-${entry.start}-${entry.program}`} className="border-b border-black/5 p-5 last:border-0">
           <div className="flex flex-col items-start justify-between gap-2 sm:flex-row sm:gap-4"><div className="min-w-0"><p className="font-bold text-brand-charcoal">{entry.program}</p><p className="mt-1 text-sm text-brand-gray">{entry.level} · {entry.discipline}</p></div><div className="shrink-0 sm:text-right"><p className="font-semibold text-brand-red">{entry.time}</p><p className="mt-1 text-sm text-brand-gray">{duration(entry)} minutes</p></div></div>
-          {entry.trialEligible && <Link href={`/free-trial?program=${entry.discipline === "Kids" ? "kids-bjj" : entry.discipline === "No-Gi" ? "no-gi" : "adult-fundamentals"}`} className="mt-3 inline-flex min-h-11 items-center text-sm font-bold uppercase tracking-wider underline decoration-brand-gold decoration-2 underline-offset-4">Ask about this class</Link>}
+          {entry.trialEligible && <Link href={trialHref(entry)} className="mt-3 inline-flex min-h-11 items-center text-sm font-bold uppercase tracking-wider underline decoration-brand-gold decoration-2 underline-offset-4">Ask about this class<span className="sr-only"> on {entry.day} at {entry.time}</span></Link>}
         </li>)}</ul> : <p className="p-5 text-brand-gray">No regularly listed classes for this filter. Check Glofox for date-specific changes.</p>}
       </section>)}
     </div>
@@ -52,5 +53,5 @@ export function ScheduleExplorer({ entries, compact = false }: { entries: Schedu
 }
 
 function Filter({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
-  return <button type="button" aria-pressed={active} onClick={onClick} className={`min-h-11 shrink-0 border px-4 py-2 text-sm font-bold ${active ? "border-brand-gold bg-brand-gold text-brand-black" : "border-black/15 bg-white hover:border-brand-charcoal"}`}>{children}</button>;
+  return <button type="button" aria-pressed={active} onClick={onClick} className={`min-h-11 shrink-0 border px-4 py-2 text-sm font-bold ${active ? "border-brand-charcoal bg-brand-charcoal text-white" : "border-brand-gray bg-white hover:border-brand-charcoal"}`}>{children}</button>;
 }

@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { scheduleForProgram } from "@/lib/schedule";
+import type { ProgramSlug } from "@/lib/site-config";
 import Link from "next/link";
 import { CTAButton } from "./CTAButton";
 
@@ -12,7 +14,7 @@ interface ProgramCardProps {
   learnMoreHref: string;
   image: string;
   imageAlt: string;
-  slug?: string;
+  slug?: ProgramSlug;
 }
 
 export function ProgramCard({
@@ -27,6 +29,7 @@ export function ProgramCard({
   imageAlt,
   slug,
 }: ProgramCardProps) {
+  const classes = slug ? scheduleForProgram(slug) : [];
   return (
     <article
       id={slug}
@@ -41,7 +44,7 @@ export function ProgramCard({
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {ages && (
-          <span className="absolute left-4 top-4 rounded-sm bg-brand-gold px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-brand-black">
+          <span className="absolute left-4 top-4 rounded-sm bg-brand-gold px-3 py-1 text-sm font-bold uppercase tracking-wider text-brand-black">
             {ages}
           </span>
         )}
@@ -52,12 +55,13 @@ export function ProgramCard({
         </h3>
         <p className="mt-2 text-sm font-medium text-brand-gold-dark">{whoFor}</p>
         <p className="mt-3 flex-1 leading-relaxed text-brand-gray">{description}</p>
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+        {classes.length > 0 && <p className="mt-4 text-sm font-semibold"><Link href={`${learnMoreHref}#program-class-times`} className="inline-flex min-h-11 items-center underline underline-offset-4">See class times · Central Time</Link></p>}
+        <div className="mt-6 flex flex-col gap-3">
           <Link
             href={learnMoreHref}
             className="inline-flex min-h-[48px] flex-1 items-center justify-center rounded-sm border-2 border-brand-charcoal px-5 py-3 text-xs font-semibold uppercase tracking-wider text-brand-charcoal transition-colors hover:bg-brand-charcoal hover:text-white"
           >
-            Learn More
+            Explore program<span className="sr-only">: {title}</span>
           </Link>
           <CTAButton href={href} className="flex-1 !px-5 !py-3 !text-xs">
             {cta}

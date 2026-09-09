@@ -14,8 +14,12 @@
   <label>Viewport width <select id="width"><option>375</option><option>430</option><option>768</option><option>1024</option><option>1440</option></select></label>
   <label>Page <select id="page"><option value="/">Home</option><option value="/schedule">Schedule</option><option value="/free-trial">Free trial</option><option value="/membership">Pricing</option><option value="/programs">Programs</option><option value="/contact">Contact</option></select></label>
   <button type="submit">Load viewport</button>
+  <button type="button" id="inspect">Inspect viewport</button>
+  <button type="button" id="audit">Run six-page width audit</button>
   <output id="dimensions"></output>
 </form>
+<pre id="report" style="white-space:pre-wrap;font-size:12px;margin:0 16px"></pre>
+<details><summary>Width audit results</summary><pre id="audit-results" style="white-space:pre-wrap"></pre></details>
 <div id="frame-wrap"><iframe title="Website under test" id="site" src="/" width="375" height="900"></iframe></div>
 <script>
   const frame = document.querySelector('#site');
@@ -28,10 +32,62 @@
     frame.style.transform = 'scale(' + scale + ')';
     document.querySelector('#frame-wrap').style.width = width * scale + 'px';
     document.querySelector('#frame-wrap').style.height = 900 * scale + 'px';
-    frame.src = document.querySelector('#page').value;
+    const path = document.querySelector('#page').value;
+    if (new URL(frame.src).pathname !== path) frame.src = path;
     document.querySelector('#dimensions').textContent = width + ' × 900 CSS pixels';
+    requestAnimationFrame(inspect);
   }
   document.querySelector('#controls').addEventListener('submit', render);
+  function inspect() {
+    const doc = frame.contentDocument;
+    if (!doc) { document.querySelector('#report').textContent = 'Frame unavailable'; return; }
+    const root = doc.documentElement;
+    document.querySelector('#report').textContent = JSON.stringify({
+      route: frame.contentWindow.location.pathname,
+      viewport: frame.contentWindow.innerWidth,
+      contentWidth: root.clientWidth,
+      scrollWidth: root.scrollWidth,
+      h1: doc.querySelector('h1')?.textContent,
+      focusedControl: doc.activeElement?.id || doc.activeElement?.getAttribute('aria-label') || doc.activeElement?.tagName,
+      program: doc.querySelector('#program')?.value,
+      preferredClass: doc.querySelector('#preferredDay')?.value,
+      invalidFields: Array.from(doc.querySelectorAll('form :invalid')).map(el => el.getAttribute('name')).filter(Boolean),
+      brokenImages: Array.from(doc.images).filter(i => i.complete && !i.naturalWidth).map(i => i.getAttribute('src')),
+      overflow: Array.from(doc.querySelectorAll('main *')).filter(el => el.getBoundingClientRect().right > root.clientWidth + 1 && el.getBoundingClientRect().width > 0).slice(0,5).map(el => el.tagName + ': ' + el.textContent.slice(0,60)),
+    });
+  }
+  document.querySelector('#inspect').addEventListener('click', inspect);
+  frame.addEventListener('load', inspect);
+  document.querySelector('#audit').addEventListener('click', async event => {
+    const button = event.currentTarget;
+    button.disabled = true;
+    const result = document.querySelector('#audit-results');
+    const records = [];
+    try {
+      for (const path of Array.from(document.querySelector('#page').options).map(o => o.value)) {
+        if (new URL(frame.src).pathname !== path) {
+          await new Promise((resolve, reject) => {
+            const timeout = setTimeout(() => reject(new Error('Page load timed out: ' + path)), 15000);
+            frame.addEventListener('load', () => { clearTimeout(timeout); resolve(); }, { once: true });
+            frame.src = path;
+          });
+        }
+        document.querySelector('#page').value = path;
+        for (const width of ['375', '430', '768', '1024', '1440']) {
+          document.querySelector('#width').value = width;
+          render();
+          await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+          inspect();
+          records.push(JSON.parse(document.querySelector('#report').textContent));
+          result.textContent = JSON.stringify(records, null, 2);
+        }
+      }
+      button.textContent = 'Width audit complete';
+    } catch (error) {
+      result.textContent += '\n' + error.message;
+      button.textContent = 'Width audit incomplete';
+    } finally { button.disabled = false; }
+  });
   render();
 </script>
 </html>

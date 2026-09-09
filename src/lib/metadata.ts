@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { brandAssets, siteConfig } from "./site-config";
+import { brandAssets, programs, siteConfig } from "./site-config";
 
 interface PageMetadataOptions {
   title: string;
@@ -15,6 +15,9 @@ export function createPageMetadata({
   keywords = [],
 }: PageMetadataOptions): Metadata {
   const url = `${siteConfig.url}${path}`;
+  const program = programs.find(item => item.learnMoreHref === path);
+  const image = program?.image ?? brandAssets.heroImage;
+  const imageAlt = program?.imageAlt ?? brandAssets.heroAlt;
 
   return {
     title: path === "/" ? { absolute: `${title} | ${siteConfig.name}` } : title,
@@ -35,11 +38,9 @@ export function createPageMetadata({
       type: "website",
       images: [
         {
-          url: brandAssets.heroImage,
-          width: 2400,
-          height: 2400,
+          url: image,
           type: "image/jpeg",
-          alt: "Kinetic Grappling Brazilian Jiu-Jitsu academy in College Station TX",
+          alt: imageAlt,
         },
       ],
     },
@@ -47,7 +48,7 @@ export function createPageMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [brandAssets.heroImage],
+      images: [image],
     },
   };
 }

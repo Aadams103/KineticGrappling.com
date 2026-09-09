@@ -17,6 +17,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
 }
 
 body {
@@ -47,7 +48,9 @@ body::before {
 .skip-link:focus { top: 1rem; }
 
 :focus-visible {
-  @apply outline-2 outline-offset-2 outline-brand-gold;
+  outline: 3px solid #c8262f;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 2px white;
 }
 
 .font-display {
@@ -69,3 +72,6 @@ body::before {
     transition-duration: 0.01ms !important;
   }
 }
+
+#main-content { min-width: 0; }
+:where(h1, h2, h3, p, a) { overflow-wrap: break-word; }

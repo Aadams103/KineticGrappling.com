@@ -21,15 +21,16 @@ export function Header() {
       }
     }}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <Logo onClick={() => setMobileOpen(false)} className="shrink-0" />
+        <Logo onClick={() => setMobileOpen(false)} className="min-w-0 max-w-[80%]" />
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-5 lg:flex" aria-label="Main navigation">
           {siteConfig.nav.map((item) => (
             <Link
               key={item.href}
+              aria-current={pathname === item.href ? "page" : undefined}
               href={item.href}
               className={cn(
-                "text-xs font-semibold uppercase tracking-[0.18em] transition-colors hover:text-brand-gold",
+                "inline-flex min-h-11 items-center text-sm font-semibold uppercase tracking-[0.1em] transition-colors hover:text-brand-gold",
                 pathname === item.href ? "text-brand-gold" : "text-white/70"
               )}
             >
@@ -63,7 +64,7 @@ export function Header() {
       {mobileOpen && (
         <nav
           id="mobile-menu"
-          className="border-t border-white/10 bg-brand-black px-4 py-4 lg:hidden"
+          className="max-h-[calc(100dvh-6rem)] overflow-y-auto border-t border-white/10 bg-brand-black px-4 py-4 lg:hidden"
           aria-label="Mobile navigation"
           onClick={(event) => {
             if ((event.target as HTMLElement).closest("a")) setMobileOpen(false);

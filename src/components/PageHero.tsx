@@ -26,7 +26,7 @@ export function PageHero({
       <div className="absolute inset-0">
         <Image
           src={imageSrc}
-          alt={imageAlt}
+          alt={imageSrc === brandAssets.heroImage ? imageAlt : ""}
           fill
           className="object-cover opacity-25"
           sizes="100vw"
@@ -37,16 +37,16 @@ export function PageHero({
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         {breadcrumb && (
           <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.18em] text-white/50">
+            <ol className="flex flex-wrap items-center gap-2 text-sm uppercase tracking-[0.12em] text-white/75">
               {breadcrumb.map((item, index) => (
                 <li key={item.label} className="flex items-center gap-2">
                   {index > 0 && <span aria-hidden="true">/</span>}
                   {item.href ? (
-                    <Link href={item.href} className="hover:text-white">
+                    <Link href={item.href} className="inline-flex min-h-11 items-center hover:text-white">
                       {item.label}
                     </Link>
                   ) : (
-                    <span className="text-white/80">{item.label}</span>
+                    <span aria-current="page" className="text-white/80">{item.label}</span>
                   )}
                 </li>
               ))}

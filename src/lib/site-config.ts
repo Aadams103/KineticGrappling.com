@@ -47,13 +47,13 @@ export const brandAssets = {
   firstClassImage: "/images/first-class.jpg", firstClassAlt: "A Kinetic Grappling coach teaching a youth Brazilian Jiu-Jitsu class",
 } as const;
 
-export const trustBadges = ["College Station, Texas", "Adults + Kids", "Beginner Fundamentals", "BJJ · No-Gi · MMA · Wrestling"] as const;
+export const trustBadges = ["Adults + Kids", "Beginner Friendly", "Gi + No-Gi", "Competition Training"] as const;
 
 export const audiences = [
   { title: "Adults starting BJJ", description: "Dedicated gi fundamentals sessions make the first class and weekly path easier to understand." },
   { title: "Kids and families", description: "Age-based programs separate Little Grapplers ages 3–5 from Kids BJJ Fundamentals ages 6–12." },
   { title: "College Station and Bryan", description: "A local training option for students, professionals, and families across the Brazos Valley." },
-  { title: "Developing competitors", description: "Advanced grappling, drilling, open mat, and no-gi competition sessions support higher-level work." },
+  { title: "Developing competitors", description: "Saturday no-gi competition training focuses on students progressing beyond fundamentals." },
 ] as const;
 
 export const academyCopy = {
@@ -74,7 +74,7 @@ export const benefits = [
   { title: "Practical self-defense", description: "Develop calm decision-making and grappling skills for controlling difficult situations.", icon: "shield" },
   { title: "Structured youth training", description: "Age-based classes give children a clear environment for focus, discipline, and movement.", icon: "discipline" },
   { title: "Team culture", description: "Train with partners who improve through consistency, control, and mutual respect.", icon: "community" },
-  { title: "Competition pathway", description: "Advanced drilling and dedicated competition sessions are available for developing athletes.", icon: "trophy" },
+  { title: "Competition pathway", description: "Competition training develops advanced BJJ, wrestling, and judo concepts.", icon: "trophy" },
 ] as const;
 
 export type ProgramSlug = "little-grapplers" | "kids-bjj" | "adult-fundamentals" | "no-gi" | "mma" | "wrestling" | "competition" | "private-lessons";
@@ -109,9 +109,9 @@ export const programs: Program[] = [
     image: "/images/adult-bjj-class.jpg", imageAlt: "Adult Brazilian Jiu-Jitsu class at Kinetic Grappling", scheduleLabel: "Adult Gi BJJ Fundamentals",
   },
   {
-    slug: "no-gi", title: "No-Gi Fundamentals", ages: "Adults · confirm prerequisites",
-    description: "Kinetic lists No-Gi Fundamentals as a program. Ask the coaching team about the current class format, eligibility, and appropriate starting point.",
-    benefits: ["Grappling without a gi", "Ask about class format", "Confirm eligibility", "Coach-guided placement"],
+    slug: "no-gi", title: "No-Gi Fundamentals", ages: "Adults",
+    description: "Adult grappling without a gi. See class times and ask a coach about the right starting point for your experience.",
+    benefits: ["Grappling without a gi", "Adult fundamentals", "Class placement guidance", "Weekly training"],
     whoFor: "Adults interested in no-gi training. Ask the coaching team about prerequisites, trial eligibility, and the current class structure.", cta: "Ask About No-Gi",
     href: "/free-trial?program=no-gi", learnMoreHref: "/no-gi-grappling-college-station",
     image: "/images/no-gi-grappling.jpg", imageAlt: "No-Gi grappling at Kinetic Grappling", scheduleLabel: "Adult No-Gi BJJ Fundamentals",
@@ -195,7 +195,7 @@ export const memberships = [
 export const whyChooseItems = [
   "BJJ, no-gi, wrestling, and MMA under one academy", "Dedicated fundamentals classes for new adults",
   "Separate programs for ages 3–5 and 6–12", "Current schedule and pricing visible before you contact the gym",
-  "Advanced drilling and competition sessions", "Private instruction available by arrangement",
+  "Saturday no-gi competition training", "Private instruction available by arrangement",
 ] as const;
 
 export const firstClassExpectations = [
