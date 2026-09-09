@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useRef, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { siteConfig } from "@/lib/site-config";
 import { trackEvent } from "@/lib/analytics";
@@ -19,9 +19,13 @@ export function ContactForm() {
   const requested = searchParams.get("program") ?? "";
   const initialProgram = useMemo(() => programs.some(([value]) => value === requested) ? requested : "", [requested]);
   const started = useRef(false);
-  const [state, setState] = useState<"idle" | "pending" | "success">("idle");
+  const [state, setState] = useState<"idle" | "pending" | "success" | "prepared">("idle");
+  const confirmation = useRef<HTMLDivElement>(null);
   const [error, setError] = useState("");
   const [fallback, setFallback] = useState<string | null>(null);
+  useEffect(() => {
+    if (state === "success" || state === "prepared") confirmation.current?.focus();
+  }, [state]);
 
   function onStart() {
     if (!started.current) {
@@ -38,26 +42,29 @@ export function ContactForm() {
       const response = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       const result = await response.json() as { ok?: boolean; error?: string; mailto?: string; delivered?: boolean };
       if (!response.ok || !result.ok) throw new Error(result.error || "We could not prepare your request.");
-      trackEvent("trial_form_submit", { program: payload.program, delivered: result.delivered });
-      setFallback(result.mailto ?? null); setState("success");
+      if (result.delivered) trackEvent("trial_form_submit", { program: payload.program });
+      else if (!result.mailto) throw new Error("Your request has not been sent. Please call the academy or use Glofox.");
+      setFallback(result.mailto ?? null); setState(result.delivered ? "success" : "prepared");
     } catch (problem) {
       setError(problem instanceof Error ? problem.message : "We could not prepare your request."); setState("idle");
     }
   }
 
-  if (state === "success") {
-    return <div className="border border-brand-gold/40 bg-brand-light p-7" role="status" tabIndex={-1}>
-      <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-red">Request received</p>
-      <h2 className="font-display mt-2 text-2xl font-extrabold uppercase">Your next step is simple.</h2>
-      <p className="mt-3 leading-relaxed text-brand-gray">The Kinetic team will use your details to help place you in the right class. Wear workout clothes, bring water, and plan to arrive early.</p>
+  if (state === "success" || state === "prepared") {
+    return <div ref={confirmation} className="border border-brand-gold/40 bg-brand-light p-7" role="status" tabIndex={-1}>
+      <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand-red">{state === "success" ? "Request sent" : "Your request has not been sent"}</p>
+      <h2 className="font-display mt-2 text-2xl font-extrabold uppercase">{state === "success" ? "Let’s find your first class." : "One more step: send your email."}</h2>
+      <p className="mt-3 leading-relaxed text-brand-gray">{state === "success" ? "Your request was accepted by our email provider for delivery to Kinetic. Your class is not reserved yet; please wait for the team to confirm, or call to arrange your visit." : "Online delivery is unavailable. Open the prepared message below in your email app, then press Send there. No class is reserved and the team has not received these details."}</p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row">
         <a className="inline-flex min-h-12 items-center justify-center bg-brand-gold px-5 font-bold uppercase tracking-wider text-brand-black" href={siteConfig.booking.glofox} target="_blank" rel="noreferrer">View live booking</a>
-        {fallback && <a className="inline-flex min-h-12 items-center justify-center border-2 border-brand-charcoal px-5 font-bold uppercase tracking-wider" href={fallback}>Send by email</a>}
+        {fallback && <a className="order-first inline-flex min-h-12 items-center justify-center bg-brand-red px-5 py-3 font-bold text-white" href={fallback}>Open email to send request</a>}
       </div>
+      <p className="mt-5 text-brand-gray">No email app? Call <a className="underline" href={siteConfig.phoneHref}>{siteConfig.phone}</a>. Once your visit is arranged, wear workout clothes and bring water.</p>
+      <a className="mt-4 inline-flex min-h-11 items-center underline" href={siteConfig.social.googleMaps} target="_blank" rel="noreferrer">Directions to {siteConfig.address.full}</a>
     </div>;
   }
 
-  return <form onSubmit={submit} onFocus={onStart} className="space-y-5" noValidate aria-describedby={error ? "form-error" : undefined}>
+  return <form onSubmit={submit} onFocus={onStart} className="space-y-5" aria-describedby={error ? "form-error" : undefined}>
     <div className="hidden" aria-hidden="true"><label htmlFor="website">Website</label><input id="website" name="website" tabIndex={-1} autoComplete="off" /></div>
     <div className="grid gap-5 sm:grid-cols-2">
       <Field label="Name" name="name" autoComplete="name" required />

@@ -12,6 +12,18 @@ Turn local search, social, and referral traffic into an informed first visit: un
 - The trial form posts to `src/app/api/contact/route.ts`. With Resend variables it sends email; without them it returns a prefilled email fallback. Glofox remains the authoritative public booking and membership system.
 - Conversion events are defined in `src/lib/analytics.ts` and pushed to `window.dataLayer` when an analytics container is present.
 
+## Source-control status
+
+`main` was inspected at `d2e66bd5c34c272fca73c7bd2bd2d1a6b1d00aba`; the Cursor branch at `60f101c08bd17190c783ab67dbf61c886e78f638`. The first published Work commit mistakenly used the Cursor commit as its parent. This incorporated the full Cursor changeset, not selective independent implementation as requested. Neither `main` nor the Cursor ref was modified. Correcting the published Work ancestry requires owner approval before rewriting the ref. Keep the PR draft until corrected.
+
+## Baseline and reuse decisions
+
+- Main already supplied App Router pages, program components, centralized content, authentic images, SEO helpers and the package lock. These were retained rather than replacing the framework.
+- Cursor supplied the athletic visual system, typography, smaller navigation, resource detail page and 404. Its entire commit was inherited (see source-control correction above); this was broader than the requested selective reuse.
+- Live Wix observations: vague hero positioning; several misleading/self-referencing CTAs; footer schedule pointed to programs; phone opened a search instead of dialing; YouTube links included an administrative/channel mismatch. The redevelopment uses direct route, telephone and booking links.
+- Conversion changes: dedicated trial page, visible schedule preview, centralized class data, monthly plan comparison, beginner guidance and persistent mobile actions. Removed unsupported testimonials rather than publishing invented social proof.
+- Remaining baseline gaps: a complete legacy index/sitemap inventory, Search Console and analytics access, measured field Core Web Vitals and full device-width QA have not been completed. No performance or accessibility certification is implied.
+
 ## Route map
 
 | Intent | Route |
@@ -62,6 +74,8 @@ Existing `/membership`, `/programs`, and `/contact` paths remain live routes and
 - `TRIAL_FORM_FROM_EMAIL`: verified Resend sender.
 - An existing Google Tag Manager or analytics bootstrap may consume the data-layer events; no competing analytics package is installed.
 
+Resend is an optional adapter, not a verified existing business integration. Both key and sender are required; no demo sender is used. Without them, or when the provider fails, the form explicitly says the request has **not** been sent and offers a prepared email plus Glofox/call alternatives. `trial_form_submit` fires only after provider acceptance, not for the fallback. Provider acceptance does not prove inbox delivery. Do not activate delivery without confirming the approved integration and adding deployment-level abuse/rate controls.
+
 ## Business facts still requiring confirmation
 
 - Regular Little Grapplers times; the public Glofox week checked did not list a separate Little Grapplers class.
@@ -70,7 +84,20 @@ Existing `/membership`, `/programs`, and `/contact` paths remain live routes and
 - Public-review excerpts/permissions and the canonical Google Business Profile review URL.
 - Parking and parent-viewing policies.
 - Whether the Wednesday adult gi class is intentionally 60 minutes while other fundamentals sessions are 80 minutes.
+- Wednesday Gi and No-Gi overlap and 7:20 versus previously supplied 7:30 fundamentals end times; resolve with the owner before launch.
+- Exact map coordinates and ZIP were inherited, not independently verified. Coordinates, postal code and inferred weekday opening hours have been removed from schema. Office availability is not a class schedule.
+- Power Hour's discipline and trial eligibility for individual sessions; current categorization/flags need confirmation.
 - Final Resend sender/domain configuration and the existing analytics container ID.
+
+## Verification record
+
+Earlier pass: dependency install, TypeScript, ESLint and production build passed. Desktop browser checks covered key routes, Wednesday filtering, empty-form errors, initial skip-link keyboard behavior, canonical/OG/parseable JSON-LD and the three listed redirects. Sitemap/robots were inspected in build output. Vercel reported a successful branch deployment, but its protected preview required login and was not visually tested.
+
+Hardening pass, 2026-09-09: corrected unsent-form messaging and success focus, added native required/email validation plus server phone/student/origin/size checks, handled provider/network failures, escaped JSON-LD script content, removed unverified schema claims, updated schedule day after hydration in America/Chicago, stacked mobile class times and added menu Escape handling. Automated contact-handler tests use mocked delivery only; they never send messages.
+
+Hardening checks executed: `npm ci`, `npm run typecheck`, `npm run lint`, `npm test` (14/14 passing), `npm run build` (27 generated entries), and `git diff --check`. Browser checks above belong to the earlier pass; the hardening UI changes have not yet been browser-tested.
+
+Still outstanding: actual 375/430/768/1024/1440px browser checks, comprehensive keyboard/contrast/accessibility review, field or lab CWV measurement, real form delivery, actual analytics receipt and a complete internal-link/legacy-URL crawl. Do not mark this release fully QA-passed or production-ready until these gates are recorded with results.
 
 ## Launch checklist
 

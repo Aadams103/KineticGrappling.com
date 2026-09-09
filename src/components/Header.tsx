@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { CTAButton } from "./CTAButton";
@@ -11,9 +11,15 @@ import { Logo } from "./Logo";
 export function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-brand-black/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-brand-black/90 backdrop-blur-md" onKeyDown={(event) => {
+      if (event.key === "Escape" && mobileOpen) {
+        setMobileOpen(false);
+        menuButton.current?.focus();
+      }
+    }}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Logo onClick={() => setMobileOpen(false)} className="shrink-0" />
 
@@ -37,7 +43,8 @@ export function Header() {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-sm p-2 text-white hover:bg-white/10 lg:hidden"
+          ref={menuButton}
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-sm p-2 text-white hover:bg-white/10 lg:hidden"
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -58,6 +65,9 @@ export function Header() {
           id="mobile-menu"
           className="border-t border-white/10 bg-brand-black px-4 py-4 lg:hidden"
           aria-label="Mobile navigation"
+          onClick={(event) => {
+            if ((event.target as HTMLElement).closest("a")) setMobileOpen(false);
+          }}
         >
           <ul className="space-y-1">
             {siteConfig.nav.map((item) => (
