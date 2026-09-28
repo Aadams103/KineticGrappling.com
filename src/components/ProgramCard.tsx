@@ -35,21 +35,17 @@ export function ProgramCard({
       id={slug}
       className="group flex flex-col overflow-hidden rounded-sm border border-black/5 bg-white shadow-[0_18px_50px_-28px_rgba(0,0,0,0.45)]"
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-brand-light">
+      <div className="relative aspect-[3/2] bg-brand-paper">
         <Image
           src={image}
           alt={imageAlt}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-contain"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        {ages && (
-          <span className="absolute left-4 top-4 rounded-sm bg-brand-gold px-3 py-1 text-sm font-bold uppercase tracking-wider text-brand-black">
-            {ages}
-          </span>
-        )}
       </div>
       <div className="flex flex-1 flex-col p-6">
+        {ages && <p className="mb-3 text-sm font-bold uppercase tracking-wider text-brand-gold-dark">{ages}</p>}
         <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-brand-charcoal">
           {title}
         </h3>

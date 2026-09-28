@@ -29,7 +29,7 @@ export function FinalCTA({
           <CTAButton href={ctaHref}>{ctaLabel}</CTAButton>
           <a
             href={siteConfig.phoneHref}
-            className="inline-flex min-h-[52px] items-center justify-center rounded-sm border-2 border-white/25 px-7 py-4 text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:border-brand-gold hover:text-brand-gold"
+            className="inline-flex min-h-[52px] items-center justify-center rounded-sm border-2 border-white/60 px-7 py-4 text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:border-brand-gold hover:text-brand-gold"
           >
             Call {siteConfig.phone}
           </a>

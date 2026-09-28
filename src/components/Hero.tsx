@@ -17,10 +17,10 @@ export function Hero({ headline, subheadline }: { headline: string; subheadline:
         <TrustBadges />
         <a href={siteConfig.social.googleMaps} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-11 items-center text-sm text-white/75 underline underline-offset-4">{siteConfig.address.full}</a>
       </div>
-      <div className="relative min-h-64 border-t border-white/15 lg:border-l lg:border-t-0">
-        <Image src={brandAssets.heroImage} alt={brandAssets.heroAlt} fill priority sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover object-center" />
-        <div className="absolute inset-x-0 bottom-0 bg-brand-black/85 p-4 text-sm font-semibold tracking-wide">Real training. Your local team.</div>
-      </div>
+      <figure className="flex flex-col justify-center border-t border-white/15 bg-brand-charcoal lg:border-l lg:border-t-0">
+        <Image src={brandAssets.heroImage} alt={brandAssets.heroAlt} width={2400} height={2400} priority sizes="(min-width: 1024px) 50vw, 100vw" className="h-auto w-full" />
+        <figcaption className="border-t border-white/15 px-5 py-4 text-sm font-semibold text-white/85">Your first class. Your next challenge. Your team.</figcaption>
+      </figure>
     </div>
   </section>;
 }

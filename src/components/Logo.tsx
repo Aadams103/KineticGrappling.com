@@ -17,15 +17,15 @@ export function Logo({ variant = "header", className = "", onClick }: LogoProps)
       <Image
         src={brandAssets.logoHeader}
         alt=""
-        width={56}
-        height={56}
-        className="h-11 w-11 shrink-0 rounded-full object-cover md:h-12 md:w-12"
+        width={80}
+        height={80}
+        className={cn("shrink-0 rounded-full bg-white p-1.5 object-contain", isFooter ? "h-20 w-20" : "h-16 w-16 md:h-20 md:w-20")}
         priority={variant === "header"}
       />
       <span className="flex min-w-0 flex-col leading-tight">
         <span
           className={cn(
-            "font-display text-lg font-extrabold uppercase tracking-wide md:text-xl",
+            "font-display text-base font-extrabold uppercase tracking-wide sm:text-lg",
             isFooter ? "text-white" : "text-white"
           )}
         >

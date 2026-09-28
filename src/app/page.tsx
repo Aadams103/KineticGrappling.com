@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { KidsSpotlight } from "@/components/KidsSpotlight";
 import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { LocationSection } from "@/components/LocationSection";
@@ -21,10 +22,11 @@ export const metadata = createPageMetadata({
 });
 
 export default function HomePage() {
-  const featured = ["adult-fundamentals", "kids-bjj", "no-gi"].map(slug => programs.find(program => program.slug === slug)!);
+  const featured = ["kids-bjj", "adult-fundamentals", "no-gi"].map(slug => programs.find(program => program.slug === slug)!);
   const headCoach = coaches[0];
   return <>
-    <Hero headline="Brazilian Jiu-Jitsu & MMA in College Station" subheadline="BJJ for adults and kids. Beginner fundamentals and competition training, serving College Station and Bryan." />
+    <Hero headline="Brazilian Jiu-Jitsu & MMA in College Station" subheadline="Give your child a place to learn. Give yourself a reason to get on the mats. Structured kids classes, adult fundamentals, and competition training in College Station and Bryan." />
+    <KidsSpotlight />
     <ScheduleTeaser />
     <section className="bg-brand-paper py-14 md:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

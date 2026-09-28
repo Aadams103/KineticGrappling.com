@@ -162,6 +162,16 @@ Measurement after activation: compare equivalent 28-day Search Console periods b
 
 ## Launch checklist
 
+### Kids program and visual refinement — 2026-09-28
+
+- Homepage now leads into a dedicated kids spotlight directly after the hero, with times derived from the shared schedule and a clear route to adult training. Kids is the first featured program card.
+- Rebuilt the kids page around age-based learning, three documented learning priorities, parent arrival guidance and a first-visit inquiry. Removed unsupported outcome/safety claims. `src/lib/kids-content.ts` centralizes the parent FAQs and learning priorities; these are not a fabricated minute-by-minute curriculum.
+- Kids inquiry links preselect the child field and the chosen kids program; users can still change either field. Little Grapplers availability is explicitly subject to confirmation.
+- The original transparent logo now sits on a white backing with padding and contain sizing, at 64px mobile / 80px desktop and footer. Full desktop navigation starts at 1280px to give the larger mark room.
+- Homepage, kids hero and coaching photos retain their natural aspect ratios. Program cards use contain sizing without hover zoom or overlaid age badges, preserving the full photo. Captions sit outside photos, and light content panels contrast with graphite framing.
+- Existing schedule and pricing data are unchanged in this visual pass. Reconfirm any later business updates before launch; the September 9 data is not automatically current indefinitely.
+- Verification: ESLint, production build, TypeScript and built-site checks passed (21 pages, 750 internal links, 86 image references, 44 JSON-LD blocks, 21 sitemap URLs, three redirects). The browser ran 35 checks across seven pages including kids at 375/430/768/1024/1440px, with no detected overflow or broken loaded images. Visually reviewed the kids page on desktop and 375px, and the mobile homepage logo. Confirmed the kids first-class CTA opens an inquiry with Child and Kids BJJ selected. This is targeted QA, not a full WCAG certification or measured CWV result.
+
 ### Preview deployment correction — 2026-09-28
 
 The September 9 preview was marked READY by Vercel, but a direct browser check on September 28 returned Vercel's platform-level NOT_FOUND screen. The deployment metadata reported no framework. Earlier local build and browser results remain valid for the code, but the preview delivery claim was not sufficiently verified.

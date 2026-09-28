@@ -76,7 +76,7 @@ export function ContactForm({ deliveryEnabled = false }: { deliveryEnabled?: boo
     <Field label="Email" name="email" type="email" autoComplete="email" required />
     <div className="grid gap-5 sm:grid-cols-2">
       <div><label htmlFor="student" className="block font-semibold">Who will train? <span aria-hidden="true" className="text-brand-red">*</span></label>
-        <select id="student" name="student" required className={fieldClass} defaultValue=""><option value="" disabled>Select one</option><option value="adult">Adult / teen</option><option value="child">Child</option><option value="family">Multiple family members</option></select>
+        <select id="student" name="student" required className={fieldClass} defaultValue={initialProgram === "kids-bjj" || initialProgram === "little-grapplers" ? "child" : ""}><option value="" disabled>Select one</option><option value="adult">Adult / teen</option><option value="child">Child</option><option value="family">Multiple family members</option></select>
       </div>
       <div><label htmlFor="program" className="block font-semibold">Program interest</label>
         <select id="program" name="program" className={fieldClass} defaultValue={initialProgram}><option value="">Select a program</option>{programs.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select>

@@ -23,7 +23,7 @@ export function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Logo onClick={() => setMobileOpen(false)} className="min-w-0 max-w-[80%]" />
 
-        <nav className="hidden items-center gap-5 lg:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-5 xl:flex" aria-label="Main navigation">
           {siteConfig.nav.map((item) => (
             <Link
               key={item.href}
@@ -45,7 +45,7 @@ export function Header() {
         <button
           type="button"
           ref={menuButton}
-          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-sm p-2 text-white hover:bg-white/10 lg:hidden"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-sm p-2 text-white hover:bg-white/10 xl:hidden"
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -64,7 +64,7 @@ export function Header() {
       {mobileOpen && (
         <nav
           id="mobile-menu"
-          className="max-h-[calc(100dvh-6rem)] overflow-y-auto border-t border-white/10 bg-brand-black px-4 py-4 lg:hidden"
+          className="max-h-[calc(100dvh-7rem)] overflow-y-auto border-t border-white/10 bg-brand-black px-4 py-4 xl:hidden"
           aria-label="Mobile navigation"
           onClick={(event) => {
             if ((event.target as HTMLElement).closest("a")) setMobileOpen(false);

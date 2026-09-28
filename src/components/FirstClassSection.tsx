@@ -38,12 +38,13 @@ export function FirstClassSection() {
               <CTAButton href={siteConfig.contactPath}>{siteConfig.primaryCta}</CTAButton>
             </div>
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-brand-light">
+          <div className="mx-auto w-full max-w-lg bg-brand-light">
             <Image
               src={brandAssets.firstClassImage}
               alt={brandAssets.firstClassAlt}
-              fill
-              className="object-cover"
+              width={1600}
+              height={1600}
+              className="h-auto w-full"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
