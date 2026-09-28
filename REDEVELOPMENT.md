@@ -162,6 +162,12 @@ Measurement after activation: compare equivalent 28-day Search Console periods b
 
 ## Launch checklist
 
+### Preview deployment correction — 2026-09-28
+
+The September 9 preview was marked READY by Vercel, but a direct browser check on September 28 returned Vercel's platform-level NOT_FOUND screen. The deployment metadata reported no framework. Earlier local build and browser results remain valid for the code, but the preview delivery claim was not sufficiently verified.
+
+`vercel.json` now explicitly selects Next.js, `npm ci`, `npm run build`, and `.next` output, overriding ambiguous project defaults for this branch. A successful deployment status alone is not an acceptance gate: open the deployed homepage and representative routes before handing off the URL. Keep authentication enabled and use a temporary Vercel share link for review when needed. Production and DNS remain unchanged.
+
 - Confirm unresolved facts and update `site-config.ts`.
 - Configure trial-form delivery variables and test a real submission.
 - Confirm Glofox deep links, schedule, prices, joining fees, and free-trial terms.
