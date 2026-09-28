@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { scheduleForProgram } from "@/lib/schedule";
+import type { ProgramSlug } from "@/lib/site-config";
 import Link from "next/link";
 import { CTAButton } from "./CTAButton";
 
@@ -12,7 +14,7 @@ interface ProgramCardProps {
   learnMoreHref: string;
   image: string;
   imageAlt: string;
-  slug?: string;
+  slug?: ProgramSlug;
 }
 
 export function ProgramCard({
@@ -27,37 +29,37 @@ export function ProgramCard({
   imageAlt,
   slug,
 }: ProgramCardProps) {
+  const classes = slug ? scheduleForProgram(slug) : [];
   return (
     <article
       id={slug}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-shadow hover:shadow-xl"
+      className="group flex flex-col overflow-hidden rounded-sm border border-black/5 bg-white shadow-[0_18px_50px_-28px_rgba(0,0,0,0.45)]"
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-brand-light">
+      <div className="relative aspect-[3/2] bg-brand-paper">
         <Image
           src={image}
           alt={imageAlt}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          className="object-contain"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        {ages && (
-          <span className="absolute left-4 top-4 rounded-full bg-brand-gold px-3 py-1 text-xs font-bold text-brand-black">
-            {ages}
-          </span>
-        )}
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="text-xl font-bold text-brand-charcoal">{title}</h3>
-        <p className="mt-2 text-sm font-medium text-brand-gold">{whoFor}</p>
-        <p className="mt-3 flex-1 text-brand-gray leading-relaxed">{description}</p>
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+        {ages && <p className="mb-3 text-sm font-bold uppercase tracking-wider text-brand-gold-dark">{ages}</p>}
+        <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-brand-charcoal">
+          {title}
+        </h3>
+        <p className="mt-2 text-sm font-medium text-brand-gold-dark">{whoFor}</p>
+        <p className="mt-3 flex-1 leading-relaxed text-brand-gray">{description}</p>
+        {classes.length > 0 && <p className="mt-4 text-sm font-semibold"><Link href={`${learnMoreHref}#program-class-times`} className="inline-flex min-h-11 items-center underline underline-offset-4">See class times · Central Time</Link></p>}
+        <div className="mt-6 flex flex-col gap-3">
           <Link
             href={learnMoreHref}
-            className="inline-flex min-h-[48px] flex-1 items-center justify-center rounded-xl border-2 border-brand-charcoal px-5 py-3 text-sm font-semibold text-brand-charcoal transition-colors hover:bg-brand-charcoal hover:text-white"
+            className="inline-flex min-h-[48px] flex-1 items-center justify-center rounded-sm border-2 border-brand-charcoal px-5 py-3 text-xs font-semibold uppercase tracking-wider text-brand-charcoal transition-colors hover:bg-brand-charcoal hover:text-white"
           >
-            Learn More
+            Explore program<span className="sr-only">: {title}</span>
           </Link>
-          <CTAButton href={href} className="flex-1 !px-5 !py-3 !text-sm">
+          <CTAButton href={href} className="flex-1 !px-5 !py-3 !text-xs">
             {cta}
           </CTAButton>
         </div>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { CTAButton } from "./CTAButton";
@@ -11,33 +11,41 @@ import { Logo } from "./Logo";
 export function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-8">
-        <Logo onClick={() => setMobileOpen(false)} className="shrink-0" />
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-brand-black/90 backdrop-blur-md" onKeyDown={(event) => {
+      if (event.key === "Escape" && mobileOpen) {
+        setMobileOpen(false);
+        menuButton.current?.focus();
+      }
+    }}>
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        <Logo onClick={() => setMobileOpen(false)} className="min-w-0 max-w-[80%]" />
 
-        <nav className="hidden xl:flex items-center gap-6" aria-label="Main navigation">
+        <nav className="hidden items-center gap-5 xl:flex" aria-label="Main navigation">
           {siteConfig.nav.map((item) => (
             <Link
               key={item.href}
+              aria-current={pathname === item.href ? "page" : undefined}
               href={item.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-brand-gold",
-                pathname === item.href ? "text-brand-gold" : "text-brand-gray"
+                "inline-flex min-h-11 items-center text-sm font-semibold uppercase tracking-[0.1em] transition-colors hover:text-brand-gold",
+                pathname === item.href ? "text-brand-gold" : "text-white/70"
               )}
             >
               {item.label}
             </Link>
           ))}
-          <CTAButton href={siteConfig.ctaNav.href} className="!px-5 !py-2.5 !text-sm">
+          <CTAButton href={siteConfig.ctaNav.href} className="!px-5 !py-2.5 !text-xs">
             {siteConfig.ctaNav.label}
           </CTAButton>
         </nav>
 
         <button
           type="button"
-          className="xl:hidden inline-flex items-center justify-center rounded-lg p-2 text-brand-charcoal hover:bg-brand-light"
+          ref={menuButton}
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-sm p-2 text-white hover:bg-white/10 xl:hidden"
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -56,8 +64,11 @@ export function Header() {
       {mobileOpen && (
         <nav
           id="mobile-menu"
-          className="xl:hidden border-t border-gray-100 bg-white px-4 py-4"
+          className="max-h-[calc(100dvh-7rem)] overflow-y-auto border-t border-white/10 bg-brand-black px-4 py-4 xl:hidden"
           aria-label="Mobile navigation"
+          onClick={(event) => {
+            if ((event.target as HTMLElement).closest("a")) setMobileOpen(false);
+          }}
         >
           <ul className="space-y-1">
             {siteConfig.nav.map((item) => (
@@ -65,10 +76,10 @@ export function Header() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "block rounded-lg px-4 py-3 text-base font-medium transition-colors",
+                    "block rounded-sm px-4 py-3 text-sm font-semibold uppercase tracking-wider transition-colors",
                     pathname === item.href
                       ? "bg-brand-gold/10 text-brand-gold"
-                      : "text-brand-charcoal hover:bg-brand-light"
+                      : "text-white hover:bg-white/5"
                   )}
                   onClick={() => setMobileOpen(false)}
                 >

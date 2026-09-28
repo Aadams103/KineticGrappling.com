@@ -1,23 +1,14 @@
-import { CTAButton } from "./CTAButton";
+"use client";
+
+import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 
 export function StickyMobileCTA() {
-  return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200 bg-white/95 p-3 backdrop-blur-md md:hidden">
-      <div className="flex gap-2">
-        <CTAButton href={siteConfig.contactPath} className="flex-1 !py-3 !text-sm">
-          {siteConfig.primaryCta}
-        </CTAButton>
-        <a
-          href={siteConfig.phoneHref}
-          className="inline-flex items-center justify-center rounded-xl border-2 border-brand-charcoal px-4 py-3 text-sm font-semibold text-brand-charcoal min-h-[48px]"
-          aria-label={`Call ${siteConfig.phone}`}
-        >
-          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-          </svg>
-        </a>
-      </div>
+  return <nav aria-label="Quick actions" className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-brand-black/95 p-2 pb-[max(.5rem,env(safe-area-inset-bottom))] backdrop-blur-md md:hidden">
+    <div className="grid grid-cols-3 gap-2">
+      <a href={siteConfig.phoneHref} className="flex min-h-12 items-center justify-center border border-white/20 px-2 text-sm font-bold text-white">Call</a>
+      <Link href="/schedule" className="flex min-h-12 items-center justify-center border border-brand-gold px-2 text-sm font-bold text-brand-gold">Schedule</Link>
+      <Link href="/free-trial" className="flex min-h-12 items-center justify-center bg-brand-red px-2 text-center text-sm font-extrabold text-white">Free trial</Link>
     </div>
-  );
+  </nav>;
 }

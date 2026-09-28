@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ProgramSchedule } from "@/components/ProgramSchedule";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { FinalCTA } from "@/components/FinalCTA";
@@ -16,7 +17,7 @@ export const metadata = createPageMetadata({
 
 const highlights = [
   "Tournament preparation and strategy",
-  "Advanced technique and drilling",
+  "Advanced Brazilian Jiu-Jitsu, wrestling, and judo details",
   "Coached sparring rounds",
   "Competition mindset development",
 ];
@@ -28,30 +29,42 @@ export default function CompetitionPage() {
         title="BJJ Competition Training in College Station, TX"
         subtitle="Advanced training for students preparing for local and regional tournaments — drilling, sparring, and competition strategy."
         breadcrumb={[{ label: "Home", href: "/" }, { label: "Competition Training" }]}
+        imageSrc="/images/competition-training.jpg"
       />
-      <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+      <ProgramSchedule program="competition" />
+      <section className="bg-brand-paper py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <SectionHeading title="Train to Compete" align="left" />
-              <p className="text-lg text-brand-gray leading-relaxed">
+              <p className="text-lg leading-relaxed text-brand-gray">
                 Competition training at Kinetic Grappling is for dedicated students who have built
                 strong fundamentals and want to test their skills at tournaments. Coaches provide
-                structured preparation, advanced techniques, and the mindset to perform under pressure.
+                structured preparation, advanced techniques, and the mindset to perform under
+                pressure.
               </p>
               <ul className="mt-6 space-y-3">
                 {highlights.map((item) => (
                   <li key={item} className="flex gap-3 text-brand-gray">
-                    <span className="text-brand-gold">✓</span>{item}
+                    <span className="text-brand-gold">✓</span>
+                    {item}
                   </li>
                 ))}
               </ul>
               <div className="mt-8">
-                <CTAButton href={`${siteConfig.contactPath}?program=competition`}>{siteConfig.primaryCta}</CTAButton>
+                <CTAButton href={`${siteConfig.contactPath}?program=competition`}>
+                  {siteConfig.primaryCta}
+                </CTAButton>
               </div>
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-              <Image src="/images/competition-training.jpg" alt="BJJ competition training at Kinetic Grappling in College Station, TX" fill className="object-cover" sizes="50vw" />
+            <div className="relative aspect-[4/3] overflow-hidden rounded-sm">
+              <Image
+                src="/images/competition-training.jpg"
+                alt="BJJ competition training at Kinetic Grappling in College Station, TX"
+                fill
+                className="object-cover"
+                sizes="50vw"
+              />
             </div>
           </div>
         </div>

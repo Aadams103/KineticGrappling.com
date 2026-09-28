@@ -1,7 +1,8 @@
+import type { ReactNode } from "react";
 import { benefits } from "@/lib/site-config";
 import { SectionHeading } from "./SectionHeading";
 
-const icons: Record<string, React.ReactNode> = {
+const icons: Record<string, ReactNode> = {
   fitness: (
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
   ),
@@ -25,25 +26,28 @@ const icons: Record<string, React.ReactNode> = {
 export function BenefitsGrid() {
   return (
     <section className="bg-brand-charcoal py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
+          eyebrow="Why train"
           title="More Than a Workout"
           subtitle="Brazilian Jiu-Jitsu builds real skills and real confidence — for kids, teens, adults, and families in College Station."
           light
         />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {benefits.map((benefit) => (
             <article
               key={benefit.title}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
+              className="border border-white/10 bg-white/5 p-6"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-gold/20 text-brand-gold">
+              <div className="flex h-12 w-12 items-center justify-center rounded-sm bg-brand-gold/15 text-brand-gold">
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   {icons[benefit.icon]}
                 </svg>
               </div>
-              <h3 className="mt-4 text-lg font-bold text-white">{benefit.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/75">{benefit.description}</p>
+              <h3 className="font-display mt-4 text-xl font-bold uppercase text-white">
+                {benefit.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/70">{benefit.description}</p>
             </article>
           ))}
         </div>

@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { PHASE_DEVELOPMENT_SERVER } from "next/constants";
 
 const nextConfig: NextConfig = {
   images: {
@@ -9,9 +10,13 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      { source: "/free-trial", destination: "/contact", permanent: true },
+      { source: "/about-us-1", destination: "/about", permanent: true },
+      { source: "/about-8", destination: "/coaches#ambrose-adams", permanent: true },
+      { source: "/calendar", destination: "/schedule", permanent: true },
     ];
   },
 };
 
-export default nextConfig;
+export default function config(phase: string): NextConfig {
+  return { ...nextConfig, distDir: phase === PHASE_DEVELOPMENT_SERVER ? ".next-dev" : ".next" };
+}

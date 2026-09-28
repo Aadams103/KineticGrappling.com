@@ -28,29 +28,39 @@ export default function PrivateLessonsPage() {
         title="Private Jiu-Jitsu Lessons in College Station, TX"
         subtitle="One-on-one coaching for faster progress, extra support, competition preparation, or personalized training goals."
         breadcrumb={[{ label: "Home", href: "/" }, { label: "Private Lessons" }]}
+        imageSrc="/images/private-lessons.jpg"
       />
-      <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+      <section className="bg-brand-paper py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl order-2 lg:order-1">
-              <Image src="/images/private-lessons.jpg" alt="Private Jiu-Jitsu lessons at Kinetic Grappling in College Station, TX" fill className="object-cover" sizes="50vw" />
+            <div className="relative order-2 aspect-[4/3] overflow-hidden rounded-sm lg:order-1">
+              <Image
+                src="/images/private-lessons.jpg"
+                alt="Private Jiu-Jitsu lessons at Kinetic Grappling in College Station, TX"
+                fill
+                className="object-cover"
+                sizes="50vw"
+              />
             </div>
             <div className="order-1 lg:order-2">
               <SectionHeading title="Get Personalized Coaching" align="left" />
-              <p className="text-lg text-brand-gray leading-relaxed">
-                Private lessons give you direct access to a coach who can tailor every session to
-                your goals — whether you need help with fundamentals, competition prep, or extra
-                support beyond group classes.
+              <p className="text-lg leading-relaxed text-brand-gray">
+                Private lessons give you a totally customizable one-on-one session. Work with an
+                instructor to improve your strengths, mitigate weaknesses, and move faster toward
+                competition or personal goals.
               </p>
               <ul className="mt-6 space-y-3">
                 {highlights.map((item) => (
                   <li key={item} className="flex gap-3 text-brand-gray">
-                    <span className="text-brand-gold">✓</span>{item}
+                    <span className="text-brand-gold">✓</span>
+                    {item}
                   </li>
                 ))}
               </ul>
               <div className="mt-8">
-                <CTAButton href={`${siteConfig.contactPath}?program=private-lessons`}>{siteConfig.primaryCta}</CTAButton>
+                <CTAButton href={`${siteConfig.contactPath}?program=private-lessons`}>
+                  {siteConfig.primaryCta}
+                </CTAButton>
               </div>
             </div>
           </div>

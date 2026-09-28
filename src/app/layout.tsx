@@ -1,6 +1,8 @@
+import { GoogleTagManager } from "@/components/GoogleTagManager";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Exo_2, Source_Sans_3 } from "next/font/google";
 import { Header } from "@/components/Header";
+import { Analytics } from "@/components/Analytics";
 import { Footer } from "@/components/Footer";
 import { StickyMobileCTA } from "@/components/StickyMobileCTA";
 import { JsonLd } from "@/components/JsonLd";
@@ -8,16 +10,24 @@ import { getLocalBusinessSchema } from "@/lib/schema";
 import { brandAssets, siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
-const inter = Inter({
+const display = Exo_2({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-kinetic-display",
   display: "swap",
+  weight: ["600", "700", "800"],
+});
+
+const body = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-kinetic-body",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Brazilian Jiu-Jitsu Classes in College Station, TX | Kinetic Grappling",
+    default: "Brazilian Jiu-Jitsu & MMA in College Station, TX | Kinetic Grappling",
     template: "%s | Kinetic Grappling",
   },
   description: siteConfig.description,
@@ -32,7 +42,9 @@ export const metadata: Metadata = {
     "Bryan College Station Jiu-Jitsu",
     "BJJ near Texas A&M",
   ],
-  robots: { index: true, follow: true },
+  robots: { index: process.env.VERCEL_ENV !== "preview", follow: true, googleBot: { index: process.env.VERCEL_ENV !== "preview", follow: true, "max-image-preview": "large" } },
+  verification: { google: process.env.GOOGLE_SITE_VERIFICATION, other: process.env.BING_SITE_VERIFICATION ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION } : undefined },
+  category: "sports",
   icons: {
     icon: brandAssets.favicon,
     apple: brandAssets.favicon,
@@ -49,9 +61,12 @@ export default function RootLayout({
       <head>
         <JsonLd data={getLocalBusinessSchema()} />
       </head>
-      <body className={`${inter.variable} font-sans pb-20 md:pb-0`}>
+      <body className={`${display.variable} ${body.variable} font-sans pb-[calc(5rem+env(safe-area-inset-bottom))] md:pb-0`}>
+        <a className="skip-link" href="#main-content">Skip to main content</a>
         <Header />
-        <main>{children}</main>
+        <GoogleTagManager />
+        <Analytics />
+        <main id="main-content">{children}</main>
         <Footer />
         <StickyMobileCTA />
       </body>
